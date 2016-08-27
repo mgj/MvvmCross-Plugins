@@ -4,6 +4,8 @@
     <id>artm.MvxPlugins.Fetcher</id>
     <title>MvvmCross Fetcher Plugin</title>
     <description>A MvvmCross plugin to to fetch and cache data from e.g. the web</description>
+    <version>2.0.0</version>
+    <authors>Artm IVS</authors>
     <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone xamarin wpa81 win81 mvx</tags>
     <dependencies>
       <group targetFramework ="net">
@@ -37,11 +39,11 @@
   </metadata>
   <files>     
     <!-- PCL -->
-    <file src="..\bin\Release\Portable\artm.MvxPlugins.Fetcher.*" target="lib\portable-net45+win+wpa81" />
+    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\portable-net45+win+wpa81" />
             
     <!-- droid -->
-    <file src="..\bin\Release\Portable\artm.MvxPlugins.Fetcher.*" target="lib\MonoAndroid10" />
-    <file src="..\bin\Release\Droid\artm.MvxPlugins.Fetcher.Droid.*" target="lib\MonoAndroid10" />
+    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\MonoAndroid10" />
+    <!-- <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Droid\bin\Release\Droid\artm.MvxPlugins.Fetcher.Droid.*" target="lib\MonoAndroid10" /> -->
     <file src="BootstrapContent\FetcherPluginBootstrap.cs.pp" 
       target="content\MonoAndroid10\Bootstrap\FetcherPluginBootstrap.cs.pp" />
         
@@ -52,6 +54,6 @@
       target="content\Xamarin.iOS10\Bootstrap\ConnectivityPluginBootstrap.cs.pp" />-->
 
     <!-- dotnet -->
-    <file src="..\bin\Release\Portable\artm.MvxPlugins.Fetcher.*" target="lib\dotnet" />
+    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\dotnet" />
   </files>
 </package>
