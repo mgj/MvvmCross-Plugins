@@ -40,8 +40,10 @@
     <!-- PCL -->
     <file src="..\Logger\artm.MvxPlugins.Logger\bin\Release\artm.MvxPlugins.Logger.*" target="lib\portable-net45+win+wpa81" />
             
-    <!-- droid -->
+    <!-- DROID -->
     <file src="..\Logger\artm.MvxPlugins.Logger\bin\Release\artm.MvxPlugins.Logger.*" target="lib\MonoAndroid10" />
+    <file src="..\Logger\artm.MvxPlugins.Logger.Droid\bin\Release\artm.MvxPlugins.Logger.*" target="lib\MonoAndroid10" />
+    
     <file src="BootstrapContent\LoggerPluginBootstrap.cs.pp" 
       target="content\MonoAndroid10\Bootstrap\LoggerPluginBootstrap.cs.pp" />
 

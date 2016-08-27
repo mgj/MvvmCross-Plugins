@@ -14,6 +14,7 @@ using MvvmCross.Platform;
 using artm.MvxPlugins.Logger.Droid.Services;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Plugins;
+using MvvmCross.Platform.Droid;
 
 namespace artm.MvxPlugins.Logger.Droid
 {
@@ -21,7 +22,7 @@ namespace artm.MvxPlugins.Logger.Droid
     {
         public void Load()
         {
-            Mvx.ConstructAndRegisterSingleton<ILoggerService, LoggerService>();
+            Mvx.RegisterSingleton<ILoggerService>(() => new LoggerService(Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext));
         }
     }
 }
