@@ -1,5 +1,5 @@
 del *.nupkg
-nuget setapikey
+nuget setapikey 624f71d2-0d25-4c7f-8221-5bfa162cd79d
 
 nuget pack artm.MvxPlugins.Fetcher.nuspec -symbols
 
