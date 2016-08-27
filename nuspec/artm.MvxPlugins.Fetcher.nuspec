@@ -35,6 +35,6 @@
       target="content\Xamarin.iOS10\Bootstrap\ConnectivityPluginBootstrap.cs.pp" />-->
 
     <!-- dotnet -->
-    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\dotnet" />
+    <!-- <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\dotnet" /> -->
   </files>
 </package>
