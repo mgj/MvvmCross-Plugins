@@ -5,7 +5,7 @@ MvxPlugins
 
 | Plugin          | NuGet version                                                                                                                                                              |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Fetcher        | [![NuGet](https://img.shields.io/nuget/v/artm.mvvmcross-plugins.Fetcher.svg?maxAge=2592000)](https://www.nuget.org/packages/artm.MvxPlugins.Fetcher/)             |
+| Fetcher        | [![NuGet](https://img.shields.io/nuget/v/artm.MvxPlugins.Fetcher.svg?maxAge=2592000)](https://www.nuget.org/packages/artm.MvxPlugins.Fetcher/)             |
 
 
 License
