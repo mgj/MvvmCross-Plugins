@@ -11,10 +11,6 @@ MvxPlugins
 License
 =======
 
-- **Settings** plugin is licensed under [Apache 2.0][apache]
-- **Connectivity** plugin is licensed under [Apache 2.0][apache]
-- **Settings** plugin is licensed under [Apache 2.0][apache]
-- **SimpleWebToken** plugin is licensed under [Apache 2.0][apache]
-- **SMS** plugin is licensed under [Apache 2.0][apache]
+- **Fetcher** plugin is licensed under [Apache 2.0][apache]
 
 [apache]: https://www.apache.org/licenses/LICENSE-2.0.html
