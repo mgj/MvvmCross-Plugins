@@ -24,6 +24,8 @@
             
     <!-- droid -->
     <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\MonoAndroid10" />
-
+    <file src="BootstrapContent\FetcherPluginBootstrap.cs.pp" 
+      target="content\MonoAndroid10\Bootstrap\FetcherPluginBootstrap.cs.pp" />
+      
   </files>
 </package>
