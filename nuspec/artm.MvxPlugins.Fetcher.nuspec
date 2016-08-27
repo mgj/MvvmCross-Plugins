@@ -8,14 +8,48 @@
     <authors>Mikkel Jensen</authors>
     <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone xamarin wpa81 win81 mvx</tags>
     <dependencies>
-      <group targetFramework ="net">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+    <group targetFramework ="net">
+      <dependency id="MvvmCross.Platform" version="4.2.3" />
         <dependency id="Realm" version="0.77.2"/>
         <dependency id="Polly-Signed" version="4.3.0"/>
         <dependency id="modernhttpclient" version="2.4.2"/>
         <dependency id="Fody" version="1.29.4"/>
         <dependency id="DotNetCross.Memory.Unsafe" version="0.2.2"/>
-      </group>
+    </group>
+    <group targetFramework ="win">
+      <dependency id="MvvmCross.Platform" version="4.2.3" />
+    </group>
+    <group targetFramework ="wpa">
+      <dependency id="MvvmCross.Platform" version="4.2.3" />
+    </group>
+    <group targetFramework ="MonoAndroid">
+      <dependency id="MvvmCross.Platform" version="4.2.3" />
+    </group>
+    <group targetFramework ="Xamarin.iOS">
+      <dependency id="MvvmCross.Platform" version="4.2.3" />
+    </group>
+    <group targetFramework ="portable-net45+win8+wpa81+wp8">
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+      <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="Realm" version="0.77.2"/>
+        <dependency id="Polly-Signed" version="4.3.0"/>
+        <dependency id="modernhttpclient" version="2.4.2"/>
+        <dependency id="Fody" version="1.29.4"/>
+        <dependency id="DotNetCross.Memory.Unsafe" version="0.2.2"/>
+    </group>
+    <group targetFramework ="uap">
+      <dependency id="Newtonsoft.Json" version="8.0.2" />
+      <dependency id="MvvmCross.Platform" version="4.2.3" />
+    </group>
+    <group targetFramework ="dotnet">
+      <dependency id="Newtonsoft.Json" version="8.0.2" />
+      <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="Realm" version="0.77.2"/>
+        <dependency id="Polly-Signed" version="4.3.0"/>
+        <dependency id="modernhttpclient" version="2.4.2"/>
+        <dependency id="Fody" version="1.29.4"/>
+        <dependency id="DotNetCross.Memory.Unsafe" version="0.2.2"/>
+    </group>
     </dependencies>
   </metadata>
   <files>     
@@ -26,6 +60,6 @@
     <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\MonoAndroid10" />
     <file src="BootstrapContent\FetcherPluginBootstrap.cs.pp" 
       target="content\MonoAndroid10\Bootstrap\FetcherPluginBootstrap.cs.pp" />
-      
+
   </files>
 </package>

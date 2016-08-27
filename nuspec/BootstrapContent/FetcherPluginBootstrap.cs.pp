@@ -6,6 +6,6 @@ namespace $rootnamespace$.Bootstrap
     public class FetcherPluginBootstrap
         : MvxPluginBootstrapAction<artm.MvxPlugins.Fetcher.PluginLoader> 
         {
-            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>(); 
+            
         }
 }
