@@ -10,30 +10,11 @@
     <dependencies>
       <group targetFramework ="net">
         <dependency id="MvvmCross.Platform" version="4.2.3" />
-      </group>
-      <group targetFramework ="win">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
-      </group>
-      <group targetFramework ="wp">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
-      </group>
-      <group targetFramework ="wpa">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
-      </group>
-      <group targetFramework ="MonoAndroid">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
-      </group>
-      <group targetFramework ="Xamarin.iOS">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
-      </group>
-      <group targetFramework ="portable-net45+win8+wpa81+wp8">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
-      </group>
-      <group targetFramework ="uap">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
-      </group>
-      <group targetFramework ="dotnet">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="Realm" version="0.77.2">
+        <dependency id="Polly-Signed" version="4.3.0">
+        <dependency id="modernhttpclient" version="2.4.2">
+        <dependency id="Fody" version="1.29.4">
+        <dependency id="DotNetCross.Memory.Unsafe" version="0.2.2">
       </group>
     </dependencies>
   </metadata>
