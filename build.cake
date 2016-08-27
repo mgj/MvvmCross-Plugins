@@ -77,8 +77,8 @@ Task("PackageAll")
 	};
 
 	NuGetPack("./nuspec/artm.MvxPlugins.Fetcher.nuspec", nugetSettings);
-
 });
+
 
 Task("UploadAppVeyorArtifact")
 	.IsDependentOn("PackageAll")
