@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fetcher", "Fetcher", "{D090
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Fetcher", "Fetcher\artm.MvxPlugins.Fetcher\artm.MvxPlugins.Fetcher.csproj", "{055BB318-A491-4CA5-8589-2F86CDF491AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Fetcher.Tests", "Fetcher\artm.MvxPlugins.Fetcher.Tests\artm.MvxPlugins.Fetcher.Tests.csproj", "{D56C5A05-F852-4511-8639-6C16847EFA8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +19,16 @@ Global
 		{055BB318-A491-4CA5-8589-2F86CDF491AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{055BB318-A491-4CA5-8589-2F86CDF491AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{055BB318-A491-4CA5-8589-2F86CDF491AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56C5A05-F852-4511-8639-6C16847EFA8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56C5A05-F852-4511-8639-6C16847EFA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56C5A05-F852-4511-8639-6C16847EFA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56C5A05-F852-4511-8639-6C16847EFA8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{055BB318-A491-4CA5-8589-2F86CDF491AE} = {D090CFEA-22F2-4FB3-B283-FC1AD0248150}
+		{D56C5A05-F852-4511-8639-6C16847EFA8F} = {D090CFEA-22F2-4FB3-B283-FC1AD0248150}
 	EndGlobalSection
 EndGlobal
