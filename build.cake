@@ -78,6 +78,9 @@ Task("PackageAll")
 	};
 
 	NuGetPack("./nuspec/artm.MvxPlugins.Fetcher.nuspec", nugetSettings);
+
+	nugetSettings.ReleaseNotes = ParseReleaseNotes("./releasenotes/logger.md").Notes.ToArray();
+	NuGetPack("./nuspec/artm.MvxPlugins.Logger.nuspec", nugetSettings);
 });
 
 
