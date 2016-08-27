@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins", "artm.MvxPlugins\artm.MvxPlugins.csproj", "{C858F206-D80E-4834-91B3-F8AA55B941A3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fetcher", "Fetcher", "{D090CFEA-22F2-4FB3-B283-FC1AD0248150}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Fetcher", "Fetcher\artm.MvxPlugins.Fetcher\artm.MvxPlugins.Fetcher.csproj", "{055BB318-A491-4CA5-8589-2F86CDF491AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Fetcher.Droid", "Fetcher\artm.MvxPlugins.Fetcher.Droid\artm.MvxPlugins.Fetcher.Droid.csproj", "{E92E3546-E787-4D4F-B22A-65149ABF345E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +15,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C858F206-D80E-4834-91B3-F8AA55B941A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C858F206-D80E-4834-91B3-F8AA55B941A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C858F206-D80E-4834-91B3-F8AA55B941A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C858F206-D80E-4834-91B3-F8AA55B941A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{055BB318-A491-4CA5-8589-2F86CDF491AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{055BB318-A491-4CA5-8589-2F86CDF491AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{055BB318-A491-4CA5-8589-2F86CDF491AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{055BB318-A491-4CA5-8589-2F86CDF491AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92E3546-E787-4D4F-B22A-65149ABF345E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92E3546-E787-4D4F-B22A-65149ABF345E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E92E3546-E787-4D4F-B22A-65149ABF345E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E92E3546-E787-4D4F-B22A-65149ABF345E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E92E3546-E787-4D4F-B22A-65149ABF345E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92E3546-E787-4D4F-B22A-65149ABF345E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{055BB318-A491-4CA5-8589-2F86CDF491AE} = {D090CFEA-22F2-4FB3-B283-FC1AD0248150}
+		{E92E3546-E787-4D4F-B22A-65149ABF345E} = {D090CFEA-22F2-4FB3-B283-FC1AD0248150}
 	EndGlobalSection
 EndGlobal
