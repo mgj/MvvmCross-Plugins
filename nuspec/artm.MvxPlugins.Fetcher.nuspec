@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>Cheesebaron.MvxPlugins.Connectivity</id>
-    <title>MvvmCross Connectivity Plugin</title>
-    <description>A MvvmCross plugin to detect network changes in your application</description>
+    <id>artm.MvxPlugins.Fetcher</id>
+    <title>MvvmCross Fetcher Plugin</title>
+    <description>A MvvmCross plugin to to fetch and cache data from e.g. the web</description>
     <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone xamarin wpa81 win81 mvx</tags>
     <dependencies>
       <group targetFramework ="net">
