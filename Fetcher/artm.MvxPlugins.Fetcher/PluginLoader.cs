@@ -12,16 +12,16 @@ namespace artm.MvxPlugins.Fetcher
     public class PluginLoader : IMvxPluginLoader
     {
         public static readonly PluginLoader Instance = new PluginLoader();
-        private bool _loaded = false;
+
+        public PluginLoader()
+        {
+            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
+        }
+
         public void EnsureLoaded()
         {
-            if(_loaded)
-            {
-                return;
-            }
 
             Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
-            _loaded = true;
         }
     }
 }
