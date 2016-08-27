@@ -68,6 +68,7 @@ Task("PackageAll")
 		LicenseUrl = new Uri("https://github.com/mgj/MvvmCross-Plugins/blob/master/LICENSE"),
 		Copyright = "Copyright (c) Mikkel Jensen",
 		RequireLicenseAcceptance = false,
+		ReleaseNotes = ParseReleaseNotes("./README.md").Notes.ToArray(),
 		Version = versionInfo.NuGetVersion,
 		Symbols = false,
 		NoPackageAnalysis = true,
