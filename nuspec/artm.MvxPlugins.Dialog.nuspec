@@ -10,7 +10,7 @@
     <dependencies>
     <group targetFramework ="net">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.MvxPlugins.Logger" version="2.0.13" />
+      <dependency id="artm.MvxPlugins.Logger" version="2.0.15" />
     </group>
     <group targetFramework ="win">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
@@ -20,7 +20,7 @@
     </group>
     <group targetFramework ="MonoAndroid">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.MvxPlugins.Logger" version="2.0.13" />
+      <dependency id="artm.MvxPlugins.Logger" version="2.0.15" />
     </group>
     <group targetFramework ="Xamarin.iOS">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
@@ -28,17 +28,17 @@
     <group targetFramework ="portable-net45+win8+wpa81+wp8">
       <dependency id="Newtonsoft.Json" version="8.0.2" />
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.MvxPlugins.Logger" version="2.0.13" />
+      <dependency id="artm.MvxPlugins.Logger" version="2.0.15" />
     </group>
     <group targetFramework ="uap">
       <dependency id="Newtonsoft.Json" version="8.0.2" />
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.MvxPlugins.Logger" version="2.0.13" />
+      <dependency id="artm.MvxPlugins.Logger" version="2.0.15" />
     </group>
     <group targetFramework ="dotnet">
       <dependency id="Newtonsoft.Json" version="8.0.2" />
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.MvxPlugins.Logger" version="2.0.13" />
+      <dependency id="artm.MvxPlugins.Logger" version="2.0.15" />
     </group>
     </dependencies>
   </metadata>
