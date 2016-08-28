@@ -75,7 +75,7 @@ namespace artm.MvxPlugins.Logger.Droid.Services
 
             // The cache dir can be cleaned by the user at will
             var cacheDir = context.CacheDir.AbsolutePath;
-            var filename = cacheDir + "/" + APP_NAME + "/logs/" + "${date:format=yyyy-MM-dd}.log";
+            var filename = cacheDir + "/" + "/logs/" + "${date:format=yyyy-MM-dd}.log";
             fileTarget.FileName = filename;
             fileTarget.Layout = "${longdate}|[${level}]|[${logger}]|${message}";
             return fileTarget;

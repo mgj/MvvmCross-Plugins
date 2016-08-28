@@ -1,4 +1,5 @@
 ﻿using artm.MvxPlugins.Fetcher.Entities;
+using artm.MvxPlugins.Logger.Services;
 using ModernHttpClient;
 using Polly;
 using Realms;
@@ -13,11 +14,11 @@ namespace artm.MvxPlugins.Fetcher.Services
     {
         public const long CACHE_FRESHNESS_THRESHOLD = TimeSpan.TicksPerDay;
 
-        //private readonly IDreamsLogService _log;
+        private readonly ILoggerService _log;
 
-        public FetcherService()
+        public FetcherService(ILoggerService logService)
         {
-            //_log = logService;
+            _log = logService;
         }
 
         public async Task<UrlCacheInfo> Fetch(Uri url)
@@ -27,7 +28,7 @@ namespace artm.MvxPlugins.Fetcher.Services
 
         public async Task<UrlCacheInfo> Fetch(Uri uri, long freshnessTreshold)
         {
-            //_log.Log("Fetching for uri: " + uri.OriginalString);
+            _log.Log("Fetching for uri: " + uri.OriginalString);
             var realm = Realm.GetInstance();
 
             var needle = uri.OriginalString;
@@ -35,14 +36,14 @@ namespace artm.MvxPlugins.Fetcher.Services
             if (cacheHit.Count() != 0)
             {
                 // Hit
-                //_log.Log("Cache hit");
+                _log.Log("Cache hit");
                 var hero = cacheHit.First();
                 realm.Write(() => hero.LastAccessed = DateTime.Now.Ticks);
 
                 if (ShouldInvalidate(hero, freshnessTreshold))
                 {
                     // Cache needs refreshing
-                    //_log.Log("Refreshing cache");
+                    _log.Log("Refreshing cache");
                     await UpdateUrl(uri, hero);
                 }
 
@@ -118,7 +119,7 @@ namespace artm.MvxPlugins.Fetcher.Services
                 hero.LastUpdated = timestamp;
             });
 
-            //_log.Log("New url cached: " + uri.OriginalString);
+            _log.Log("New url cached: " + uri.OriginalString);
 
             return hero;
         }
