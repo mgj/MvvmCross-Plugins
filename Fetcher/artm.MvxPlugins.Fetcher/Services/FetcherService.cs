@@ -3,10 +3,8 @@ using ModernHttpClient;
 using Polly;
 using Realms;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Fetcher.Services

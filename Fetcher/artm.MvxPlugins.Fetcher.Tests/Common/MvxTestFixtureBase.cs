@@ -1,7 +1,6 @@
 ﻿
 using artm.MvxPlugins.Fetcher.Services;
 using artm.MvxPlugins.Fetcher.Tests.Services.Calculator;
-using Moq;
 using MvvmCross.Core.Platform;
 using MvvmCross.Core.Views;
 using MvvmCross.Platform.Core;

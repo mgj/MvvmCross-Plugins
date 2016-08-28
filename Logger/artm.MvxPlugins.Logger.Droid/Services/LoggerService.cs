@@ -1,20 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using System.Runtime.CompilerServices;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using artm.MvxPlugins.Logger.Services;
 
 namespace artm.MvxPlugins.Logger.Droid.Services
 {
@@ -40,13 +31,7 @@ namespace artm.MvxPlugins.Logger.Droid.Services
             _log = LogManager.GetLogger(APP_NAME);
         }
 
-        public void Log(
-            string message,
-            LoggerServiceSeverityLevel level = LoggerServiceSeverityLevel.Debug,
-            Exception exception = null,
-            [CallerMemberName] string memberName = "",
-            [CallerFilePath] string fileName = "",
-            [CallerLineNumber] int lineNumber = 0)
+        public void Log(string message, Logger.Services.LoggerServiceSeverityLevel level = Logger.Services.LoggerServiceSeverityLevel.Debug, Exception exception = null, [CallerMemberName] string memberName = "", [CallerFilePath] string fileName = "", [CallerLineNumber] int lineNumber = 0)
         {
             switch (level)
             {
