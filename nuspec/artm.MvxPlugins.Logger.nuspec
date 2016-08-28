@@ -41,7 +41,6 @@
     <file src="..\Logger\artm.MvxPlugins.Logger\bin\Release\artm.MvxPlugins.Logger.*" target="lib\portable-net45+win+wpa81" />
             
     <!-- DROID -->
-    <file src="..\Logger\artm.MvxPlugins.Logger\bin\Release\artm.MvxPlugins.Logger.*" target="lib\MonoAndroid10" />
     <file src="..\Logger\artm.MvxPlugins.Logger.Droid\bin\Release\artm.MvxPlugins.Logger.*" target="lib\MonoAndroid10" />
     
     <file src="BootstrapContent\LoggerPluginBootstrap.cs.pp" 
