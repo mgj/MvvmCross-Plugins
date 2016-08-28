@@ -81,6 +81,9 @@ Task("PackageAll")
 
 	nugetSettings.ReleaseNotes = ParseReleaseNotes("./releasenotes/logger.md").Notes.ToArray();
 	NuGetPack("./nuspec/artm.MvxPlugins.Logger.nuspec", nugetSettings);
+
+	nugetSettings.ReleaseNotes = ParseReleaseNotes("./releasenotes/dialog.md").Notes.ToArray();
+	NuGetPack("./nuspec/artm.MvxPlugins.Dialog.nuspec", nugetSettings);
 });
 
 
