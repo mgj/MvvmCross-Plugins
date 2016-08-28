@@ -5,8 +5,8 @@ MvxPlugins
 
 | Plugin          | NuGet version                                                                                                                                                              |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Fetcher        | [![NuGet](https://img.shields.io/nuget/v/artm.MvxPlugins.Fetcher.svg?maxAge=2592000)](https://www.nuget.org/packages/artm.MvxPlugins.Fetcher/)             |
-| Logger         | [![NuGet](https://img.shields.io/nuget/v/artm.MvxPlugins.Logger.svg?maxAge=2592000)](https://www.nuget.org/packages/artm.MvxPlugins.Logger/)               |
+| Fetcher        | [![NuGet](https://img.shields.io/nuget/v/artm.MvxPlugins.Fetcher.svg)](https://www.nuget.org/packages/artm.MvxPlugins.Fetcher/)             |
+| Logger         | [![NuGet](https://img.shields.io/nuget/v/artm.MvxPlugins.Logger.svg)](https://www.nuget.org/packages/artm.MvxPlugins.Logger/)               |
 
 
 License
