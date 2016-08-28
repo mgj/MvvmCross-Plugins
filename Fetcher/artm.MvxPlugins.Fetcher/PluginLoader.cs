@@ -1,4 +1,5 @@
-﻿using MvvmCross.Platform;
+﻿using artm.MvxPlugins.Fetcher.Services;
+using MvvmCross.Platform;
 using MvvmCross.Platform.Plugins;
 
 namespace artm.MvxPlugins.Fetcher
@@ -7,10 +8,17 @@ namespace artm.MvxPlugins.Fetcher
     {
         public static readonly PluginLoader Instance = new PluginLoader();
 
+        private bool _loaded;
+
         public void EnsureLoaded()
         {
-            var manager = Mvx.Resolve<IMvxPluginManager>();
-            manager.EnsurePlatformAdaptionLoaded<PluginLoader>();
+            if (_loaded)
+            {
+                return;
+            }
+
+            _loaded = true;
+            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
         }
     }
 }
