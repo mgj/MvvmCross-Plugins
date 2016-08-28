@@ -16,5 +16,6 @@ License
 
 - **Fetcher** plugin is licensed under [Apache 2.0][apache]
 - **Logger** plugin is licensed under [Apache 2.0][apache]
+- **Dialog** plugin is licensed under [Apache 2.0][apache]
 
 [apache]: https://www.apache.org/licenses/LICENSE-2.0.html
