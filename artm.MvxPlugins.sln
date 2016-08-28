@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Logger", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Logger.Droid", "Logger\artm.MvxPlugins.Logger.Droid\artm.MvxPlugins.Logger.Droid.csproj", "{32235D6A-4301-4D79-BB3D-24948A441972}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dialog", "Dialog", "{3E79975C-FB77-4982-83AD-7D02422C7C78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Dialog", "Dialog\artm.MvxPlugins.Dialog\artm.MvxPlugins.Dialog.csproj", "{A7AF8502-FC0B-441B-A3C8-4EECD9134E78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Dialog.Droid", "Dialog\artm.MvxPlugins.Dialog.Droid\artm.MvxPlugins.Dialog.Droid.csproj", "{11D2EB81-68C8-4A07-B190-E8556BD540DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +43,16 @@ Global
 		{32235D6A-4301-4D79-BB3D-24948A441972}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32235D6A-4301-4D79-BB3D-24948A441972}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32235D6A-4301-4D79-BB3D-24948A441972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7AF8502-FC0B-441B-A3C8-4EECD9134E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7AF8502-FC0B-441B-A3C8-4EECD9134E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7AF8502-FC0B-441B-A3C8-4EECD9134E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7AF8502-FC0B-441B-A3C8-4EECD9134E78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D2EB81-68C8-4A07-B190-E8556BD540DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D2EB81-68C8-4A07-B190-E8556BD540DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D2EB81-68C8-4A07-B190-E8556BD540DE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{11D2EB81-68C8-4A07-B190-E8556BD540DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D2EB81-68C8-4A07-B190-E8556BD540DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D2EB81-68C8-4A07-B190-E8556BD540DE}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +62,7 @@ Global
 		{D56C5A05-F852-4511-8639-6C16847EFA8F} = {D090CFEA-22F2-4FB3-B283-FC1AD0248150}
 		{4A49A40B-3FC0-4D42-B04A-9D521C5CF860} = {BA0B52C7-E446-4708-8E73-48D9FD0CAE0B}
 		{32235D6A-4301-4D79-BB3D-24948A441972} = {BA0B52C7-E446-4708-8E73-48D9FD0CAE0B}
+		{A7AF8502-FC0B-441B-A3C8-4EECD9134E78} = {3E79975C-FB77-4982-83AD-7D02422C7C78}
+		{11D2EB81-68C8-4A07-B190-E8556BD540DE} = {3E79975C-FB77-4982-83AD-7D02422C7C78}
 	EndGlobalSection
 EndGlobal
