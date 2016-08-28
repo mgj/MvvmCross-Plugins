@@ -12,6 +12,7 @@ namespace artm.MvxPlugins.Fetcher.Services
     public class FetcherService : IFetcherService
     {
         public const long CACHE_FRESHNESS_THRESHOLD = TimeSpan.TicksPerDay;
+
         //private readonly IDreamsLogService _log;
 
         public FetcherService()
