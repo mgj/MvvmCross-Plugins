@@ -25,6 +25,8 @@
       <dependency id="MvvmCross.Platform" version="4.2.3" />
     </group>
     <group targetFramework ="portable-net45+win8+wpa81+wp8">
+      <dependency id="Newtonsoft.Json" version="8.0.2" />
+      <dependency id="MvvmCross.Platform" version="4.2.3" />
     </group>
     <group targetFramework ="uap">
       <dependency id="Newtonsoft.Json" version="8.0.2" />

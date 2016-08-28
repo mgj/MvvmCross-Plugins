@@ -14,7 +14,6 @@
         <dependency id="Polly-Signed" version="4.3.0"/>
         <dependency id="modernhttpclient" version="2.4.2"/>
         <dependency id="Fody" version="1.29.4"/>
-        <dependency id="DotNetCross.Memory.Unsafe" version="0.2.2"/>
     </group>
     <group targetFramework ="win">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
@@ -39,7 +38,6 @@
         <dependency id="modernhttpclient" version="2.4.2"/>
         <dependency id="Fody" version="1.29.4"/>
         <dependency id="Realm" version="0.77.2"/>
-        <dependency id="DotNetCross.Memory.Unsafe" version="0.2.2"/>
     </group>
     <group targetFramework ="uap">
       <dependency id="Newtonsoft.Json" version="8.0.2" />
@@ -52,7 +50,6 @@
         <dependency id="Polly-Signed" version="4.3.0"/>
         <dependency id="modernhttpclient" version="2.4.2"/>
         <dependency id="Fody" version="1.29.4"/>
-        <dependency id="DotNetCross.Memory.Unsafe" version="0.2.2"/>
     </group>
     </dependencies>
   </metadata>
