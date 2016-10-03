@@ -5,18 +5,18 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{32235D6A-4301-4D79-BB3D-24948A441972}</ProjectGuid>
+    <ProjectGuid>{11D2EB81-68C8-4A07-B190-E8556BD540DE}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>artm.MvxPlugins.Logger.Droid</RootNamespace>
-    <AssemblyName>artm.MvxPlugins.Logger.Droid</AssemblyName>
+    <RootNamespace>artm.MvxPlugins.Dialog.Droid</RootNamespace>
+    <AssemblyName>artm.MvxPlugins.Dialog.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,6 +41,14 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="artm.MvxPlugins.Logger, Version=2.0.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\artm.MvxPlugins.Logger.2.0.12\lib\MonoAndroid10\artm.MvxPlugins.Logger.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="artm.MvxPlugins.Logger.Droid, Version=2.0.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\artm.MvxPlugins.Logger.2.0.12\lib\MonoAndroid10\artm.MvxPlugins.Logger.Droid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="MvvmCross.Platform, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -61,10 +69,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap\LoggerPluginBootstrap.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\LoggerService.cs" />
+    <Compile Include="Services\DialogService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -82,9 +91,9 @@
     <Folder Include="Resources\values\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\artm.MvxPlugins.Logger\artm.MvxPlugins.Logger.csproj">
-      <Project>{4A49A40B-3FC0-4D42-B04A-9D521C5CF860}</Project>
-      <Name>artm.MvxPlugins.Logger</Name>
+    <ProjectReference Include="..\artm.MvxPlugins.Dialog\artm.MvxPlugins.Dialog.csproj">
+      <Project>{A7AF8502-FC0B-441B-A3C8-4EECD9134E78}</Project>
+      <Name>artm.MvxPlugins.Dialog</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
