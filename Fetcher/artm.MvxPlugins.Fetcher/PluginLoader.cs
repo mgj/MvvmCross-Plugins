@@ -8,7 +8,7 @@ namespace artm.MvxPlugins.Fetcher
     {
         public static readonly PluginLoader Instance = new PluginLoader();
 
-        private bool _loaded;
+        private bool _loaded = false;
 
         public void EnsureLoaded()
         {

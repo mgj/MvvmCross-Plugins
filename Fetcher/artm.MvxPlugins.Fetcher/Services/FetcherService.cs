@@ -111,12 +111,13 @@ namespace artm.MvxPlugins.Fetcher.Services
             var timestamp = DateTime.Now.Ticks;
             realm.Write(() =>
             {
-                hero = realm.CreateObject<UrlCacheInfo>();
+                hero = new UrlCacheInfo();
                 hero.Response = response;
                 hero.Url = uri.OriginalString;
                 hero.Created = timestamp;
                 hero.LastAccessed = timestamp;
                 hero.LastUpdated = timestamp;
+                realm.Add(hero);
             });
 
             _log.Log("New url cached: " + uri.OriginalString);
