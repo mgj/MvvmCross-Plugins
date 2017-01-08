@@ -1,5 +1,7 @@
 using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.Core.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Playground.Core.ViewModels
@@ -24,12 +26,24 @@ namespace Playground.Core.ViewModels
 
         private async Task DoShowListCommandAsync()
         {
-            var items = new string[]{ "a", "b", "c" };
-            var checkedItems = new bool[] { true, false, false };
-            var result = await _dialog.ShowMultipleChoice(items, checkedItems);
-            var debug = 42;
-        }
+            var items = new string[]{ "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "c" };
+            var checkedItems = new List<bool>();
+            var random = new Random();
+            foreach (var item in items)
+            {
+                var rand = random.Next(0, 1);
+                if (rand == 1)
+                {
+                    checkedItems.Add(true);
+                }
+                else
+                {
+                    checkedItems.Add(false);
+                }
+            }
 
+            var result = await _dialog.ShowMultipleChoice(items, checkedItems.ToArray());
+        }
 
         private string _hello = "Hello MvvmCross";
         private readonly IDialogService _dialog;
