@@ -12,6 +12,7 @@ using Android.Widget;
 using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Droid.Platform;
+using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Dialog.Droid.Services
 {
@@ -64,25 +65,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             });
         }
 
-
-        private static ProgressDialog ProgressDialogFactory(Context context, string message, bool withProgress)
-        {
-            var dialog = new ProgressDialog(context);
-            if (withProgress)
-            {
-                dialog.SetProgressStyle(ProgressDialogStyle.Horizontal);
-            }
-            else
-            {
-                dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
-            }
-
-            dialog.SetMessage(message);
-
-            return dialog;
-        }
-
-
         public void LoadingProgress(int progress)
         {
             if (_progressDialog == null || CurrentContext == null)
@@ -100,6 +82,55 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             });
 
         }
+
+        public async Task<List<int>> ShowMultipleChoice(string[] items, bool[] checkedItems, string positiveLabel = "Okay")
+        {
+            var tcs = new TaskCompletionSource<List<int>>();
+
+            var result = new List<int>();
+
+            var builder = new AlertDialog.Builder(CurrentContext);
+
+            builder.SetMultiChoiceItems(items, checkedItems, (sender, e) =>
+            {
+                if (e.IsChecked)
+                {
+                    result.Add(e.Which);
+                }
+                else if (result.Contains(e.Which))
+                {
+                    result.Remove(e.Which);
+                }
+            });
+            
+            builder.SetPositiveButton(positiveLabel, (sender, e) =>
+            {
+                tcs.SetResult(result);
+            });
+
+            builder.Show();
+
+            return await tcs.Task;
+        }
+
+
+        private static ProgressDialog ProgressDialogFactory(Context context, string message, bool withProgress)
+        {
+            var dialog = new ProgressDialog(context);
+            if (withProgress)
+            {
+                dialog.SetProgressStyle(ProgressDialogStyle.Horizontal);
+            }
+            else
+            {
+                dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+            }
+
+            dialog.SetMessage(message);
+
+            return dialog;
+        }
+        
 
         private Activity CurrentContext
         {

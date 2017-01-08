@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Dialog", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Dialog.Droid", "Dialog\artm.MvxPlugins.Dialog.Droid\artm.MvxPlugins.Dialog.Droid.csproj", "{11D2EB81-68C8-4A07-B190-E8556BD540DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.Droid", "Playground.Droid\Playground.Droid.csproj", "{5342A292-7DCF-4E45-B229-A98580DC9ADA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.Core", "Playground.Core\Playground.Core.csproj", "{D1F6DE12-6F9E-4A2D-9B2B-2FB87AAFFC1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,16 @@ Global
 		{11D2EB81-68C8-4A07-B190-E8556BD540DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11D2EB81-68C8-4A07-B190-E8556BD540DE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{11D2EB81-68C8-4A07-B190-E8556BD540DE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5342A292-7DCF-4E45-B229-A98580DC9ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5342A292-7DCF-4E45-B229-A98580DC9ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5342A292-7DCF-4E45-B229-A98580DC9ADA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5342A292-7DCF-4E45-B229-A98580DC9ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5342A292-7DCF-4E45-B229-A98580DC9ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5342A292-7DCF-4E45-B229-A98580DC9ADA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D1F6DE12-6F9E-4A2D-9B2B-2FB87AAFFC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1F6DE12-6F9E-4A2D-9B2B-2FB87AAFFC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1F6DE12-6F9E-4A2D-9B2B-2FB87AAFFC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1F6DE12-6F9E-4A2D-9B2B-2FB87AAFFC1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
