@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.Core", "Playgrou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Dialog.Touch", "Dialog\artm.MvxPlugins.Dialog.Touch\artm.MvxPlugins.Dialog.Touch.csproj", "{6646F0CD-3333-4A18-971B-F7DB088218C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Logger.Touch", "artm.MvxPlugins.Logger.Touch\artm.MvxPlugins.Logger.Touch.csproj", "{93270AF2-63EB-46BB-8698-3FBA09A2BC14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artm.MvxPlugins.Logger.Touch", "Logger\artm.MvxPlugins.Logger.Touch\artm.MvxPlugins.Logger.Touch.csproj", "{93270AF2-63EB-46BB-8698-3FBA09A2BC14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

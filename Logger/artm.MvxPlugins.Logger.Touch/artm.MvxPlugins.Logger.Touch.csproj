@@ -53,7 +53,7 @@
     <Compile Include="Services\LoggerService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Logger\artm.MvxPlugins.Logger\artm.MvxPlugins.Logger.csproj">
+    <ProjectReference Include="..\artm.MvxPlugins.Logger\artm.MvxPlugins.Logger.csproj">
       <Project>{4a49a40b-3fc0-4d42-b04a-9d521c5cf860}</Project>
       <Name>artm.MvxPlugins.Logger</Name>
     </ProjectReference>
