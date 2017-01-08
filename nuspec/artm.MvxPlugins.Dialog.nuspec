@@ -51,7 +51,7 @@
     <file src="BootstrapContent\DialogPluginBootstrap.cs.pp" target="content\MonoAndroid10\Bootstrap\DialogPluginBootstrap.cs.pp" />
 
     <!-- TOUCH -->
-    <file src="..\Dialog\artm.MvxPlugins.Dialog.Touch\bin\Release\artm.MvxPlugins.Dialog.*" target="lib\Xamarin.iOS10\HLMAMvx.Plugins.Beacon.Touch.dll" />
+    <file src="..\Dialog\artm.MvxPlugins.Dialog.Touch\bin\Release\artm.MvxPlugins.Dialog.*" target="lib\Xamarin.iOS10" />
     <file src="BootstrapContent\DialogPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\DialogPluginBootstrap.cs.pp" />
 
   </files>
