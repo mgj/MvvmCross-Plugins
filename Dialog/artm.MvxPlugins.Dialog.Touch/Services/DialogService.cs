@@ -1,4 +1,6 @@
 using artm.MvxPlugins.Dialog.Services;
+using MvvmCross.iOS.Views.Presenters;
+using MvvmCross.Platform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +28,14 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
 
         public Task<List<int>> ShowMultipleChoice(string[] items, bool[] checkedItems, string positiveLabel = "Okay")
         {
-            throw new NotImplementedException();
+            var result = new List<int>();
+
+            var navigationController = (Mvx.Resolve<IMvxIosViewPresenter>() as MvxIosViewPresenter).MasterNavigationController;
+
+            var multiChoiceView = new MultiChoiceListView(items);
+            navigationController.PushViewController(multiChoiceView, true);
+
+            return Task.FromResult(result);
         }
     }
 }
