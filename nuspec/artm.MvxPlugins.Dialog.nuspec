@@ -26,6 +26,7 @@
       <dependency id="MvvmCross.Platform" version="4.4.0" />
       <dependency id="MvvmCross.Binding" version="4.4.0" />
       <dependency id="MvvmCross.Core" version="4.4.0" />
+      <dependency id="Cirrious.FluentLayout" version="2.5.0" />
       <dependency id="artm.MvxPlugins.Logger" version="2.0.15" />
     </group>
     <group targetFramework ="portable-net45+win8+wpa81+wp8">
