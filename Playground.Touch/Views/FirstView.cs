@@ -23,6 +23,7 @@ namespace Playground.Touch.Views
             set.Bind(myButton).To(vm => vm.ShowListCommand);
             set.Apply();
 
+
             View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
             var buttonHeight = 44;
             View.AddConstraints(
