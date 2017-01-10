@@ -9,9 +9,30 @@ namespace Playground.Core.ViewModels
     public class FirstViewModel 
         : MvxViewModel
     {
+        private readonly string[] _allItems = new string[] { "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "c" };
+        private List<bool> _checkedItems = new List<bool>();
         public FirstViewModel(IDialogService dialog)
         {
             _dialog = dialog;
+
+            InitializeCheckedItems();
+        }
+
+        private void InitializeCheckedItems()
+        {
+            var random = new Random();
+            foreach (var item in _allItems)
+            {
+                var rand = random.Next(0, 2);
+                if (rand == 1)
+                {
+                    _checkedItems.Add(true);
+                }
+                else
+                {
+                    _checkedItems.Add(false);
+                }
+            }
         }
 
         private MvxAsyncCommand _showListCommand;
@@ -26,23 +47,16 @@ namespace Playground.Core.ViewModels
 
         private async Task DoShowListCommandAsync()
         {
-            var items = new string[]{ "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "c" };
-            var checkedItems = new List<bool>();
-            var random = new Random();
-            foreach (var item in items)
+            var result = await _dialog.ShowMultipleChoice(_allItems, _checkedItems.ToArray());
+            for (int i = 0; i < _checkedItems.Count; i++)
             {
-                var rand = random.Next(0, 2);
-                if (rand == 1)
-                {
-                    checkedItems.Add(true);
-                }
-                else
-                {
-                    checkedItems.Add(false);
-                }
+                _checkedItems[i] = false;
             }
 
-            var result = await _dialog.ShowMultipleChoice(items, checkedItems.ToArray());
+            foreach (var index in result)
+            {
+                _checkedItems[index] = true;
+            }
         }
 
         private string _hello = "Hello MvvmCross";
