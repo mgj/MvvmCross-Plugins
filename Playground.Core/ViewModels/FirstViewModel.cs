@@ -31,7 +31,7 @@ namespace Playground.Core.ViewModels
             var random = new Random();
             foreach (var item in items)
             {
-                var rand = random.Next(0, 1);
+                var rand = random.Next(0, 2);
                 if (rand == 1)
                 {
                     checkedItems.Add(true);

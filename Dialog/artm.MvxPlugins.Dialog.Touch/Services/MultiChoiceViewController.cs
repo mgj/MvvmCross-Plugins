@@ -1,4 +1,5 @@
 using Cirrious.FluentLayouts.Touch;
+using Foundation;
 using MvvmCross.Binding.iOS.Views;
 using System;
 using System.Collections;
@@ -46,8 +47,22 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             _source = new MvxStandardTableViewSource(_table);
             _source.ItemsSource = _items;
             _table.Source = _source;
+
             _table.ReloadData();
             Add(_table);
+
+            
+
+            for (int i = 0; i < _checkedItems.Count(); i++)
+            {
+                var hero = _checkedItems[i];
+                if(hero == true)
+                {
+                    var path = NSIndexPath.Create(0, i); // Section must be supplied. Assuming there is only 1 section.
+                    _table.SelectRow(path, animated: false, scrollPosition: UITableViewScrollPosition.None);
+                }
+            }
+
 
             View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
@@ -81,6 +96,11 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         private List<int> GetSelectedRows()
         {
             var result = new List<int>();
+            if (_table.IndexPathsForSelectedRows == null)
+            {
+                return result;
+            }
+
             foreach (var row in _table.IndexPathsForSelectedRows)
             {
                 result.Add(row.Row);
