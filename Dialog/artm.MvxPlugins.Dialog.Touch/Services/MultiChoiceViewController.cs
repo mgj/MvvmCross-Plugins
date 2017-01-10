@@ -82,6 +82,11 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         public override void ViewWillDisappear(bool animated)
         {
             base.ViewWillDisappear(animated);
+            if(_onComplete == null)
+            {
+                return;
+            }
+
             _onComplete(GetSelectedRows());
         }
 
