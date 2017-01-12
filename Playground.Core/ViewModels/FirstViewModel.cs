@@ -47,7 +47,7 @@ namespace Playground.Core.ViewModels
 
         private async Task DoShowListCommandAsync()
         {
-            var result = await _dialog.ShowMultipleChoice(_allItems, _checkedItems.ToArray());
+            var result = await _dialog.ShowMultipleChoice("firstView", _allItems, _checkedItems.ToArray());
             for (int i = 0; i < _checkedItems.Count; i++)
             {
                 _checkedItems[i] = false;

@@ -83,13 +83,16 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
         }
 
-        public async Task<List<int>> ShowMultipleChoice(string[] items, bool[] checkedItems, string positiveLabel = "Okay")
+        public async Task<List<int>> ShowMultipleChoice(string title, string[] items, bool[] checkedItems, string positiveLabel = "Okay")
         {
             var tcs = new TaskCompletionSource<List<int>>();
-
             var result = new List<int>();
 
             var builder = new AlertDialog.Builder(CurrentContext);
+            if(string.IsNullOrEmpty(title) == false)
+            {
+                builder.SetTitle(title);
+            }
 
             builder.SetMultiChoiceItems(items, checkedItems, (sender, e) =>
             {

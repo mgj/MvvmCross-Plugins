@@ -27,13 +27,13 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<int>> ShowMultipleChoice(string[] items, bool[] checkedItems, string positiveLabel = "Okay")
+        public Task<List<int>> ShowMultipleChoice(string title, string[] items, bool[] checkedItems, string positiveLabel = "Okay")
         {
             var tcs = new TaskCompletionSource<List<int>>();
 
             var navigationController = (Mvx.Resolve<IMvxIosViewPresenter>() as MvxIosViewPresenter).MasterNavigationController;
 
-            var multiChoiceController = new MultiChoiceViewController(positiveLabel, items, checkedItems, (selectedItems) => {
+            var multiChoiceController = new MultiChoiceViewController(title, positiveLabel, items, checkedItems, (selectedItems) => {
                 tcs.SetResult(selectedItems);
             });
 

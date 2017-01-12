@@ -18,6 +18,6 @@ namespace artm.MvxPlugins.Dialog.Services
         /// <param name="progress">Integer from 0-100 indicating progress in percent</param>
         void LoadingProgress(int progress);
 
-        Task<List<int>> ShowMultipleChoice(string[] items, bool[] checkedItems, string positiveLabel = "Okay");
+        Task<List<int>> ShowMultipleChoice(string title, string[] items, bool[] checkedItems, string positiveLabel = "Okay");
     }
 }

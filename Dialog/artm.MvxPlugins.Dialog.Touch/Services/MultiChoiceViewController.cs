@@ -17,15 +17,16 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         private UITableView _table;
         private bool[] _checkedItems;
         private readonly Action<List<int>> _onComplete;
-        private readonly string _dismissTitle;
-
-        public MultiChoiceViewController(IEnumerable items)
+        private readonly string _dismissLabel;
+        
+        public MultiChoiceViewController(string title, string dismissLabel, IEnumerable items, bool[] checkedItems, Action<List<int>> onComplete)
         {
-        }
+            if(string.IsNullOrEmpty(title) == false)
+            {
+                this.Title = title;
+            }
 
-        public MultiChoiceViewController(string dismissTitle, IEnumerable items, bool[] checkedItems, Action<List<int>> onComplete)
-        {
-            _dismissTitle = dismissTitle;
+            _dismissLabel = dismissLabel;
             _items = items;
             _checkedItems = checkedItems;
             _onComplete = onComplete;
@@ -36,7 +37,7 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             base.ViewDidLoad();
 
             var button = UIButton.FromType(UIButtonType.System);
-            button.SetTitle(_dismissTitle, UIControlState.Normal);
+            button.SetTitle(_dismissLabel, UIControlState.Normal);
             button.TouchUpInside += (sender, e) => {
                 DismissViewController(true, null);
             };
