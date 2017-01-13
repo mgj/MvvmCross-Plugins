@@ -109,8 +109,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             builder.SetPositiveButton(positiveLabel, (sender, e) =>
             {
                 tcs.SetResult(result);
-                var alertDialog = sender as AlertDialog;
-                alertDialog?.Dismiss();
             });
 
             builder.Show();
