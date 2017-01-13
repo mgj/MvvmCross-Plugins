@@ -26,6 +26,8 @@ namespace Playground.Droid.Views
             var button = FindViewById<Button>(Resource.Id.firstview_listdialog_button);
             bindingSet.Bind(button).To(vm => vm.ShowListCommand);
 
+            var altTitleButton = FindViewById<Button>(Resource.Id.firstview_listdialogalttitle_button);
+            bindingSet.Bind(altTitleButton).To(vm => vm.ShowListWithTitleCommand);
 
             bindingSet.Apply();
         }

@@ -40,14 +40,24 @@ namespace Playground.Core.ViewModels
         {
             get
             {
-                _showListCommand = _showListCommand ?? new MvxAsyncCommand(DoShowListCommandAsync);
+                _showListCommand = _showListCommand ?? new MvxAsyncCommand(() => DoShowListCommandAsync("FirstViewTitle"));
                 return _showListCommand;
             }
         }
 
-        private async Task DoShowListCommandAsync()
+        private MvxAsyncCommand _showListWithTitleCommand;
+        public MvxAsyncCommand ShowListWithTitleCommand
         {
-            var result = await _dialog.ShowMultipleChoice("firstView", _allItems, _checkedItems.ToArray());
+            get
+            {
+                _showListWithTitleCommand = _showListWithTitleCommand ?? new MvxAsyncCommand(() => DoShowListCommandAsync("Alt title"));
+                return _showListWithTitleCommand;
+            }
+        }
+
+        private async Task DoShowListCommandAsync(string title)
+        {
+            var result = await _dialog.ShowMultipleChoice(title, _allItems, _checkedItems.ToArray());
             for (int i = 0; i < _checkedItems.Count; i++)
             {
                 _checkedItems[i] = false;

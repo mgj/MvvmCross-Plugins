@@ -19,4 +19,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ListDialog" />
+  <Button
+        android:id="@+id/firstview_listdialogalttitle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ListDialog alt title" />
 </LinearLayout>
