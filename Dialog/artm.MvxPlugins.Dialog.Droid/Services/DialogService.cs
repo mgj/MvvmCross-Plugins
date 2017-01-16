@@ -88,6 +88,16 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             var tcs = new TaskCompletionSource<List<int>>();
             var result = new List<int>();
 
+            // We want the checkedItems to still be in the list, even when they have not been actively clicked
+            for (int i = 0; i < checkedItems.Length; i++)
+            {
+                var hero = checkedItems[i];
+                if(hero == true)
+                {
+                    result.Add(i);
+                }
+            }
+
             var builder = new AlertDialog.Builder(CurrentContext);
             if(string.IsNullOrEmpty(title) == false)
             {
@@ -107,7 +117,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             });
             
             builder.SetPositiveButton(positiveLabel, (sender, e) =>
-            {
+            {   
                 tcs.SetResult(result);
             });
 
