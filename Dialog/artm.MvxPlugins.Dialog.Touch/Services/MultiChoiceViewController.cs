@@ -36,13 +36,50 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         {
             base.ViewDidLoad();
 
-            var button = UIButton.FromType(UIButtonType.System);
-            button.SetTitle(_dismissLabel, UIControlState.Normal);
-            button.TouchUpInside += (sender, e) => {
-                DismissViewController(true, null);
-            };
-            Add(button);
+            var okayButton = PrepareOkayButton();
+            PrepareTableView();
+            var title = PrepareTitleLabel();
 
+            for (int i = 0; i < _checkedItems.Count(); i++)
+            {
+                var hero = _checkedItems[i];
+                if (hero == true)
+                {
+                    var path = NSIndexPath.Create(0, i); // Section must be supplied. Assuming there is only 1 section.
+                    _table.SelectRow(path, animated: false, scrollPosition: UITableViewScrollPosition.None);
+                }
+            }
+
+            View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
+
+            var statusbarHeight = UIApplication.SharedApplication.StatusBarFrame.Height;
+            var buttonHeight = 44;
+            View.AddConstraints(
+                title.AtTopOf(View, statusbarHeight),
+                title.Height().EqualTo(buttonHeight),
+                title.WithSameLeft(View),
+
+                okayButton.WithSameTop(title),
+                okayButton.WithSameHeight(title),
+                okayButton.WithSameRight(View),
+
+                _table.Below(okayButton),
+                _table.WithSameWidth(View),
+                _table.WithSameBottom(View)
+                );
+        }
+
+        private UILabel PrepareTitleLabel()
+        {
+            var label = new UILabel();
+            label.Text = Title;
+
+            Add(label);
+            return label;
+        }
+
+        private void PrepareTableView()
+        {
             _table = new UITableView();
             _table.AllowsMultipleSelection = true;
             _source = new MvxStandardTableViewSource(_table);
@@ -51,33 +88,18 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
 
             _table.ReloadData();
             Add(_table);
+        }
 
-            
-
-            for (int i = 0; i < _checkedItems.Count(); i++)
+        private UIButton PrepareOkayButton()
+        {
+            var button = UIButton.FromType(UIButtonType.System);
+            button.SetTitle(_dismissLabel, UIControlState.Normal);
+            button.TouchUpInside += (sender, e) =>
             {
-                var hero = _checkedItems[i];
-                if(hero == true)
-                {
-                    var path = NSIndexPath.Create(0, i); // Section must be supplied. Assuming there is only 1 section.
-                    _table.SelectRow(path, animated: false, scrollPosition: UITableViewScrollPosition.None);
-                }
-            }
-
-
-            View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
-
-            var statusbarHeight = UIApplication.SharedApplication.StatusBarFrame.Height;
-            View.AddConstraints(
-
-                button.AtTopOf(View, statusbarHeight),
-                button.WithSameWidth(View),
-                button.Height().EqualTo(44),
-
-                _table.Below(button),
-                _table.WithSameWidth(View),
-                _table.WithSameBottom(View)
-                );
+                DismissViewController(true, null);
+            };
+            Add(button);
+            return button;
         }
 
         public override void ViewWillDisappear(bool animated)
