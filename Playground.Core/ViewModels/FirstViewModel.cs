@@ -40,7 +40,7 @@ namespace Playground.Core.ViewModels
         {
             get
             {
-                _showListCommand = _showListCommand ?? new MvxAsyncCommand(() => DoShowListCommandAsync(""));
+                _showListCommand = _showListCommand ?? new MvxAsyncCommand(() => DoShowListCommandAsync("MyTitle"));
                 return _showListCommand;
             }
         }

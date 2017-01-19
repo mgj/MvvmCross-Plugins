@@ -55,13 +55,14 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             var statusbarHeight = UIApplication.SharedApplication.StatusBarFrame.Height;
             var buttonHeight = 44;
             View.AddConstraints(
+                
                 title.AtTopOf(View, statusbarHeight),
                 title.Height().EqualTo(buttonHeight),
-                title.WithSameLeft(View),
+                title.WithSameLeft(View).Plus(8),
 
                 okayButton.WithSameTop(title),
                 okayButton.WithSameHeight(title),
-                okayButton.WithSameRight(View),
+                okayButton.WithSameRight(View).Minus(8),
 
                 _table.Below(okayButton),
                 _table.WithSameWidth(View),
