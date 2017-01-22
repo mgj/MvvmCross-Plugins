@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UIKit;
+using artm.MvxPlugins.Dialog.Droid.Services;
 
 namespace artm.MvxPlugins.Dialog.Touch.Services
 {
@@ -27,13 +28,14 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<int>> ShowMultipleChoice(string title, string[] items, bool[] checkedItems, string positiveLabel = "Okay")
+        public Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
+            
             var tcs = new TaskCompletionSource<List<int>>();
 
             var navigationController = (Mvx.Resolve<IMvxIosViewPresenter>() as MvxIosViewPresenter).MasterNavigationController;
 
-            var multiChoiceController = new MultiChoiceViewController(title, positiveLabel, items, checkedItems, (selectedItems) => {
+            var multiChoiceController = new MultiChoiceViewController(bundle.Title, bundle.PositiveLabel, bundle.Items, bundle.CheckedItems, (selectedItems) => {
                 tcs.SetResult(selectedItems);
             });
 

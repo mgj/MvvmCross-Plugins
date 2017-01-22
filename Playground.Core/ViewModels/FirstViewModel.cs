@@ -1,3 +1,4 @@
+using artm.MvxPlugins.Dialog.Droid.Services;
 using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.Core.ViewModels;
 using System;
@@ -57,7 +58,8 @@ namespace Playground.Core.ViewModels
 
         private async Task DoShowListCommandAsync(string title)
         {
-            var result = await _dialog.ShowMultipleChoice(title, _allItems, _checkedItems.ToArray());
+            var bundle = new DialogServiceMultiItemsBundle(title, _allItems, _checkedItems.ToArray());
+            var result = await _dialog.ShowMultipleChoice(bundle);
             for (int i = 0; i < _checkedItems.Count; i++)
             {
                 _checkedItems[i] = false;

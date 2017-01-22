@@ -1,4 +1,5 @@
-﻿using System;
+﻿using artm.MvxPlugins.Dialog.Droid.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,6 @@ namespace artm.MvxPlugins.Dialog.Services
         /// <param name="progress">Integer from 0-100 indicating progress in percent</param>
         void LoadingProgress(int progress);
 
-        Task<List<int>> ShowMultipleChoice(string title, string[] items, bool[] checkedItems, string positiveLabel = "Okay");
+        Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle);
     }
 }

@@ -20,6 +20,8 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
     {
         private ProgressDialog _progressDialog;
         private AlertDialog _alertDialog;
+        private AlertDialog.Builder _builder;
+        private AlertDialog _multiChoiceDialog;
 
         public void Info(string message)
         {
@@ -83,45 +85,57 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
         }
 
-        public async Task<List<int>> ShowMultipleChoice(string title, string[] items, bool[] checkedItems, string positiveLabel = "Okay")
+        public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
             var tcs = new TaskCompletionSource<List<int>>();
             var result = new List<int>();
 
             // We want the checkedItems to still be in the list, even when they have not been actively clicked
-            for (int i = 0; i < checkedItems.Length; i++)
+            for (int i = 0; i < bundle.CheckedItems.Length; i++)
             {
-                var hero = checkedItems[i];
+                var hero = bundle.CheckedItems[i];
                 if(hero == true)
                 {
                     result.Add(i);
                 }
             }
 
-            var builder = new AlertDialog.Builder(CurrentContext);
-            if(string.IsNullOrEmpty(title) == false)
+            if (_builder == null || _builder.Context != CurrentContext)
             {
-                builder.SetTitle(title);
+                _builder = new AlertDialog.Builder(CurrentContext);
+                _builder.SetMultiChoiceItems(bundle.Items, bundle.CheckedItems, (sender, e) =>
+                {
+                    if (e.IsChecked)
+                    {
+                        result.Add(e.Which);
+                    }
+                    else if (result.Contains(e.Which))
+                    {
+                        result.Remove(e.Which);
+                    }
+                });
+
+                _builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
+                {
+                    tcs.SetResult(result);
+                });
+
+                _multiChoiceDialog = _builder.Create();
+            }
+            else
+            {
             }
 
-            builder.SetMultiChoiceItems(items, checkedItems, (sender, e) =>
-            {
-                if (e.IsChecked)
-                {
-                    result.Add(e.Which);
-                }
-                else if (result.Contains(e.Which))
-                {
-                    result.Remove(e.Which);
-                }
-            });
             
-            builder.SetPositiveButton(positiveLabel, (sender, e) =>
-            {   
-                tcs.SetResult(result);
-            });
 
-            builder.Show();
+            if (string.IsNullOrEmpty(bundle.Title) == false )
+            {
+                _builder.SetTitle(bundle.Title);
+            }
+
+            
+
+            
 
             return await tcs.Task;
         }
