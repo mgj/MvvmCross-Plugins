@@ -26,7 +26,7 @@ namespace artm.MvxPlugins.Dialog.Tests.Services
         public void SameValueAs_UnEqualInput_ReturnsFalse()
         {
             var sut = Factory();
-            var sut2 = Factory(new[] { "test", "test", "test" });
+            var sut2 = Factory(myItems: new[] { "test", "test", "test" });
 
             Assert.IsFalse(DialogServiceMultiItemsBundle.SameValuesAs(sut, sut2));
         }
