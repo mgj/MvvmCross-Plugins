@@ -88,7 +88,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         {
             var tcs = new TaskCompletionSource<List<int>>();
             
-            if (IsNewContext())
+            if (IsNewContext() == true)
             {
                 _builder = new AlertDialog.Builder(CurrentContext);
             }
@@ -126,6 +126,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
 
+            _builder.SetTitle(bundle.Title);
             _builder.SetMultiChoiceItems(bundle.Items, bundle.CheckedItems, (sender, e) =>
             {
                 if (e.IsChecked)
