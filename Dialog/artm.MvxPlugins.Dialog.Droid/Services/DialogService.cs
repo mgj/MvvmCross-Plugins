@@ -99,11 +99,10 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             if (DialogServiceMultiItemsBundle.SameValuesAs(_lastBundle, bundle) == false)
             {
                 _lastBundle = bundle;
-                ConfigureBuilder(_lastBundle, tcs);
-
-                _multiChoiceDialog = _builder.Create();
             }
+
             ConfigureBuilder(_lastBundle, tcs);
+            _multiChoiceDialog = _builder.Create();
 
             _multiChoiceDialog.Show();
 
