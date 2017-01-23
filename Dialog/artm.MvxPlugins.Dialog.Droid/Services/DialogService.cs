@@ -99,11 +99,10 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             if (DialogServiceMultiItemsBundle.SameValuesAs(_lastBundle, bundle) == false)
             {
                 _lastBundle = bundle;
-                ConfigureBuilder(_lastBundle, tcs);
-
-                _multiChoiceDialog = _builder.Create();
             }
+
             ConfigureBuilder(_lastBundle, tcs);
+            _multiChoiceDialog = _builder.Create();
 
             _multiChoiceDialog.Show();
 
@@ -126,13 +125,13 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
         private void ConfigureBuilder(DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
         {
-            var result = new List<int>();
+            var checkedItemsIndex = new List<int>();
             for (int i = 0; i < bundle.CheckedItems.Length; i++)
             {
                 var hero = bundle.CheckedItems[i];
                 if (hero == true)
                 {
-                    result.Add(i);
+                    checkedItemsIndex.Add(i);
                 }
             }
 
@@ -140,17 +139,17 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 if (e.IsChecked)
                 {
-                    result.Add(e.Which);
+                    checkedItemsIndex.Add(e.Which);
                 }
-                else if (result.Contains(e.Which))
+                else if (checkedItemsIndex.Contains(e.Which))
                 {
-                    result.Remove(e.Which);
+                    checkedItemsIndex.Remove(e.Which);
                 }
             });
 
             _builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
             {
-                tcs.SetResult(result);
+                tcs.SetResult(checkedItemsIndex);
             });
         }
 
