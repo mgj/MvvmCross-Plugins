@@ -89,27 +89,39 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
             var tcs = new TaskCompletionSource<List<int>>();
-
-            // We want the checkedItems to still be in the list, even when they have not been actively clicked
             
-
-            if (_builder == null || _builder.Context != CurrentContext)
+            if (IsNewContext())
             {
                 _builder = new AlertDialog.Builder(CurrentContext);
                 _lastBundle = null;
-
             }
 
             if (DialogServiceMultiItemsBundle.SameValuesAs(_lastBundle, bundle) == false)
             {
                 _lastBundle = bundle;
                 ConfigureBuilder(_lastBundle, tcs);
+
                 _multiChoiceDialog = _builder.Create();
             }
+            ConfigureBuilder(_lastBundle, tcs);
 
             _multiChoiceDialog.Show();
 
             return await tcs.Task;
+        }
+
+        private bool IsNewContext()
+        {
+            if (_builder == null) return true;
+
+            var package = (ContextWrapper)_builder.Context as ContextWrapper;
+            var bContext = package.BaseContext as Activity;
+            var cConext = CurrentContext as Activity;
+            if(bContext.LocalClassName.Equals(cConext.LocalClassName))
+            {
+                return false;
+            }
+            return true;
         }
 
         private void ConfigureBuilder(DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
