@@ -8,18 +8,20 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 {
     public class DialogServiceMultiItemsBundle
     {
-        private string _title;
-        private string[] _items;
-        private bool[] _checkedItems;
-        private string _positiveLabel;
-
-        public DialogServiceMultiItemsBundle(string title, string[] items, bool[] checkedItems, string positiveLabel = "Okay")
+        public DialogServiceMultiItemsBundle(string title, string[] items, bool[] checkedItems, string positiveLabel = "Okay", string negativeLabel = "Cancel")
         {
-            _title = title;
-            _items = items;
-            _checkedItems = checkedItems;
-            _positiveLabel = positiveLabel;
+            Title = title;
+            Items = items;
+            CheckedItems = checkedItems;
+            PositiveLabel = positiveLabel;
+            NegativeLabel = negativeLabel;
         }
+
+        public bool[] CheckedItems { get; private set; }
+        public string[] Items { get; private set; }
+        public string NegativeLabel { get; private set; }
+        public string PositiveLabel { get; private set; }
+        public string Title { get; private set; }
 
         public static bool SameValuesAs(DialogServiceMultiItemsBundle hero, DialogServiceMultiItemsBundle other)
         {
@@ -35,54 +37,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 }
             }
             return false;
-        }
-
-        public string Title
-        {
-            get
-            {
-                return _title;
-            }
-            set
-            {
-                _title = value;
-            }
-        }
-
-        public string[] Items
-        {
-            get
-            {
-                return _items;
-            }
-            set
-            {
-                _items = value;
-            }
-        }
-
-        public bool[] CheckedItems
-        {
-            get
-            {
-                return _checkedItems;
-            }
-            set
-            {
-                _checkedItems = value;
-            }
-        }
-
-        public string PositiveLabel
-        {
-            get
-            {
-                return _positiveLabel;
-            }
-            set
-            {
-                _positiveLabel = PositiveLabel;
-            }
         }
     }
 }

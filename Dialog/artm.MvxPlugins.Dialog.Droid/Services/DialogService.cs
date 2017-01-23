@@ -21,7 +21,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         private ProgressDialog _progressDialog;
         private AlertDialog _alertDialog;
         private AlertDialog.Builder _builder;
-        private AlertDialog _multiChoiceDialog;
 
         public void Info(string message)
         {
@@ -102,9 +101,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
 
             ConfigureBuilder(_lastBundle, tcs);
-            _multiChoiceDialog = _builder.Create();
-
-            _multiChoiceDialog.Show();
+            _builder.Show();
 
             return await tcs.Task;
         }
@@ -134,6 +131,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                     checkedItemsIndex.Add(i);
                 }
             }
+            var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
 
             _builder.SetMultiChoiceItems(bundle.Items, bundle.CheckedItems, (sender, e) =>
             {
@@ -150,6 +148,11 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             _builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
             {
                 tcs.SetResult(checkedItemsIndex);
+            });
+
+            _builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
+            {
+                tcs.SetResult(orgCheckedItemsIndex);
             });
         }
 
