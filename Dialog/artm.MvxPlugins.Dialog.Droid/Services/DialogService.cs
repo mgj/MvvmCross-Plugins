@@ -84,23 +84,16 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
         }
 
-        private DialogServiceMultiItemsBundle _lastBundle;
         public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
             var tcs = new TaskCompletionSource<List<int>>();
             
-            if (IsNewContext())
+            if (IsNewContext() == true)
             {
                 _builder = new AlertDialog.Builder(CurrentContext);
-                _lastBundle = null;
             }
 
-            if (DialogServiceMultiItemsBundle.SameValuesAs(_lastBundle, bundle) == false)
-            {
-                _lastBundle = bundle;
-            }
-
-            ConfigureBuilder(_lastBundle, tcs);
+            ConfigureBuilder(bundle, tcs);
             _builder.Show();
 
             return await tcs.Task;
@@ -133,6 +126,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
 
+            _builder.SetTitle(bundle.Title);
             _builder.SetMultiChoiceItems(bundle.Items, bundle.CheckedItems, (sender, e) =>
             {
                 if (e.IsChecked)
