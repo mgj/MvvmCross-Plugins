@@ -23,6 +23,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
         public static bool SameValuesAs(DialogServiceMultiItemsBundle hero, DialogServiceMultiItemsBundle other)
         {
+            if (hero == null || other == null) return false;
             if (hero.Title.Equals(other.Title) && hero.PositiveLabel.Equals(other.PositiveLabel))
             {
                 if (hero.Items.SequenceEqual(other.Items))
