@@ -36,6 +36,22 @@ namespace Playground.Core.ViewModels
             }
         }
 
+        private MvxCommand _showSecondViewModelCommand;
+        public MvxCommand ShowSecondViewModelCommand
+        {
+            get
+            {
+                _showSecondViewModelCommand = _showSecondViewModelCommand ?? new MvxCommand(DoShowSecondViewModelCommand);
+                return _showSecondViewModelCommand;
+            }
+        }
+
+        private void DoShowSecondViewModelCommand()
+        {
+            ShowViewModel<SecondViewModel>();
+        }
+
+
         private MvxAsyncCommand _showListCommand;
         public MvxAsyncCommand ShowListCommand
         {
@@ -58,17 +74,26 @@ namespace Playground.Core.ViewModels
 
         private async Task DoShowListCommandAsync(string title)
         {
-            var bundle = new DialogServiceMultiItemsBundle(title, _allItems, _checkedItems.ToArray());
-            var result = await _dialog.ShowMultipleChoice(bundle);
-            for (int i = 0; i < _checkedItems.Count; i++)
+            try
             {
-                _checkedItems[i] = false;
-            }
+                var bundle = new DialogServiceMultiItemsBundle(title, _allItems, _checkedItems.ToArray());
+                var result = await _dialog.ShowMultipleChoice(bundle);
+                for (int i = 0; i < _checkedItems.Count; i++)
+                {
+                    _checkedItems[i] = false;
+                }
 
-            foreach (var index in result)
-            {
-                _checkedItems[index] = true;
+                foreach (var index in result)
+                {
+                    _checkedItems[index] = true;
+                }
             }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+           
         }
 
         private string _hello = "Hello MvvmCross";

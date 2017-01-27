@@ -87,14 +87,24 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
             var tcs = new TaskCompletionSource<List<int>>();
-            
-            if (IsNewContext() == true)
-            {
-                _builder = new AlertDialog.Builder(CurrentContext);
-            }
 
-            ConfigureBuilder(bundle, tcs);
-            _builder.Show();
+            //if (IsNewContext() == true)
+            //{
+            //    _builder = new AlertDialog.Builder(CurrentContext);
+            //}
+            _builder = new AlertDialog.Builder(CurrentContext);
+
+
+            try
+            {
+                ConfigureBuilder(bundle, tcs);
+                _builder.Show();
+            }
+            catch (Exception ex)
+            {
+                // android.view.WindowManager$BadTokenException
+                throw;
+            }
 
             return await tcs.Task;
         }
@@ -141,13 +151,32 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
             _builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
             {
-                tcs.SetResult(checkedItemsIndex);
+                tcs.TrySetResult(checkedItemsIndex);
             });
 
             _builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
             {
-                tcs.SetResult(orgCheckedItemsIndex);
+                tcs.TrySetResult(orgCheckedItemsIndex);
             });
+
+            _builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
+        }
+
+        private class MyDismissListener : Java.Lang.Object, IDialogInterfaceOnDismissListener
+        {
+            private readonly List<int> _checkedItemsIndex;
+            private readonly TaskCompletionSource<List<int>> _tcs;
+
+            public MyDismissListener(TaskCompletionSource<List<int>> tcs, List<int> checkedItemsIndex)
+            {
+                _tcs = tcs;
+                _checkedItemsIndex = checkedItemsIndex;
+            }
+
+            public void OnDismiss(IDialogInterface dialog)
+            {
+                _tcs?.TrySetResult(_checkedItemsIndex);
+            }
         }
 
         private static ProgressDialog ProgressDialogFactory(Context context, string message, bool withProgress)

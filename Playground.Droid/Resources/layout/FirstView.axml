@@ -4,11 +4,12 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <EditText
+  <!--
+  <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="40dp"
-        local:MvxBind="Text Hello" />
+        local:MvxBind="Text Hello" />-->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -19,9 +20,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ListDialog" />
-  <Button
+    <Button
         android:id="@+id/firstview_listdialogalttitle_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ListDialog alt title" />
+  <Button
+        android:id="@+id/firstview_secondview_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SecondView" />
 </LinearLayout>
