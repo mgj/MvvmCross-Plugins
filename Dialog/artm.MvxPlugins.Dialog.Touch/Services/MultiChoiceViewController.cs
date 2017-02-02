@@ -1,5 +1,7 @@
 using Cirrious.FluentLayouts.Touch;
 using Foundation;
+using MvvmCross.Binding.Bindings;
+using MvvmCross.Binding.Bindings.SourceSteps;
 using MvvmCross.Binding.iOS.Views;
 using System;
 using System.Collections;
@@ -79,10 +81,12 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
                 if (hero == true)
                 {
                     _table.SelectRow(path, animated: false, scrollPosition: UITableViewScrollPosition.None);
+                    _source.RowSelected(_table, path);
                 }
                 else
                 {
                     _table.DeselectRow(path, animated: false);
+                    _source.RowDeselected(_table, path);
                 }
             }
         }
@@ -100,12 +104,54 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         {
             _table = new UITableView();
             _table.AllowsMultipleSelection = true;
-            _source = new MvxStandardTableViewSource(_table);
+            _source = new MyTableViewSource(_table);
             _source.ItemsSource = _items;
             _table.Source = _source;
 
-            _table.ReloadData();
             Add(_table);
+
+            _table.ReloadData();
+
+        }
+
+        private class MyTableViewSource : MvxStandardTableViewSource
+        {
+            public MyTableViewSource(UITableView table) : base(table)
+            {
+            }
+
+            public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+            {
+                var cell = base.GetCell(tableView, indexPath);
+                cell.SelectionStyle = UITableViewCellSelectionStyle.Default;
+
+                if(cell.Selected == true)
+                {
+                    cell.Accessory = UITableViewCellAccessory.Checkmark;
+                }
+                else
+                {
+                    cell.Accessory = UITableViewCellAccessory.None;
+                }
+
+                return cell;
+            }
+
+            public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+            {
+                var cell = tableView.CellAt(indexPath);
+                if (cell == null) return;
+
+                cell.Accessory = UITableViewCellAccessory.Checkmark;
+            }
+
+            public override void RowDeselected(UITableView tableView, NSIndexPath indexPath)
+            {
+                var cell = tableView.CellAt(indexPath);
+                if (cell == null) return;
+                
+                cell.Accessory = UITableViewCellAccessory.None;
+            }
         }
 
         private UIButton PrepareCancelButton()
