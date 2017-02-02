@@ -44,6 +44,7 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             var cancelButton = PrepareCancelButton();
             var title = PrepareTitleLabel();
             PrepareTableView();
+            PrepareSelectedRowItems();
 
             View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
@@ -86,41 +87,34 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         {
             _table = new UITableView();
             _table.AllowsMultipleSelection = true;
-            _source = new MyTableViewSource(_table, _checkedItems);
-            _source.ItemsSource = _items;
-            _table.Source = _source;
+            PrepareTableViewSource();
 
             Add(_table);
 
             _table.ReloadData();
-
         }
 
-        private class MyTableView : UITableView
+        private void PrepareTableViewSource()
         {
-            private readonly bool[] _checkedItems;
+            _source = new MyTableViewSource(_table, _checkedItems);
+            _source.ItemsSource = _items;
+            _table.Source = _source;
+        }
 
-            public MyTableView(bool[] checkedItems) : base()
+        private void PrepareSelectedRowItems()
+        {
+            for (int i = 0; i < _checkedItems.Count(); i++)
             {
-                _checkedItems = checkedItems;
-            }
-
-            public override UITableViewCell CellAt(NSIndexPath ns)
-            {
-                var cell = base.CellAt(ns);
-                cell.SelectionStyle = UITableViewCellSelectionStyle.Default;
-
-                var hero = _checkedItems[ns.Row];
+                var hero = _checkedItems[i];
+                var path = NSIndexPath.Create(0, i); // Section must be supplied. Assuming there is only 1 section.
                 if (hero == true)
                 {
-                    cell.Accessory = UITableViewCellAccessory.Checkmark;
+                    _table.SelectRow(path, animated: false, scrollPosition: UITableViewScrollPosition.None);
                 }
                 else
                 {
-                    cell.Accessory = UITableViewCellAccessory.None;
+                    _table.DeselectRow(path, animated: false);
                 }
-
-                return cell;
             }
         }
 
@@ -130,14 +124,14 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
 
             public MyTableViewSource(UITableView table, bool[] checkedItems) : base(table)
             {
-                _checkedItems = checkedItems;
-                PrepareSelectedRowItems();
+                // Make copy of array in order to be able to return the original checkedItems array (for the cancel button)
+                _checkedItems = (bool[]) checkedItems.Clone();
             }
 
             public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
             {
                 var cell = base.GetCell(tableView, indexPath);
-                cell.SelectionStyle = UITableViewCellSelectionStyle.Blue;
+                cell.SelectionStyle = UITableViewCellSelectionStyle.None;
 
                 var hero = _checkedItems[indexPath.Row];
                 if (hero == true)
@@ -169,24 +163,7 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
                 cell.Accessory = UITableViewCellAccessory.None;
             }
 
-            private void PrepareSelectedRowItems()
-            {
-                for (int i = 0; i < _checkedItems.Count(); i++)
-                {
-                    var hero = _checkedItems[i];
-                    var path = NSIndexPath.Create(0, i); // Section must be supplied. Assuming there is only 1 section.
-                    if (hero == true)
-                    {
-                        TableView.SelectRow(path, animated: false, scrollPosition: UITableViewScrollPosition.None);
-                        RowSelected(TableView, path);
-                    }
-                    else
-                    {
-                        TableView.DeselectRow(path, animated: false);
-                        RowDeselected(TableView, path);
-                    }
-                }
-            }
+            
 
         }
 
@@ -196,7 +173,7 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             button.SetTitle(_cancelLabel, UIControlState.Normal);
             button.TouchUpInside += (sender, e) =>
             {
-                PrepareTableView(); // Reset the table items to whatever was originally passed in
+                PrepareSelectedRowItems(); // Reset the table items to whatever was originally passed in
                 DismissViewController(true, null);
             };
             Add(button);
