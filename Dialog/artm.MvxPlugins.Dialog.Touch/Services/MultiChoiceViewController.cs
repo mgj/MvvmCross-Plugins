@@ -1,5 +1,7 @@
 using Cirrious.FluentLayouts.Touch;
 using Foundation;
+using MvvmCross.Binding.Bindings;
+using MvvmCross.Binding.Bindings.SourceSteps;
 using MvvmCross.Binding.iOS.Views;
 using System;
 using System.Collections;
@@ -70,6 +72,35 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
                 );
         }
 
+        
+
+        private UILabel PrepareTitleLabel()
+        {
+            var label = new UILabel();
+            label.Text = Title;
+
+            Add(label);
+            return label;
+        }
+
+        private void PrepareTableView()
+        {
+            _table = new UITableView();
+            _table.AllowsMultipleSelection = true;
+            PrepareTableViewSource();
+
+            Add(_table);
+
+            _table.ReloadData();
+        }
+
+        private void PrepareTableViewSource()
+        {
+            _source = new MyTableViewSource(_table, _checkedItems);
+            _source.ItemsSource = _items;
+            _table.Source = _source;
+        }
+
         private void PrepareSelectedRowItems()
         {
             for (int i = 0; i < _checkedItems.Count(); i++)
@@ -87,25 +118,53 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             }
         }
 
-        private UILabel PrepareTitleLabel()
+        private class MyTableViewSource : MvxStandardTableViewSource
         {
-            var label = new UILabel();
-            label.Text = Title;
+            private readonly bool[] _checkedItems;
 
-            Add(label);
-            return label;
-        }
+            public MyTableViewSource(UITableView table, bool[] checkedItems) : base(table)
+            {
+                // Make copy of array in order to be able to return the original checkedItems array (for the cancel button)
+                _checkedItems = (bool[]) checkedItems.Clone();
+            }
 
-        private void PrepareTableView()
-        {
-            _table = new UITableView();
-            _table.AllowsMultipleSelection = true;
-            _source = new MvxStandardTableViewSource(_table);
-            _source.ItemsSource = _items;
-            _table.Source = _source;
+            public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+            {
+                var cell = base.GetCell(tableView, indexPath);
+                cell.SelectionStyle = UITableViewCellSelectionStyle.None;
 
-            _table.ReloadData();
-            Add(_table);
+                var hero = _checkedItems[indexPath.Row];
+                if (hero == true)
+                {
+                    cell.Accessory = UITableViewCellAccessory.Checkmark;
+                }
+                else
+                {
+                    cell.Accessory = UITableViewCellAccessory.None;
+                }
+
+                return cell;
+            }
+
+            public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+            {
+                _checkedItems[indexPath.Row] = true;
+
+                var cell = tableView.CellAt(indexPath);
+                if (cell == null) return;
+                cell.Accessory = UITableViewCellAccessory.Checkmark;
+            }
+
+            public override void RowDeselected(UITableView tableView, NSIndexPath indexPath)
+            {
+                _checkedItems[indexPath.Row] = false;
+                var cell = tableView.CellAt(indexPath);
+                if (cell == null) return;
+                cell.Accessory = UITableViewCellAccessory.None;
+            }
+
+            
+
         }
 
         private UIButton PrepareCancelButton()
