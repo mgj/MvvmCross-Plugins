@@ -74,26 +74,17 @@ namespace Playground.Core.ViewModels
 
         private async Task DoShowListCommandAsync(string title)
         {
-            try
+            var bundle = new DialogServiceMultiItemsBundle(title, _allItems, _checkedItems.ToArray());
+            var result = await _dialog.ShowMultipleChoice(bundle);
+            for (int i = 0; i < _checkedItems.Count; i++)
             {
-                var bundle = new DialogServiceMultiItemsBundle(title, _allItems, _checkedItems.ToArray());
-                var result = await _dialog.ShowMultipleChoice(bundle);
-                for (int i = 0; i < _checkedItems.Count; i++)
-                {
-                    _checkedItems[i] = false;
-                }
-
-                foreach (var index in result)
-                {
-                    _checkedItems[index] = true;
-                }
+                _checkedItems[i] = false;
             }
-            catch (Exception ex)
+
+            foreach (var index in result)
             {
-
-                throw;
+                _checkedItems[index] = true;
             }
-           
         }
 
         private string _hello = "Hello MvvmCross";

@@ -19,8 +19,8 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
     public class DialogService : IDialogService
     {
         private ProgressDialog _progressDialog;
-        private AlertDialog _alertDialog;
-        private AlertDialog.Builder _builder;
+        private DialogServiceMultiItemsBundle _lastMultipleItemsBundle;
+        private AlertDialog _lastMultipleChoiceDialog;
 
         public void Info(string message)
         {
@@ -31,17 +31,10 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
             CurrentContext.RunOnUiThread(() =>
             {
-                if (_alertDialog != null && _alertDialog.IsShowing)
-                {
-                    _alertDialog.SetMessage(message);
-                }
-                else
-                {
-                    _alertDialog = new AlertDialog.Builder(CurrentContext)
+                new AlertDialog.Builder(CurrentContext)
                         .SetPositiveButton("OK", (sender, e) => { })
                         .SetMessage(message)
                         .Show();
-                }
             });
         }
 
@@ -87,43 +80,31 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
             var tcs = new TaskCompletionSource<List<int>>();
+            
+            var builder = new AlertDialog.Builder(CurrentContext);
 
-            //if (IsNewContext() == true)
-            //{
-            //    _builder = new AlertDialog.Builder(CurrentContext);
-            //}
-            _builder = new AlertDialog.Builder(CurrentContext);
-
-
-            try
+            // Attempt to re-use last dialog to increate performance
+            if(DialogServiceMultiItemsBundle.SameValuesAs(_lastMultipleItemsBundle, bundle) == false)
             {
-                ConfigureBuilder(bundle, tcs);
-                _builder.Show();
+                // If only the title is different, we can still re-use it
+                if(DialogServiceMultiItemsBundle.SameItemsAs(_lastMultipleItemsBundle, bundle) && DialogServiceMultiItemsBundle.SameCheckedItemsAs(_lastMultipleItemsBundle, bundle))
+                {
+                    _lastMultipleChoiceDialog.SetTitle(bundle.Title);
+                }
+                else
+                {
+                    _lastMultipleChoiceDialog = ConfigureBuilder(builder, bundle, tcs);
+                }
+
+                _lastMultipleItemsBundle = bundle;
             }
-            catch (Exception ex)
-            {
-                // android.view.WindowManager$BadTokenException
-                throw;
-            }
+
+            _lastMultipleChoiceDialog.Show();
 
             return await tcs.Task;
         }
 
-        private bool IsNewContext()
-        {
-            if (_builder == null) return true;
-
-            var package = (ContextWrapper)_builder.Context as ContextWrapper;
-            var bContext = package.BaseContext as Activity;
-            var cConext = CurrentContext as Activity;
-            if(bContext.LocalClassName.Equals(cConext.LocalClassName))
-            {
-                return false;
-            }
-            return true;
-        }
-
-        private void ConfigureBuilder(DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
+        private static AlertDialog ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
         {
             var checkedItemsIndex = new List<int>();
             for (int i = 0; i < bundle.CheckedItems.Length; i++)
@@ -136,8 +117,8 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
 
-            _builder.SetTitle(bundle.Title);
-            _builder.SetMultiChoiceItems(bundle.Items, bundle.CheckedItems, (sender, e) =>
+            builder.SetTitle(bundle.Title);
+            builder.SetMultiChoiceItems(bundle.Items, bundle.CheckedItems, (sender, e) =>
             {
                 if (e.IsChecked)
                 {
@@ -149,17 +130,33 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 }
             });
 
-            _builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
+            builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
             {
                 tcs.TrySetResult(checkedItemsIndex);
             });
 
-            _builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
+            builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
             {
                 tcs.TrySetResult(orgCheckedItemsIndex);
             });
 
-            _builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
+            builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
+
+            return builder.Create();
+        }
+
+        private bool IsNewContext(AlertDialog.Builder builder)
+        {
+            if (builder == null) return true;
+
+            var package = (ContextWrapper)builder.Context as ContextWrapper;
+            var bContext = package.BaseContext as Activity;
+            var cConext = CurrentContext as Activity;
+            if(bContext.LocalClassName.Equals(cConext.LocalClassName))
+            {
+                return false;
+            }
+            return true;
         }
 
         private class MyDismissListener : Java.Lang.Object, IDialogInterfaceOnDismissListener

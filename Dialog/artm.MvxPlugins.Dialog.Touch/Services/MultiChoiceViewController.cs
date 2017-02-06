@@ -162,9 +162,6 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
                 if (cell == null) return;
                 cell.Accessory = UITableViewCellAccessory.None;
             }
-
-            
-
         }
 
         private UIButton PrepareCancelButton()
