@@ -26,17 +26,35 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         public static bool SameValuesAs(DialogServiceMultiItemsBundle hero, DialogServiceMultiItemsBundle other)
         {
             if (hero == null || other == null) return false;
-            if (hero.Title.Equals(other.Title) && hero.PositiveLabel.Equals(other.PositiveLabel))
+
+            if (SameTitleAs(hero, other) && 
+                SameItemsAs(hero, other) && 
+                SameCheckedItemsAs(hero, other))
             {
-                if (hero.Items.SequenceEqual(other.Items))
-                {
-                    if (hero.CheckedItems.SequenceEqual(other.CheckedItems))
-                    {
-                        return true;
-                    }
-                }
+                return true;
             }
             return false;
+        }
+
+        public static bool SameCheckedItemsAs(DialogServiceMultiItemsBundle hero, DialogServiceMultiItemsBundle other)
+        {
+            if (hero == null || other == null) return false;
+
+            return hero.CheckedItems.SequenceEqual(other.CheckedItems);
+        }
+
+        public static bool SameItemsAs(DialogServiceMultiItemsBundle hero, DialogServiceMultiItemsBundle other)
+        {
+            if (hero == null || other == null) return false;
+
+            return hero.Items.SequenceEqual(other.Items);
+        }
+
+        public static bool SameTitleAs(DialogServiceMultiItemsBundle hero, DialogServiceMultiItemsBundle other)
+        {
+            if (hero == null || other == null) return false;
+
+            return hero.Title.Equals(other.Title) && hero.PositiveLabel.Equals(other.PositiveLabel);
         }
     }
 }
