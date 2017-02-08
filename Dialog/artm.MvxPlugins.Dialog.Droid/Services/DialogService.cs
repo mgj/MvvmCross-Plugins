@@ -82,39 +82,32 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             var tcs = new TaskCompletionSource<List<int>>();
             
             var builder = new AlertDialog.Builder(CurrentContext);
-
+            
             // Attempt to re-use last dialog to increate performance
-            if(DialogServiceMultiItemsBundle.SameValuesAs(_lastMultipleItemsBundle, bundle) == false)
+            // If only the title is different, we can still re-use it
+            if (DialogServiceMultiItemsBundle.SameValuesAs(_lastMultipleItemsBundle, bundle) == false 
+                && DialogServiceMultiItemsBundle.SameItemsAs(_lastMultipleItemsBundle, bundle) 
+                && DialogServiceMultiItemsBundle.SameCheckedItemsAs(_lastMultipleItemsBundle, bundle))
             {
-                // If only the title is different, we can still re-use it
-                if(DialogServiceMultiItemsBundle.SameItemsAs(_lastMultipleItemsBundle, bundle) && DialogServiceMultiItemsBundle.SameCheckedItemsAs(_lastMultipleItemsBundle, bundle))
-                {
-                    _lastMultipleChoiceDialog.SetTitle(bundle.Title);
-                }
-                else
-                {
-                    _lastMultipleChoiceDialog = ConfigureBuilder(builder, bundle, tcs);
-                }
-
-                _lastMultipleItemsBundle = bundle;
+                _lastMultipleChoiceDialog.SetTitle(bundle.Title);
+                UpdateTaskCompletionSource(_lastMultipleChoiceDialog, _lastMultipleItemsBundle, tcs);
+            }
+            else
+            {
+                ConfigureBuilder(builder, bundle);
+                UpdateTaskCompletionSource(builder, bundle, tcs);
+                _lastMultipleChoiceDialog = builder.Create();
             }
 
+            _lastMultipleItemsBundle = bundle;
             _lastMultipleChoiceDialog.Show();
 
             return await tcs.Task;
         }
 
-        private static AlertDialog ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
+        private static void ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle)
         {
-            var checkedItemsIndex = new List<int>();
-            for (int i = 0; i < bundle.CheckedItems.Length; i++)
-            {
-                var hero = bundle.CheckedItems[i];
-                if (hero == true)
-                {
-                    checkedItemsIndex.Add(i);
-                }
-            }
+            var checkedItemsIndex = GetIndexOfCheckedItems(bundle);
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
 
             builder.SetTitle(bundle.Title);
@@ -129,20 +122,54 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                     checkedItemsIndex.Remove(e.Which);
                 }
             });
+        }
+
+        private static void UpdateTaskCompletionSource(AlertDialog dialog, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
+        {
+            var checkedItemsIndex = GetIndexOfCheckedItems(bundle);
+            var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
+
+            dialog.SetButton((int)DialogButtonType.Positive, bundle.PositiveLabel, (sender, e) =>
+            {
+                tcs.SetResult(checkedItemsIndex);
+            });
+
+            dialog.SetButton((int)DialogButtonType.Negative, bundle.PositiveLabel, (sender, e) =>
+            {
+                tcs.SetResult(orgCheckedItemsIndex);
+            });
+        }
+
+        private static void UpdateTaskCompletionSource(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
+        {
+            var checkedItemsIndex = GetIndexOfCheckedItems(bundle);
+            var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
 
             builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
             {
-                tcs.TrySetResult(checkedItemsIndex);
+                tcs.SetResult(checkedItemsIndex);
             });
 
             builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
             {
-                tcs.TrySetResult(orgCheckedItemsIndex);
+                tcs.SetResult(orgCheckedItemsIndex);
             });
+        }
+        
 
-            builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
+        private static List<int> GetIndexOfCheckedItems(DialogServiceMultiItemsBundle bundle)
+        {
+            var checkedItemsIndex = new List<int>();
+            for (int i = 0; i < bundle.CheckedItems.Length; i++)
+            {
+                var hero = bundle.CheckedItems[i];
+                if (hero == true)
+                {
+                    checkedItemsIndex.Add(i);
+                }
+            }
 
-            return builder.Create();
+            return checkedItemsIndex;
         }
 
         private bool IsNewContext(AlertDialog.Builder builder)
@@ -158,41 +185,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             return true;
         }
-
-        private class MyDismissListener : Java.Lang.Object, IDialogInterfaceOnDismissListener
-        {
-            private readonly List<int> _checkedItemsIndex;
-            private readonly TaskCompletionSource<List<int>> _tcs;
-
-            public MyDismissListener(TaskCompletionSource<List<int>> tcs, List<int> checkedItemsIndex)
-            {
-                _tcs = tcs;
-                _checkedItemsIndex = checkedItemsIndex;
-            }
-
-            public void OnDismiss(IDialogInterface dialog)
-            {
-                _tcs?.TrySetResult(_checkedItemsIndex);
-            }
-        }
-
-        private static ProgressDialog ProgressDialogFactory(Context context, string message, bool withProgress)
-        {
-            var dialog = new ProgressDialog(context);
-            if (withProgress)
-            {
-                dialog.SetProgressStyle(ProgressDialogStyle.Horizontal);
-            }
-            else
-            {
-                dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
-            }
-
-            dialog.SetMessage(message);
-
-            return dialog;
-        }
-        
 
         private Activity CurrentContext
         {
