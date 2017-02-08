@@ -154,7 +154,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 tcs.SetResult(orgCheckedItemsIndex);
             });
-            //builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
         }
         
 
@@ -186,41 +185,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             return true;
         }
-
-        private class MyDismissListener : Java.Lang.Object, IDialogInterfaceOnDismissListener
-        {
-            private readonly List<int> _checkedItemsIndex;
-            private readonly TaskCompletionSource<List<int>> _tcs;
-
-            public MyDismissListener(TaskCompletionSource<List<int>> tcs, List<int> checkedItemsIndex)
-            {
-                _tcs = tcs;
-                _checkedItemsIndex = checkedItemsIndex;
-            }
-
-            public void OnDismiss(IDialogInterface dialog)
-            {
-                _tcs?.TrySetResult(_checkedItemsIndex);
-            }
-        }
-
-        private static ProgressDialog ProgressDialogFactory(Context context, string message, bool withProgress)
-        {
-            var dialog = new ProgressDialog(context);
-            if (withProgress)
-            {
-                dialog.SetProgressStyle(ProgressDialogStyle.Horizontal);
-            }
-            else
-            {
-                dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
-            }
-
-            dialog.SetMessage(message);
-
-            return dialog;
-        }
-        
 
         private Activity CurrentContext
         {
