@@ -59,6 +59,24 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             });
         }
 
+        private static ProgressDialog ProgressDialogFactory(Context context, string message, bool withProgress)
+        {
+            var dialog = new ProgressDialog(context);
+            if (withProgress)
+            {
+                dialog.SetProgressStyle(ProgressDialogStyle.Horizontal);
+            }
+            else
+            {
+                dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+            }
+
+            dialog.SetMessage(message);
+
+            return dialog;
+        }
+
+
         public void LoadingProgress(int progress)
         {
             if (_progressDialog == null || CurrentContext == null)
