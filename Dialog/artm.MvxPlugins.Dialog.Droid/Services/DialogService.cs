@@ -111,8 +111,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             else
             {
                 var builder = new AlertDialog.Builder(CurrentContext);
-                ConfigureBuilder(builder, bundle);
-                UpdateTaskCompletionSource(builder, bundle, tcs);
+                ConfigureBuilder(builder, bundle, tcs);
                 _lastMultipleChoiceDialog = builder.Create();
             }
 
@@ -122,7 +121,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             return await tcs.Task;
         }
 
-        private static void ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle)
+        private static void ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
         {
             var checkedItemsIndex = GetIndexOfCheckedItems(bundle);
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
@@ -138,6 +137,16 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 {
                     checkedItemsIndex.Remove(e.Which);
                 }
+            });
+
+            builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
+            {
+                tcs.SetResult(checkedItemsIndex);
+            });
+
+            builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
+            {
+                tcs.SetResult(orgCheckedItemsIndex);
             });
         }
 
@@ -156,23 +165,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 tcs.SetResult(orgCheckedItemsIndex);
             });
         }
-
-        private static void UpdateTaskCompletionSource(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
-        {
-            var checkedItemsIndex = GetIndexOfCheckedItems(bundle);
-            var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
-
-            builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
-            {
-                tcs.SetResult(checkedItemsIndex);
-            });
-
-            builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
-            {
-                tcs.SetResult(orgCheckedItemsIndex);
-            });
-        }
-        
 
         private static List<int> GetIndexOfCheckedItems(DialogServiceMultiItemsBundle bundle)
         {
