@@ -59,6 +59,24 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             });
         }
 
+        private static ProgressDialog ProgressDialogFactory(Context context, string message, bool withProgress)
+        {
+            var dialog = new ProgressDialog(context);
+            if (withProgress)
+            {
+                dialog.SetProgressStyle(ProgressDialogStyle.Horizontal);
+            }
+            else
+            {
+                dialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+            }
+
+            dialog.SetMessage(message);
+
+            return dialog;
+        }
+
+
         public void LoadingProgress(int progress)
         {
             if (_progressDialog == null || CurrentContext == null)
@@ -80,9 +98,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
             var tcs = new TaskCompletionSource<List<int>>();
-            
-            var builder = new AlertDialog.Builder(CurrentContext);
-            
+
             // Attempt to re-use last dialog to increate performance
             // If only the title is different, we can still re-use it
             if (DialogServiceMultiItemsBundle.SameValuesAs(_lastMultipleItemsBundle, bundle) == false 
@@ -94,6 +110,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             else
             {
+                var builder = new AlertDialog.Builder(CurrentContext);
                 ConfigureBuilder(builder, bundle);
                 UpdateTaskCompletionSource(builder, bundle, tcs);
                 _lastMultipleChoiceDialog = builder.Create();
@@ -170,20 +187,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
 
             return checkedItemsIndex;
-        }
-
-        private bool IsNewContext(AlertDialog.Builder builder)
-        {
-            if (builder == null) return true;
-
-            var package = (ContextWrapper)builder.Context as ContextWrapper;
-            var bContext = package.BaseContext as Activity;
-            var cConext = CurrentContext as Activity;
-            if(bContext.LocalClassName.Equals(cConext.LocalClassName))
-            {
-                return false;
-            }
-            return true;
         }
 
         private Activity CurrentContext
