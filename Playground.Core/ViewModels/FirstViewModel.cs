@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Playground.Core.ViewModels
 {
-    public class FirstViewModel 
-        : MvxViewModel
+    public class FirstViewModel : MvxViewModel
     {
+        private readonly IDialogService _dialog;
+
         private readonly string[] _allItems = new string[] { "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "c" };
         private List<bool> _checkedItems = new List<bool>();
+
         public FirstViewModel(IDialogService dialog)
         {
             _dialog = dialog;
@@ -85,15 +87,6 @@ namespace Playground.Core.ViewModels
             {
                 _checkedItems[index] = true;
             }
-        }
-
-        private string _hello = "Hello MvvmCross";
-        private readonly IDialogService _dialog;
-
-        public string Hello
-        { 
-            get { return _hello; }
-            set { SetProperty (ref _hello, value); }
         }
     }
 }

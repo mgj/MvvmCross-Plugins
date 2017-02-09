@@ -117,7 +117,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
     <AndroidResource Include="Resources\drawable\splash.png" />
-    <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dialog\artm.MvxPlugins.Dialog.Droid\artm.MvxPlugins.Dialog.Droid.csproj">

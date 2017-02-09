@@ -111,18 +111,26 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             else
             {
                 var builder = new AlertDialog.Builder(CurrentContext);
-                ConfigureBuilder(builder, bundle);
-                UpdateTaskCompletionSource(builder, bundle, tcs);
+                ConfigureBuilder(builder, bundle, tcs);
                 _lastMultipleChoiceDialog = builder.Create();
             }
 
             _lastMultipleItemsBundle = bundle;
-            _lastMultipleChoiceDialog.Show();
+
+            try
+            {
+                _lastMultipleChoiceDialog.Show();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.ToString());
+                throw;
+            }
 
             return await tcs.Task;
         }
 
-        private static void ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle)
+        private static void ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
         {
             var checkedItemsIndex = GetIndexOfCheckedItems(bundle);
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
@@ -139,6 +147,17 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                     checkedItemsIndex.Remove(e.Which);
                 }
             });
+
+            builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
+            {
+                tcs.SetResult(checkedItemsIndex);
+            });
+
+            builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
+            {
+                tcs.SetResult(orgCheckedItemsIndex);
+            });
+            builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
         }
 
         private static void UpdateTaskCompletionSource(AlertDialog dialog, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
@@ -155,24 +174,26 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 tcs.SetResult(orgCheckedItemsIndex);
             });
+            dialog.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
         }
 
-        private static void UpdateTaskCompletionSource(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
+        private class MyDismissListener : Java.Lang.Object, IDialogInterfaceOnDismissListener
         {
-            var checkedItemsIndex = GetIndexOfCheckedItems(bundle);
-            var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
+            private readonly List<int> _checkedItemsIndex;
+            private readonly TaskCompletionSource<List<int>> _tcs;
 
-            builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
+            public MyDismissListener(TaskCompletionSource<List<int>> tcs, List<int> checkedItemsIndex)
             {
-                tcs.SetResult(checkedItemsIndex);
-            });
+                _tcs = tcs;
+                _checkedItemsIndex = checkedItemsIndex;
+            }
 
-            builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
+            public void OnDismiss(IDialogInterface dialog)
             {
-                tcs.SetResult(orgCheckedItemsIndex);
-            });
+                _tcs?.TrySetResult(_checkedItemsIndex);
+            }
         }
-        
+
 
         private static List<int> GetIndexOfCheckedItems(DialogServiceMultiItemsBundle bundle)
         {
