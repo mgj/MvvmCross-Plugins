@@ -23,10 +23,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         private DialogServiceMultiItemsBundle _lastMultipleItemsBundle;
         private AlertDialog _lastMultipleChoiceDialog;
 
-        public DialogService()
-        {
-        }
-
         public void Info(string message)
         {
             if (CurrentContext == null)
