@@ -5,6 +5,8 @@ using MvvmCross.Platform.Platform;
 using MvvmCross.Platform;
 using artm.MvxPlugins.Dialog.Services;
 using artm.MvxPlugins.Dialog.Droid.Services;
+using artm.MvxPlugins.Logger.Services;
+using artm.MvxPlugins.Logger.Droid.Services;
 
 namespace Playground.Droid
 {
@@ -28,6 +30,7 @@ namespace Playground.Droid
         {
             base.InitializeLastChance();
 
+            Mvx.LazyConstructAndRegisterSingleton<ILoggerService>(() => new LoggerService(ApplicationContext));
             Mvx.ConstructAndRegisterSingleton<IDialogService, DialogService>();
         }
     }
