@@ -1,5 +1,7 @@
 using Android.App;
 using Android.Content.PM;
+using Android.OS;
+using Android.Views;
 using MvvmCross.Droid.Views;
 
 namespace Playground.Droid
@@ -16,6 +18,13 @@ namespace Playground.Droid
         public SplashScreen()
             : base(Resource.Layout.SplashScreen)
         {
+        }
+
+        protected override void OnCreate(Bundle bundle)
+        {
+
+            base.OnCreate(bundle);
+            this.Window.AddFlags(WindowManagerFlags.Fullscreen);
         }
     }
 }

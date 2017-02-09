@@ -150,12 +150,19 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
             builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
             {
-                tcs.SetResult(checkedItemsIndex);
+                if(tcs.TrySetResult(checkedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set CHECKED_ITEMS result in builder");
+
+                }
             });
 
             builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
             {
-                tcs.SetResult(orgCheckedItemsIndex);
+                if (tcs.TrySetResult(orgCheckedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set ORG_CHECKED_ITEMS result in builder");
+                }
             });
             builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
         }
@@ -167,12 +174,18 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
             dialog.SetButton((int)DialogButtonType.Positive, bundle.PositiveLabel, (sender, e) =>
             {
-                tcs.SetResult(checkedItemsIndex);
+                if (tcs.TrySetResult(checkedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set CHECKED_ITEMS result in update tcs");
+                }
             });
 
             dialog.SetButton((int)DialogButtonType.Negative, bundle.PositiveLabel, (sender, e) =>
             {
-                tcs.SetResult(orgCheckedItemsIndex);
+                if (tcs.TrySetResult(orgCheckedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set ORG_CHECKED_ITEMS result in update tcs");
+                }
             });
             dialog.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
         }
@@ -190,7 +203,11 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
             public void OnDismiss(IDialogInterface dialog)
             {
-                _tcs?.TrySetResult(_checkedItemsIndex);
+                if (_tcs == null) return;
+                if(_tcs.TrySetResult(_checkedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set result in dismisslistener");
+                }
             }
         }
 

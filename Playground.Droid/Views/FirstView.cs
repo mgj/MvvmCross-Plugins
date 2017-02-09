@@ -5,6 +5,7 @@ using MvvmCross.Droid.Views;
 using MvvmCross.Binding.BindingContext;
 using Playground.Core.ViewModels;
 using Android.Widget;
+using Android.Views;
 
 namespace Playground.Droid.Views
 {
@@ -14,7 +15,10 @@ namespace Playground.Droid.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            this.Window.AddFlags(WindowManagerFlags.Fullscreen);
+
             SetContentView(Resource.Layout.FirstView);
+
 
             PrepareUI();
         }
