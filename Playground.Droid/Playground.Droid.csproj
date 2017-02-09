@@ -127,6 +127,18 @@
       <Project>{a7af8502-fc0b-441b-a3c8-4eecd9134e78}</Project>
       <Name>artm.MvxPlugins.Dialog</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fetcher\artm.MvxPlugins.Fetcher\artm.MvxPlugins.Fetcher.csproj">
+      <Project>{055bb318-a491-4ca5-8589-2f86cdf491ae}</Project>
+      <Name>artm.MvxPlugins.Fetcher</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\artm.MvxPlugins.Logger.Droid\artm.MvxPlugins.Logger.Droid.csproj">
+      <Project>{32235d6a-4301-4d79-bb3d-24948a441972}</Project>
+      <Name>artm.MvxPlugins.Logger.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\artm.MvxPlugins.Logger\artm.MvxPlugins.Logger.csproj">
+      <Project>{4a49a40b-3fc0-4d42-b04a-9d521c5cf860}</Project>
+      <Name>artm.MvxPlugins.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Playground.Core\Playground.Core.csproj">
       <Project>{d1f6de12-6f9e-4a2d-9b2b-2fb87aaffc1e}</Project>
       <Name>Playground.Core</Name>

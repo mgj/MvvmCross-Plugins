@@ -13,6 +13,7 @@ using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Droid.Platform;
 using System.Threading.Tasks;
+using artm.MvxPlugins.Logger.Services;
 
 namespace artm.MvxPlugins.Dialog.Droid.Services
 {
@@ -130,7 +131,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             return await tcs.Task;
         }
 
-        private static void ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
+        private void ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
         {
             var checkedItemsIndex = GetIndexOfCheckedItems(bundle);
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
@@ -150,29 +151,42 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
             builder.SetPositiveButton(bundle.PositiveLabel, (sender, e) =>
             {
-                tcs.SetResult(checkedItemsIndex);
+                if(tcs.TrySetResult(checkedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set CHECKED_ITEMS result in builder");
+
+                }
             });
 
             builder.SetNegativeButton(bundle.NegativeLabel, (sender, e) =>
             {
-                tcs.SetResult(orgCheckedItemsIndex);
+                if (tcs.TrySetResult(orgCheckedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set ORG_CHECKED_ITEMS result in builder");
+                }
             });
             builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
         }
 
-        private static void UpdateTaskCompletionSource(AlertDialog dialog, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
+        private void UpdateTaskCompletionSource(AlertDialog dialog, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
         {
             var checkedItemsIndex = GetIndexOfCheckedItems(bundle);
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
 
             dialog.SetButton((int)DialogButtonType.Positive, bundle.PositiveLabel, (sender, e) =>
             {
-                tcs.SetResult(checkedItemsIndex);
+                if (tcs.TrySetResult(checkedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set CHECKED_ITEMS result in update tcs");
+                }
             });
 
             dialog.SetButton((int)DialogButtonType.Negative, bundle.PositiveLabel, (sender, e) =>
             {
-                tcs.SetResult(orgCheckedItemsIndex);
+                if (tcs.TrySetResult(orgCheckedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set ORG_CHECKED_ITEMS result in update tcs");
+                }
             });
             dialog.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
         }
@@ -180,17 +194,23 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         private class MyDismissListener : Java.Lang.Object, IDialogInterfaceOnDismissListener
         {
             private readonly List<int> _checkedItemsIndex;
+            private readonly ILoggerService _log;
             private readonly TaskCompletionSource<List<int>> _tcs;
 
             public MyDismissListener(TaskCompletionSource<List<int>> tcs, List<int> checkedItemsIndex)
             {
+                _log = Mvx.Resolve<ILoggerService>();
                 _tcs = tcs;
                 _checkedItemsIndex = checkedItemsIndex;
             }
 
             public void OnDismiss(IDialogInterface dialog)
             {
-                _tcs?.TrySetResult(_checkedItemsIndex);
+                if (_tcs == null) return;
+                if(_tcs.TrySetResult(_checkedItemsIndex) == false)
+                {
+                    Console.WriteLine("Unable to set result in dismisslistener");
+                }
             }
         }
 
