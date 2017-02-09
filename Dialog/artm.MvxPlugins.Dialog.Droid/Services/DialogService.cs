@@ -24,9 +24,9 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
         private AlertDialog _lastMultipleChoiceDialog;
         private readonly ILoggerService _log;
 
-        public DialogService(ILoggerService log)
+        public DialogService()
         {
-            _log = log;
+            _log = Mvx.Resolve<ILoggerService>();
         }
 
         public void Info(string message)
