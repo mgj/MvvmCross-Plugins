@@ -116,7 +116,16 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
 
             _lastMultipleItemsBundle = bundle;
-            _lastMultipleChoiceDialog.Show();
+
+            try
+            {
+                _lastMultipleChoiceDialog.Show();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.ToString());
+                throw;
+            }
 
             return await tcs.Task;
         }
@@ -148,6 +157,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 tcs.SetResult(orgCheckedItemsIndex);
             });
+            builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
         }
 
         private static void UpdateTaskCompletionSource(AlertDialog dialog, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
@@ -164,7 +174,26 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 tcs.SetResult(orgCheckedItemsIndex);
             });
+            dialog.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
         }
+
+        private class MyDismissListener : Java.Lang.Object, IDialogInterfaceOnDismissListener
+        {
+            private readonly List<int> _checkedItemsIndex;
+            private readonly TaskCompletionSource<List<int>> _tcs;
+
+            public MyDismissListener(TaskCompletionSource<List<int>> tcs, List<int> checkedItemsIndex)
+            {
+                _tcs = tcs;
+                _checkedItemsIndex = checkedItemsIndex;
+            }
+
+            public void OnDismiss(IDialogInterface dialog)
+            {
+                _tcs?.TrySetResult(_checkedItemsIndex);
+            }
+        }
+
 
         private static List<int> GetIndexOfCheckedItems(DialogServiceMultiItemsBundle bundle)
         {
