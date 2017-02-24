@@ -131,6 +131,11 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
             {
                 var cell = base.GetCell(tableView, indexPath);
+
+                cell.ImageView.Image = UIImage.FromFile("Images/" + tableItems[indexPath.Row].ImageName); // don't use for Value2
+
+
+
                 cell.SelectionStyle = UITableViewCellSelectionStyle.None;
 
                 var hero = _checkedItems[indexPath.Row];

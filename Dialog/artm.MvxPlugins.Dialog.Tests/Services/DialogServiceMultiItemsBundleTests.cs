@@ -19,7 +19,7 @@ namespace artm.MvxPlugins.Dialog.Tests.Services
             var sut = Factory();
             var sut2 = Factory();
 
-            Assert.IsTrue(DialogServiceMultiItemsBundle.SameValuesAs(sut, sut2));
+            Assert.IsTrue(sut.SameValuesAs(sut2));
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace artm.MvxPlugins.Dialog.Tests.Services
             var sut = Factory();
             var sut2 = Factory(myItems: new[] { "test", "test", "test" });
 
-            Assert.IsFalse(DialogServiceMultiItemsBundle.SameValuesAs(sut, sut2));
+            Assert.IsFalse(sut.SameValuesAs(sut2));
         }
 
         private static DialogServiceMultiItemsBundle Factory()

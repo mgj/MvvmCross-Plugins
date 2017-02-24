@@ -102,9 +102,9 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
             // Attempt to re-use last dialog to increate performance
             // If only the title is different, we can still re-use it
-            if (DialogServiceMultiItemsBundle.SameValuesAs(_lastMultipleItemsBundle, bundle) == false 
-                && DialogServiceMultiItemsBundle.SameItemsAs(_lastMultipleItemsBundle, bundle) 
-                && DialogServiceMultiItemsBundle.SameCheckedItemsAs(_lastMultipleItemsBundle, bundle))
+            if (_lastMultipleItemsBundle.SameValuesAs(bundle) == false 
+                && _lastMultipleItemsBundle.SameItemsAs(bundle) 
+                && _lastMultipleItemsBundle.SameCheckedItemsAs(bundle))
             {
                 _lastMultipleChoiceDialog.SetTitle(bundle.Title);
                 UpdateTaskCompletionSource(_lastMultipleChoiceDialog, _lastMultipleItemsBundle, tcs);
