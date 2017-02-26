@@ -11,12 +11,27 @@ namespace Playground.Core.ViewModels
     {
         private readonly IDialogService _dialog;
 
-        private readonly string[] _allItems = new string[] { "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "c" };
+        private readonly DialogServiceMultiItem[] _allItems;
         private List<bool> _checkedItems = new List<bool>();
 
         public FirstViewModel(IDialogService dialog)
         {
             _dialog = dialog;
+
+            var items = new List<DialogServiceMultiItem>();
+            items.Add(new DialogServiceMultiItem("a", "blabla"));
+            items.Add(new DialogServiceMultiItem("b", "blabla"));
+            items.Add(new DialogServiceMultiItem("c", "blabla"));
+            items.Add(new DialogServiceMultiItem("d", "blabla"));
+            items.Add(new DialogServiceMultiItem("e", "blabla"));
+            items.Add(new DialogServiceMultiItem("f", "blabla"));
+            items.Add(new DialogServiceMultiItem("g", "blabla"));
+            items.Add(new DialogServiceMultiItem("h", "blabla"));
+            items.Add(new DialogServiceMultiItem("i", "blabla"));
+            items.Add(new DialogServiceMultiItem("j", "blabla"));
+            items.Add(new DialogServiceMultiItem("k", "blabla"));
+            items.Add(new DialogServiceMultiItem("l", "blabla"));
+            _allItems = items.ToArray();
 
             InitializeCheckedItems();
         }

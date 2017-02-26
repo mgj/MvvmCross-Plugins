@@ -102,15 +102,16 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
             // Attempt to re-use last dialog to increate performance
             // If only the title is different, we can still re-use it
-            if (DialogServiceMultiItemsBundle.SameValuesAs(_lastMultipleItemsBundle, bundle) == false 
-                && DialogServiceMultiItemsBundle.SameItemsAs(_lastMultipleItemsBundle, bundle) 
-                && DialogServiceMultiItemsBundle.SameCheckedItemsAs(_lastMultipleItemsBundle, bundle))
+            if (_lastMultipleItemsBundle.SameValuesAs(bundle) == false 
+                && _lastMultipleItemsBundle.SameItemsAs(bundle) 
+                && _lastMultipleItemsBundle.SameCheckedItemsAs(bundle))
             {
                 _lastMultipleChoiceDialog.SetTitle(bundle.Title);
                 UpdateTaskCompletionSource(_lastMultipleChoiceDialog, _lastMultipleItemsBundle, tcs);
             }
             else
             {
+                
                 var builder = new AlertDialog.Builder(CurrentContext);
                 ConfigureBuilder(builder, bundle, tcs);
                 _lastMultipleChoiceDialog = builder.Create();
@@ -125,7 +126,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             catch (Exception ex)
             {
                 Console.WriteLine("ERROR: " + ex.ToString());
-                throw;
+                throw ex;
             }
 
             return await tcs.Task;
@@ -137,7 +138,9 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
 
             builder.SetTitle(bundle.Title);
-            builder.SetMultiChoiceItems(bundle.Items, bundle.CheckedItems, (sender, e) =>
+
+            var titles = bundle.Items.Select(x => x.Title).ToArray();
+            builder.SetMultiChoiceItems(titles, bundle.CheckedItems, (sender, e) =>
             {
                 if (e.IsChecked)
                 {

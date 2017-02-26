@@ -35,9 +35,11 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
 
             var navigationController = (Mvx.Resolve<IMvxIosViewPresenter>() as MvxIosViewPresenter).MasterNavigationController;
 
-            var multiChoiceController = new MultiChoiceViewController(bundle.Title, bundle.PositiveLabel, bundle.NegativeLabel, bundle.Items, bundle.CheckedItems, (selectedItems) => {
+            var multiChoiceController = new MultiChoiceViewController(bundle, (selectedItems) =>
+            {
                 tcs.SetResult(selectedItems);
             });
+
 
             multiChoiceController.View.BackgroundColor = UIColor.White;
             multiChoiceController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
