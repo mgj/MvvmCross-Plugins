@@ -47,29 +47,6 @@ namespace artm.MvxPlugins.Dialog.Droid
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxListView;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
-			global::MvvmCross.Droid.Support.Core.UI.Resource.String.library_name = global::artm.MvxPlugins.Dialog.Droid.Resource.String.library_name;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Attribute.MvxBind = global::artm.MvxPlugins.Dialog.Droid.Resource.Attribute.MvxBind;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Attribute.MvxDropDownItemTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Attribute.MvxDropDownItemTemplate;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Attribute.MvxGroupItemTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Attribute.MvxGroupItemTemplate;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Attribute.MvxItemTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Attribute.MvxItemTemplate;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Attribute.MvxLang = global::artm.MvxPlugins.Dialog.Droid.Resource.Attribute.MvxLang;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Attribute.MvxSource = global::artm.MvxPlugins.Dialog.Droid.Resource.Attribute.MvxSource;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Attribute.MvxTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Attribute.MvxTemplate;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Id.MvvmCrossTagId = global::artm.MvxPlugins.Dialog.Droid.Resource.Id.MvvmCrossTagId;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Id.MvxBindingTagUnique = global::artm.MvxPlugins.Dialog.Droid.Resource.Id.MvxBindingTagUnique;
-			global::MvvmCross.Droid.Support.Fragment.Resource.String.library_name = global::artm.MvxPlugins.Dialog.Droid.Resource.String.library_name;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxBinding = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxBinding;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxBinding_MvxBind = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxBinding_MvxBind;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxBinding_MvxLang = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxBinding_MvxLang;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxControl = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxControl;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxControl_MvxTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxControl_MvxTemplate;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxExpandableListView = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxExpandableListView;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxImageView = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxImageView;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxImageView_MvxSource = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxImageView_MvxSource;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxListView = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxListView;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
-			global::MvvmCross.Droid.Support.Fragment.Resource.Styleable.MvxListView_MvxItemTemplate = global::artm.MvxPlugins.Dialog.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
 		}
 		
 		public partial class Attribute
@@ -125,32 +102,32 @@ namespace artm.MvxPlugins.Dialog.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int MvvmCrossTagId = 2131034112;
+			// aapt resource value: 0x7f040000
+			public const int MvvmCrossTagId = 2130968576;
 			
-			// aapt resource value: 0x7f050001
-			public const int MvxBindingTagUnique = 2131034113;
+			// aapt resource value: 0x7f040001
+			public const int MvxBindingTagUnique = 2130968577;
 			
-			// aapt resource value: 0x7f050004
-			public const int button_cancel = 2131034116;
+			// aapt resource value: 0x7f040004
+			public const int button_cancel = 2130968580;
 			
-			// aapt resource value: 0x7f050005
-			public const int button_ok = 2131034117;
+			// aapt resource value: 0x7f040005
+			public const int button_ok = 2130968581;
 			
-			// aapt resource value: 0x7f050002
-			public const int container_main = 2131034114;
+			// aapt resource value: 0x7f040002
+			public const int container_main = 2130968578;
 			
-			// aapt resource value: 0x7f050006
-			public const int listitem_textview = 2131034118;
+			// aapt resource value: 0x7f040006
+			public const int listitem_textview = 2130968582;
 			
-			// aapt resource value: 0x7f050003
-			public const int listview = 2131034115;
+			// aapt resource value: 0x7f040003
+			public const int listview = 2130968579;
 			
-			// aapt resource value: 0x7f050008
-			public const int textview_listitem_multichoice_details_details = 2131034120;
+			// aapt resource value: 0x7f040008
+			public const int textview_listitem_multichoice_details_details = 2130968584;
 			
-			// aapt resource value: 0x7f050007
-			public const int textview_listitem_multichoice_details_title = 2131034119;
+			// aapt resource value: 0x7f040007
+			public const int textview_listitem_multichoice_details_title = 2130968583;
 			
 			static Id()
 			{
@@ -180,22 +157,6 @@ namespace artm.MvxPlugins.Dialog.Droid
 			}
 			
 			private Layout()
-			{
-			}
-		}
-		
-		public partial class String
-		{
-			
-			// aapt resource value: 0x7f040000
-			public const int library_name = 2130968576;
-			
-			static String()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private String()
 			{
 			}
 		}
