@@ -111,6 +111,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             else
             {
+                
                 var builder = new AlertDialog.Builder(CurrentContext);
                 ConfigureBuilder(builder, bundle, tcs);
                 _lastMultipleChoiceDialog = builder.Create();
@@ -125,7 +126,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             catch (Exception ex)
             {
                 Console.WriteLine("ERROR: " + ex.ToString());
-                throw;
+                throw ex;
             }
 
             return await tcs.Task;
@@ -137,7 +138,9 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             var orgCheckedItemsIndex = new List<int>(checkedItemsIndex);
 
             builder.SetTitle(bundle.Title);
-            builder.SetMultiChoiceItems(bundle.Items, bundle.CheckedItems, (sender, e) =>
+
+            var titles = bundle.Items.Select(x => x.Title).ToArray();
+            builder.SetMultiChoiceItems(titles, bundle.CheckedItems, (sender, e) =>
             {
                 if (e.IsChecked)
                 {

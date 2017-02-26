@@ -33,7 +33,7 @@ namespace artm.MvxPlugins.Dialog.Services
         {
             if (hero == null || other == null) return false;
 
-            return hero.Items.SequenceEqual(other.Items);
+            return hero.Items.AreSame(other.Items);
         }
 
         public static bool SameTitleAs(this DialogServiceMultiItemsBundle hero, DialogServiceMultiItemsBundle other)

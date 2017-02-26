@@ -125,7 +125,7 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             {
                 var cell = base.GetCell(tableView, indexPath);
 
-                cell.ImageView.Image = UIImage.FromFile("Images/" + tableItems[indexPath.Row].ImageName); // don't use for Value2
+                //cell.ImageView.Image = UIImage.FromFile("Images/" + tableItems[indexPath.Row].ImageName); // don't use for Value2
 
 
                 cell.SelectionStyle = UITableViewCellSelectionStyle.None;
