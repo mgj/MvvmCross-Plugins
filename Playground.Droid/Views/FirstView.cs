@@ -19,7 +19,6 @@ namespace Playground.Droid.Views
 
             SetContentView(Resource.Layout.FirstView);
 
-
             PrepareUI();
         }
 

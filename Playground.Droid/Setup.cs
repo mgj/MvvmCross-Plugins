@@ -9,6 +9,7 @@ using artm.MvxPlugins.Logger.Services;
 using artm.MvxPlugins.Logger.Droid.Services;
 using System.Collections.Generic;
 using System.Reflection;
+using artm.MvxPlugins.Dialog.ViewModels;
 
 namespace Playground.Droid
 {
@@ -32,7 +33,7 @@ namespace Playground.Droid
         {
             var list = new List<Assembly>();
             list.AddRange(base.GetViewAssemblies());
-            list.Add(typeof(MultiChoiceDetailsView).Assembly);
+            list.Add(typeof(MultiChoiceListView).Assembly);
             return list.ToArray();
         }
 
@@ -40,8 +41,7 @@ namespace Playground.Droid
         {
             var list = new List<Assembly>();
             list.AddRange(base.GetViewModelAssemblies());
-            list.Add(typeof(DialogServiceMvxViewModel).Assembly);
-            list.Add(typeof(MultiChoiceDetailsViewModel).Assembly);
+            list.Add(typeof(MultiChoiceListViewModel).Assembly);
             return list.ToArray();
         }
 

@@ -1,4 +1,4 @@
-using artm.MvxPlugins.Dialog.Droid.Services;
+using artm.MvxPlugins.Dialog.Models;
 using Cirrious.FluentLayouts.Touch;
 using Foundation;
 using MvvmCross.Binding.Bindings;

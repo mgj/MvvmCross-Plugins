@@ -13,6 +13,7 @@ using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.Platform;
 using MvvmCross.Droid.Views;
 using MvvmCross.Binding.BindingContext;
+using artm.MvxPlugins.Dialog.ViewModels;
 
 namespace artm.MvxPlugins.Dialog.Droid.Views
 {
@@ -25,13 +26,11 @@ namespace artm.MvxPlugins.Dialog.Droid.Views
 
             var view = new LinearLayout(this);
             var text = new TextView(this);
-            text.Text = "MMultiChoiceDetailsView";
+            text.Text = "MultiChoiceDetailsView";
             view.AddView(text);
 
             SetContentView(view);
-
-            var bindingSet = this.CreateBindingSet<MultiChoiceDetailsView, MultiChoiceDetailsViewModel>();
-
+            
             var dialogService = Mvx.Resolve<IDialogService>();
 
             var debug = 42;

@@ -1,3 +1,4 @@
+using artm.MvxPlugins.Dialog.Models;
 using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.iOS.Views.Presenters;
 using MvvmCross.Platform;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UIKit;
-using artm.MvxPlugins.Dialog.Droid.Services;
 
 namespace artm.MvxPlugins.Dialog.Touch.Services
 {

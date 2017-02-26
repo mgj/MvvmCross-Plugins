@@ -16,6 +16,8 @@ using System.Threading.Tasks;
 using artm.MvxPlugins.Logger.Services;
 using MvvmCross.Droid.Views;
 using MvvmCross.Core.ViewModels;
+using artm.MvxPlugins.Dialog.ViewModels;
+using artm.MvxPlugins.Dialog.Models;
 
 namespace artm.MvxPlugins.Dialog.Droid.Views
 {
@@ -106,7 +108,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Views
 
             var activity = CurrentContext as MvxActivity;
             var binding = activity.BindingContext;
-            var viewmodel = binding.DataContext as DialogServiceMvxViewModel;
+            var viewmodel = binding.DataContext as DialogServiceMvxViewModelBase;
             viewmodel.ShowAndroidDetails();
 
             return LastTcs.Task;

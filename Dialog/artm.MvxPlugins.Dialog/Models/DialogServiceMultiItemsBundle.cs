@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace artm.MvxPlugins.Dialog.Services
+namespace artm.MvxPlugins.Dialog.Models
 {
     public class DialogServiceMultiItemsBundle
     {

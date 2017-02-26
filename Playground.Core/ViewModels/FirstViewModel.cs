@@ -1,4 +1,6 @@
+using artm.MvxPlugins.Dialog.Models;
 using artm.MvxPlugins.Dialog.Services;
+using artm.MvxPlugins.Dialog.ViewModels;
 using MvvmCross.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Playground.Core.ViewModels
 {
-    public class FirstViewModel : DialogServiceMvxViewModel
+    public class FirstViewModel : DialogServiceMvxViewModelBase
     {
         private readonly IDialogService _dialog;
 

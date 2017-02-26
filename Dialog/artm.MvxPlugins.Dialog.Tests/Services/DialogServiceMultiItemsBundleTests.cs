@@ -1,4 +1,4 @@
-﻿using artm.MvxPlugins.Dialog.Droid.Services;
+﻿using artm.MvxPlugins.Dialog.Models;
 using artm.MvxPlugins.Dialog.Services;
 using NUnit.Framework;
 using System;
