@@ -12,7 +12,7 @@ using Android.Widget;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Plugins;
 using artm.MvxPlugins.Dialog.Services;
-using artm.MvxPlugins.Dialog.Droid.Services;
+using artm.MvxPlugins.Dialog.Droid.Views;
 
 namespace artm.MvxPlugins.Dialog.Droid
 {

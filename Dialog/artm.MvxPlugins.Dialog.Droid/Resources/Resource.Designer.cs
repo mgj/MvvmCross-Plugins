@@ -108,26 +108,23 @@ namespace artm.MvxPlugins.Dialog.Droid
 			// aapt resource value: 0x7f040001
 			public const int MvxBindingTagUnique = 2130968577;
 			
-			// aapt resource value: 0x7f040004
-			public const int button_cancel = 2130968580;
+			// aapt resource value: 0x7f040003
+			public const int button_cancel = 2130968579;
 			
-			// aapt resource value: 0x7f040005
-			public const int button_ok = 2130968581;
+			// aapt resource value: 0x7f040004
+			public const int button_ok = 2130968580;
 			
 			// aapt resource value: 0x7f040002
 			public const int container_main = 2130968578;
 			
-			// aapt resource value: 0x7f040006
-			public const int listitem_textview = 2130968582;
-			
-			// aapt resource value: 0x7f040003
-			public const int listview = 2130968579;
-			
-			// aapt resource value: 0x7f040008
-			public const int textview_listitem_multichoice_details_details = 2130968584;
+			// aapt resource value: 0x7f040005
+			public const int listitem_textview = 2130968581;
 			
 			// aapt resource value: 0x7f040007
-			public const int textview_listitem_multichoice_details_title = 2130968583;
+			public const int textview_listitem_multichoice_details_details = 2130968583;
+			
+			// aapt resource value: 0x7f040006
+			public const int textview_listitem_multichoice_details_title = 2130968582;
 			
 			static Id()
 			{

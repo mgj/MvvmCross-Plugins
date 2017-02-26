@@ -1,4 +1,3 @@
-using artm.MvxPlugins.Dialog.Droid.Services;
 using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.Core.ViewModels;
 using System;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Playground.Core.ViewModels
 {
-    public class FirstViewModel : MvxViewModel
+    public class FirstViewModel : DialogServiceMvxViewModel
     {
         private readonly IDialogService _dialog;
 
@@ -67,7 +66,6 @@ namespace Playground.Core.ViewModels
         {
             ShowViewModel<SecondViewModel>();
         }
-
 
         private MvxAsyncCommand _showListCommand;
         public MvxAsyncCommand ShowListCommand

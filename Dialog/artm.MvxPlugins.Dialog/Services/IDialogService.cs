@@ -1,5 +1,4 @@
-﻿using artm.MvxPlugins.Dialog.Droid.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +19,6 @@ namespace artm.MvxPlugins.Dialog.Services
         void LoadingProgress(int progress);
 
         Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle);
+        DialogServiceMultiItemsBundle LastBundle { get; }
     }
 }

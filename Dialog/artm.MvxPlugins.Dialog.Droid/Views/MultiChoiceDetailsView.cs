@@ -9,23 +9,32 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using artm.MvxPlugins.Dialog.Services;
+using MvvmCross.Platform;
+using MvvmCross.Droid.Views;
+using MvvmCross.Binding.BindingContext;
 
-namespace artm.MvxPlugins.Dialog.Droid.Services
+namespace artm.MvxPlugins.Dialog.Droid.Views
 {
     [Activity]
-    public class MultiChoiceActivity : Activity
+    public class MultiChoiceDetailsView : MvxActivity
     {
-        public const string MULTICHOICE_REQUESTCODE_NORMAL = "MultiChoiceActivity.MULTICHOICE_REQUESTCODE_NORMAL";
-        public readonly string MULTICHOICE_CHECKEDITEMS = "MultiChoiceActivity.MULTICHOICE_CHECKEDITEMS";
-        public readonly string MULTICHOICE_ITEMS = "MultiChoiceActivity.MULTICHOICE_ITEMS";
-        public readonly string MULTICHOICE_NEGATIVELABEL = "MultiChoiceActivity.MULTICHOICE_NEGATIVELABEL";
-        public readonly string MULTICHOICE_POSITIVELABEL = "MultiChoiceActivity.MULTICHOICE_POSITIVELABEL";
-        public readonly string MULTICHOICE_TITLE = "MultiChoiceActivity.MULTICHOICE_TITLE";
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView(Resource.Layout.activity_multichoice);
+
+            var view = new LinearLayout(this);
+            var text = new TextView(this);
+            text.Text = "MMultiChoiceDetailsView";
+            view.AddView(text);
+
+            SetContentView(view);
+
+            var bindingSet = this.CreateBindingSet<MultiChoiceDetailsView, MultiChoiceDetailsViewModel>();
+
+            var dialogService = Mvx.Resolve<IDialogService>();
+
+            var debug = 42;
 
             //var requestCode = Intent.GetIntExtra(MULTICHOICE_REQUESTCODE_NORMAL, 0);
             //var title = Intent.GetStringExtra(MULTICHOICE_TITLE);

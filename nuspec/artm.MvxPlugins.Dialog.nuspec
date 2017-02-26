@@ -9,6 +9,7 @@
     <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone xamarin wpa81 win81 mvx</tags>
     <dependencies>
     <group targetFramework ="net">
+      <dependency id="MvvmCross.Core" version="4.4.0" />
       <dependency id="MvvmCross.Platform" version="4.4.0" />
       <dependency id="artm.MvxPlugins.Logger" version="2.0.15" />
     </group>
