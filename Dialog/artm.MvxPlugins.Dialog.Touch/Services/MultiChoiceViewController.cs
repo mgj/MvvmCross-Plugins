@@ -1,3 +1,4 @@
+using artm.MvxPlugins.Dialog.Droid.Services;
 using Cirrious.FluentLayouts.Touch;
 using Foundation;
 using MvvmCross.Binding.Bindings;
@@ -14,12 +15,12 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
 {
     public class MultiChoiceViewController : UIViewController
     {
-        private readonly IEnumerable _items;
         private MvxTableViewSource _source;
         private UITableView _table;
-        private readonly MultiChoiceViewControllerBundle _bundle;
+        private readonly DialogServiceMultiItemsBundle _bundle;
+        private readonly Action<List<int>> _onComplete;
 
-        public MultiChoiceViewController(MultiChoiceViewControllerBundle bundle)
+        public MultiChoiceViewController(DialogServiceMultiItemsBundle bundle, Action<List<int>> onComplete)
         {
             if(string.IsNullOrEmpty(bundle.Title) == false)
             {
@@ -27,7 +28,9 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
             }
 
             _bundle = bundle;
+            _onComplete = onComplete;
         }
+
 
         public override void ViewDidLoad()
         {
@@ -90,7 +93,8 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         private void PrepareTableViewSource()
         {
             _source = new MyTableViewSource(_table, _bundle.CheckedItems);
-            _source.ItemsSource = _items;
+            var asStrings = _bundle.Items.Select(x => x.Title).ToArray();
+            _source.ItemsSource = asStrings;
             _table.Source = _source;
         }
 
@@ -164,7 +168,7 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         private UIButton PrepareCancelButton()
         {
             var button = UIButton.FromType(UIButtonType.System);
-            button.SetTitle(_bundle.CancelLabel, UIControlState.Normal);
+            button.SetTitle(_bundle.NegativeLabel, UIControlState.Normal);
             button.TouchUpInside += (sender, e) =>
             {
                 PrepareSelectedRowItems(); // Reset the table items to whatever was originally passed in
@@ -177,7 +181,7 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         private UIButton PrepareOkButton()
         {
             var button = UIButton.FromType(UIButtonType.System);
-            button.SetTitle(_bundle.OkLabel, UIControlState.Normal);
+            button.SetTitle(_bundle.PositiveLabel, UIControlState.Normal);
             button.TouchUpInside += (sender, e) =>
             {
                 DismissViewController(true, null);
@@ -189,12 +193,9 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
         public override void ViewWillDisappear(bool animated)
         {
             base.ViewWillDisappear(animated);
-            if(_bundle.OnComplete == null)
-            {
-                return;
-            }
+            if (_onComplete == null) return;
 
-            _bundle.OnComplete(GetSelectedRows());
+            _onComplete(GetSelectedRows());
         }
 
         public MvxTableViewSource TableSource

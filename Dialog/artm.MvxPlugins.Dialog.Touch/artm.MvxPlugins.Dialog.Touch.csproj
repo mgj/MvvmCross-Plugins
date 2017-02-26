@@ -76,7 +76,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\MultiChoiceViewController.cs" />
-    <Compile Include="Services\MultiChoiceViewControllerBundle.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\artm.MvxPlugins.Dialog\artm.MvxPlugins.Dialog.csproj">
