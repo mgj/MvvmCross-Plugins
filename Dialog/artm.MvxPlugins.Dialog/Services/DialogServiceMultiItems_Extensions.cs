@@ -22,19 +22,17 @@ namespace artm.MvxPlugins.Dialog.Services
         public static bool AreSame(this DialogServiceMultiItem[] hero, DialogServiceMultiItem[] other)
         {
             if (hero == null || other == null) return false;
+            if (hero.Length != other.Length) return false;
 
             var result = true;
             for (int i = 0; i < hero.Length; i++)
             {
                 if (result == false) break;
 
-                for (int j = 0; j < other.Length; j++)
+                result = hero[i].Title == other[i].Title;
+                if (result != false)
                 {
-                    result = hero[i].Title == other[j].Title;
-                    if(result != false)
-                    {
-                        result = hero[i].Description == other[j].Description;
-                    }
+                    result = hero[i].Description == other[i].Description;
                 }
             }
 
