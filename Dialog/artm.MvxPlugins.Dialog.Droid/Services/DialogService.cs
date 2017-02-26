@@ -125,7 +125,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERROR: " + ex.ToString());
+                System.Diagnostics.Debug.WriteLine("ERROR: " + ex.ToString());
                 throw ex;
             }
 
@@ -156,7 +156,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 if(tcs.TrySetResult(checkedItemsIndex) == false)
                 {
-                    Console.WriteLine("Unable to set CHECKED_ITEMS result in builder");
+                    System.Diagnostics.Debug.WriteLine("Unable to set CHECKED_ITEMS result in builder");
 
                 }
             });
@@ -165,7 +165,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 if (tcs.TrySetResult(orgCheckedItemsIndex) == false)
                 {
-                    Console.WriteLine("Unable to set ORG_CHECKED_ITEMS result in builder");
+                    System.Diagnostics.Debug.WriteLine("Unable to set ORG_CHECKED_ITEMS result in builder");
                 }
             });
             builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
@@ -180,7 +180,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 if (tcs.TrySetResult(checkedItemsIndex) == false)
                 {
-                    Console.WriteLine("Unable to set CHECKED_ITEMS result in update tcs");
+                    System.Diagnostics.Debug.WriteLine("Unable to set CHECKED_ITEMS result in update tcs");
                 }
             });
 
@@ -188,7 +188,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 if (tcs.TrySetResult(orgCheckedItemsIndex) == false)
                 {
-                    Console.WriteLine("Unable to set ORG_CHECKED_ITEMS result in update tcs");
+                    System.Diagnostics.Debug.WriteLine("Unable to set ORG_CHECKED_ITEMS result in update tcs");
                 }
             });
             dialog.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
@@ -212,7 +212,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 if (_tcs == null) return;
                 if(_tcs.TrySetResult(_checkedItemsIndex) == false)
                 {
-                    Console.WriteLine("Unable to set result in dismisslistener");
+                    System.Diagnostics.Debug.WriteLine("Unable to set result in dismisslistener");
                 }
             }
         }
