@@ -9,12 +9,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using MvvmCross.Droid.Support.V7.AppCompat;
 
 namespace artm.MvxPlugins.Dialog.Droid.Services
 {
     [Activity]
-    public class MultiChoiceActivity : MvxCachingFragmentCompatActivity
+    public class MultiChoiceActivity : Activity
     {
         public const string MULTICHOICE_REQUESTCODE_NORMAL = "MultiChoiceActivity.MULTICHOICE_REQUESTCODE_NORMAL";
         public readonly string MULTICHOICE_CHECKEDITEMS = "MultiChoiceActivity.MULTICHOICE_CHECKEDITEMS";
