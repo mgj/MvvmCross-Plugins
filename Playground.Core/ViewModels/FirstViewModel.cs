@@ -1,5 +1,6 @@
-using artm.MvxPlugins.Dialog.Droid.Services;
+using artm.MvxPlugins.Dialog.Models;
 using artm.MvxPlugins.Dialog.Services;
+using artm.MvxPlugins.Dialog.ViewModels;
 using MvvmCross.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -67,7 +68,6 @@ namespace Playground.Core.ViewModels
         {
             ShowViewModel<SecondViewModel>();
         }
-
 
         private MvxAsyncCommand _showListCommand;
         public MvxAsyncCommand ShowListCommand

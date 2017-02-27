@@ -1,3 +1,4 @@
+using artm.MvxPlugins.Dialog.Models;
 using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.iOS.Views.Presenters;
 using MvvmCross.Platform;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UIKit;
-using artm.MvxPlugins.Dialog.Droid.Services;
 
 namespace artm.MvxPlugins.Dialog.Touch.Services
 {
@@ -30,12 +30,12 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
 
         public Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
-            
             var tcs = new TaskCompletionSource<List<int>>();
+            LastBundle = bundle;
 
             var navigationController = (Mvx.Resolve<IMvxIosViewPresenter>() as MvxIosViewPresenter).MasterNavigationController;
 
-            var multiChoiceController = new MultiChoiceViewController(bundle, (selectedItems) =>
+            var multiChoiceController = new MultiChoiceViewController(LastBundle, (selectedItems) =>
             {
                 tcs.SetResult(selectedItems);
             });
@@ -49,5 +49,7 @@ namespace artm.MvxPlugins.Dialog.Touch.Services
 
             return tcs.Task;
         }
+
+        public DialogServiceMultiItemsBundle LastBundle { get; private set; }
     }
 }

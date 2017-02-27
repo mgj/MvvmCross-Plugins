@@ -1,11 +1,10 @@
-﻿using artm.MvxPlugins.Dialog.Droid.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace artm.MvxPlugins.Dialog.Services
+namespace artm.MvxPlugins.Dialog.Models
 {
     public static class DialogServiceMultiItemsBundle_Extensions
     {

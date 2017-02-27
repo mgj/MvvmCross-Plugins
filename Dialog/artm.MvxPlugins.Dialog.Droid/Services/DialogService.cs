@@ -1,26 +1,23 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Droid.Platform;
 using System.Threading.Tasks;
 using artm.MvxPlugins.Logger.Services;
+using MvvmCross.Droid.Views;
+using artm.MvxPlugins.Dialog.ViewModels;
+using artm.MvxPlugins.Dialog.Models;
 
 namespace artm.MvxPlugins.Dialog.Droid.Services
 {
     public class DialogService : IDialogService
     {
         private ProgressDialog _progressDialog;
-        private DialogServiceMultiItemsBundle _lastMultipleItemsBundle;
         private AlertDialog _lastMultipleChoiceDialog;
 
         public void Info(string message)
@@ -93,7 +90,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                     _progressDialog.Dismiss();
                 }
             });
-
         }
 
         public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
@@ -102,12 +98,12 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
             // Attempt to re-use last dialog to increate performance
             // If only the title is different, we can still re-use it
-            if (_lastMultipleItemsBundle.SameValuesAs(bundle) == false 
-                && _lastMultipleItemsBundle.SameItemsAs(bundle) 
-                && _lastMultipleItemsBundle.SameCheckedItemsAs(bundle))
+            if (LastBundle.SameValuesAs(bundle) == false 
+                && LastBundle.SameItemsAs(bundle) 
+                && LastBundle.SameCheckedItemsAs(bundle))
             {
                 _lastMultipleChoiceDialog.SetTitle(bundle.Title);
-                UpdateTaskCompletionSource(_lastMultipleChoiceDialog, _lastMultipleItemsBundle, tcs);
+                UpdateTaskCompletionSource(_lastMultipleChoiceDialog, LastBundle, tcs);
             }
             else
             {
@@ -117,7 +113,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 _lastMultipleChoiceDialog = builder.Create();
             }
 
-            _lastMultipleItemsBundle = bundle;
+            LastBundle = bundle;
 
             try
             {
@@ -245,5 +241,12 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 return null;
             }
         }
+
+        public DialogServiceMultiItemsBundle LastBundle
+        {
+            get;
+            private set;
+        }
+        public TaskCompletionSource<List<int>> LastTcs { get; private set; }
     }
 }

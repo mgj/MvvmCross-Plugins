@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 namespace artm.MvxPlugins.Logger.Touch.Services
 {
@@ -11,7 +12,7 @@ namespace artm.MvxPlugins.Logger.Touch.Services
         public void Log(string message, LoggerServiceSeverityLevel level = LoggerServiceSeverityLevel.Debug, Exception exception = null, [CallerMemberName] string memberName = "", [CallerFilePath] string fileName = "", [CallerLineNumber] int lineNumber = 0)
         {
             // TODO: Implement
-            Console.WriteLine(message);
+            Debug.WriteLine(message);
         }
     }
 }

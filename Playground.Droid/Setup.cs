@@ -4,9 +4,12 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.Platform;
 using MvvmCross.Platform;
 using artm.MvxPlugins.Dialog.Services;
-using artm.MvxPlugins.Dialog.Droid.Services;
 using artm.MvxPlugins.Logger.Services;
 using artm.MvxPlugins.Logger.Droid.Services;
+using System.Collections.Generic;
+using System.Reflection;
+using artm.MvxPlugins.Dialog.ViewModels;
+using artm.MvxPlugins.Dialog.Droid.Services;
 
 namespace Playground.Droid
 {

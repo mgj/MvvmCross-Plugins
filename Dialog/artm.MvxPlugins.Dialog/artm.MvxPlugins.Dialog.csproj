@@ -36,15 +36,21 @@
   <ItemGroup>
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DialogServiceMultiItem.cs" />
-    <Compile Include="Services\DialogServiceMultiItemsBundle.cs" />
-    <Compile Include="Services\DialogServiceMultiItemsBundle_Extensions.cs" />
-    <Compile Include="Services\DialogServiceMultiItems_Extensions.cs" />
+    <Compile Include="Models\DialogServiceMultiItem.cs" />
+    <Compile Include="Models\DialogServiceMultiItemsBundle.cs" />
+    <Compile Include="Models\DialogServiceMultiItemsBundle_Extensions.cs" />
+    <Compile Include="Models\DialogServiceMultiItems_Extensions.cs" />
     <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="ViewModels\MultiChoiceDetailsViewModel.cs" />
+    <Compile Include="ViewModels\MultiChoiceListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="artm.MvxPlugins.Logger, Version=2.0.12.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\artm.MvxPlugins.Logger.2.0.12\lib\portable-net45+win+wpa81\artm.MvxPlugins.Logger.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvvmCross.Core, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MvvmCross.Core.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MvvmCross.Platform, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">

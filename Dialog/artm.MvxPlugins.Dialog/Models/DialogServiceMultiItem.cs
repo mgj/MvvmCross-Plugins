@@ -1,4 +1,4 @@
-﻿namespace artm.MvxPlugins.Dialog.Droid.Services
+﻿namespace artm.MvxPlugins.Dialog.Models
 {
     public class DialogServiceMultiItem
     {
