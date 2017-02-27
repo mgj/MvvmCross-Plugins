@@ -102,6 +102,8 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
         public Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
+            const string LOGTAG = "DialogService.ShowMultipleChoice: ";
+
             LastTcs = new TaskCompletionSource<List<int>>();
             LastTcs.SetResult(new List<int>());
             LastBundle = bundle;
@@ -109,7 +111,18 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             var activity = CurrentContext as MvxActivity;
             if(activity == null)
             {
-                System.Diagnostics.Debug.WriteLine("DialogService.ShowMultipleChoice: Current context is null - aborting");
+                System.Diagnostics.Debug.WriteLine(LOGTAG + "Current activity is null - aborting");
+
+                var current = Mvx.Resolve<IMvxAndroidCurrentTopActivity>();
+                if(current != null)
+                {
+                    System.Diagnostics.Debug.WriteLine(LOGTAG + "Current context is: " + current.GetType().ToString());
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine(LOGTAG + "Current context is: NULL");
+                }
+
                 return LastTcs.Task;
             }
             var binding = activity.BindingContext;
