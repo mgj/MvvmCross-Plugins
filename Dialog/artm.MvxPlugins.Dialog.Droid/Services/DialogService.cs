@@ -18,8 +18,9 @@ using MvvmCross.Droid.Views;
 using MvvmCross.Core.ViewModels;
 using artm.MvxPlugins.Dialog.ViewModels;
 using artm.MvxPlugins.Dialog.Models;
+using artm.MvxPlugins.Dialog.Droid.Services;
 
-namespace artm.MvxPlugins.Dialog.Droid.Views
+namespace artm.MvxPlugins.Dialog.Droid.Services
 {
     public class DialogService : IDialogService
     {
@@ -109,6 +110,10 @@ namespace artm.MvxPlugins.Dialog.Droid.Views
             var activity = CurrentContext as MvxActivity;
             var binding = activity.BindingContext;
             var viewmodel = binding.DataContext as DialogServiceMvxViewModelBase;
+            if(viewmodel == null)
+            {
+                throw new DialogServiceException("ViewModel must inherit from DialogServiceMvxViewModelBase to be able to show item details");
+            }
             viewmodel.ShowAndroidDetails();
 
             return LastTcs.Task;
