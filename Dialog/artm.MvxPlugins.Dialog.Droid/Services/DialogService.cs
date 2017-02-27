@@ -107,6 +107,11 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             LastBundle = bundle;
 
             var activity = CurrentContext as MvxActivity;
+            if(activity == null)
+            {
+                System.Diagnostics.Debug.WriteLine("DialogService.ShowMultipleChoice: Current context is null - aborting");
+                return LastTcs.Task;
+            }
             var binding = activity.BindingContext;
             var viewmodel = binding.DataContext as DialogServiceMvxViewModelBase;
             if(viewmodel == null)
