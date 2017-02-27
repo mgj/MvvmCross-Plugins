@@ -102,7 +102,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
         public Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
-            
             LastTcs = new TaskCompletionSource<List<int>>();
             LastTcs.SetResult(new List<int>());
             LastBundle = bundle;
