@@ -105,7 +105,14 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             const string LOGTAG = "DialogService.ShowMultipleChoice: ";
 
             LastTcs = new TaskCompletionSource<List<int>>();
-            LastTcs.SetResult(new List<int>());
+
+            var result = new List<int>();
+            foreach (var item in bundle.Items)
+            {
+                result.Add(0);
+            }
+
+            LastTcs.SetResult(result);
             LastBundle = bundle;
 
             var activity = CurrentContext as MvxActivity;
@@ -129,7 +136,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             var viewmodel = binding.DataContext as DialogServiceMvxViewModelBase;
             if(viewmodel == null)
             {
-                throw new DialogServiceException("ViewModel must inherit from DialogServiceMvxViewModelBase to be able to show item details");
+                throw new DialogServiceException(LOGTAG + "ViewModel must inherit from DialogServiceMvxViewModelBase to be able to show item details");
             }
             viewmodel.ShowAndroidDetails();
 
