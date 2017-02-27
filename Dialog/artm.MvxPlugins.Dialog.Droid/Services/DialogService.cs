@@ -92,7 +92,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             });
         }
 
-        public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
+        public Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
             var tcs = new TaskCompletionSource<List<int>>();
 
@@ -125,7 +125,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 throw ex;
             }
 
-            return await tcs.Task;
+            return tcs.Task;
         }
 
         private void ConfigureBuilder(AlertDialog.Builder builder, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
