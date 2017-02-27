@@ -111,14 +111,23 @@ namespace Playground.Droid
 			// aapt resource value: 0x7f040001
 			public const int MvxBindingTagUnique = 2130968577;
 			
-			// aapt resource value: 0x7f040002
-			public const int firstview_listdialog_button = 2130968578;
-			
 			// aapt resource value: 0x7f040003
-			public const int firstview_listdialogalttitle_button = 2130968579;
+			public const int button_cancel = 2130968579;
 			
 			// aapt resource value: 0x7f040004
-			public const int firstview_secondview_button = 2130968580;
+			public const int button_ok = 2130968580;
+			
+			// aapt resource value: 0x7f040002
+			public const int container_main = 2130968578;
+			
+			// aapt resource value: 0x7f040005
+			public const int firstview_listdialog_button = 2130968581;
+			
+			// aapt resource value: 0x7f040006
+			public const int firstview_listdialogalttitle_button = 2130968582;
+			
+			// aapt resource value: 0x7f040007
+			public const int firstview_secondview_button = 2130968583;
 			
 			static Id()
 			{
@@ -134,13 +143,16 @@ namespace Playground.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int FirstView = 2130903040;
+			public const int activity_multichoice = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int SecondView = 2130903041;
+			public const int FirstView = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int SplashScreen = 2130903042;
+			public const int SecondView = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int SplashScreen = 2130903043;
 			
 			static Layout()
 			{

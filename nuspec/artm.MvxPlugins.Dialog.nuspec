@@ -54,6 +54,8 @@
     <!-- DROID -->
     <file src="..\Dialog\artm.MvxPlugins.Dialog.Droid\bin\Release\artm.MvxPlugins.Dialog.*" target="lib\MonoAndroid10" />
     <file src="BootstrapContent\DialogPluginBootstrapDroid.cs.pp" target="content\MonoAndroid10\Bootstrap\DialogPluginBootstrap.cs.pp" />
+    <file src="..\Dialog\artm.MvxPlugins.Dialog.Droid\Resources\layout\activity_multichoice.axml" target="content\MonoAndroid10\Resources\layout\activity_multichoice.axml" />
+
 
     <!-- TOUCH -->
     <file src="..\Dialog\artm.MvxPlugins.Dialog.Touch\bin\Release\artm.MvxPlugins.Dialog.*" target="lib\Xamarin.iOS10" />
