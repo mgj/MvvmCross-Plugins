@@ -105,7 +105,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 result.Add(0);
             }
 
-            LastTcs.SetResult(result);
             LastBundle = bundle;
 
             var activity = CurrentContext as MvxActivity;
