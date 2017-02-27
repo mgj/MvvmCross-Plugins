@@ -93,7 +93,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
 
         }
 
-        public Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
+        public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
         {
             const string LOGTAG = "DialogService.ShowMultipleChoice: ";
 
@@ -117,7 +117,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             viewmodel.ShowAndroidDetails();
 
-            return LastTcs.Task;
+            return await LastTcs.Task;
         }
 
         public async Task<List<int>> ShowMultipleChoicePopupAndroid(DialogServiceMultiItemsBundle bundle)
