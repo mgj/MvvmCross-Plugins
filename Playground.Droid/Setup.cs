@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using artm.MvxPlugins.Dialog.ViewModels;
 using artm.MvxPlugins.Dialog.Droid.Services;
+using Android.App;
+using MvvmCross.Platform.Droid.Platform;
 
 namespace Playground.Droid
 {
@@ -44,6 +46,16 @@ namespace Playground.Droid
             list.AddRange(base.GetViewModelAssemblies());
             list.Add(typeof(MultiChoiceListViewModel).Assembly);
             return list.ToArray();
+        }
+
+        protected override void InitializeFirstChance()
+        {
+            base.InitializeFirstChance();
+
+            var viewLifecycleManager = new DroidViewLifecycleManager();
+            var app = ApplicationContext as Application;
+            app.RegisterActivityLifecycleCallbacks(viewLifecycleManager);
+            Mvx.RegisterSingleton<IMvxAndroidCurrentTopActivity>(viewLifecycleManager);
         }
 
         protected override void InitializeLastChance()
