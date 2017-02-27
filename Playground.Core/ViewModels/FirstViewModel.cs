@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Playground.Core.ViewModels
 {
-    public class FirstViewModel : DialogServiceMvxViewModelBase
+    public class FirstViewModel : MvxViewModel
     {
         private readonly IDialogService _dialog;
 

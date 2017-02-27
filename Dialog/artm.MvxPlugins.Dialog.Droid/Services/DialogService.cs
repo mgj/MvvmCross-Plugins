@@ -90,38 +90,9 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                     _progressDialog.Dismiss();
                 }
             });
-
         }
 
         public async Task<List<int>> ShowMultipleChoice(DialogServiceMultiItemsBundle bundle)
-        {
-            const string LOGTAG = "DialogService.ShowMultipleChoice: ";
-
-            LastTcs = new TaskCompletionSource<List<int>>();
-            LastBundle = bundle;
-
-            var activity = CurrentContext as MvxActivity;
-            if (activity == null)
-            {
-                var lifetimeMonitor = Mvx.Resolve<IMvxAndroidCurrentTopActivity>() as MvxAndroidLifetimeMonitor;
-                throw new DialogServiceException(LOGTAG + "Current activity is null! : " + Mvx.Resolve<IMvxAndroidCurrentTopActivity>()?.GetType().ToString() + " - Monitor: " + lifetimeMonitor?.Activity?.GetType().ToString());
-            }
-            if(activity.BindingContext == null)
-            {
-                throw new DialogServiceException(LOGTAG + "Current bindingContext is null! Current top activity: " + Mvx.Resolve<IMvxAndroidCurrentTopActivity>()?.GetType().ToString());
-            }
-
-            var viewmodel = activity.BindingContext.DataContext as DialogServiceMvxViewModelBase;
-            if(viewmodel == null)
-            {
-                throw new DialogServiceException(LOGTAG + "ViewModel must inherit from DialogServiceMvxViewModelBase to be able to show item details");
-            }
-            viewmodel.ShowAndroidDetails();
-
-            return await LastTcs.Task;
-        }
-
-        public async Task<List<int>> ShowMultipleChoicePopupAndroid(DialogServiceMultiItemsBundle bundle)
         {
             var tcs = new TaskCompletionSource<List<int>>();
 

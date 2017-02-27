@@ -4,15 +4,12 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.Platform;
 using MvvmCross.Platform;
 using artm.MvxPlugins.Dialog.Services;
-using artm.MvxPlugins.Dialog.Droid.Views;
 using artm.MvxPlugins.Logger.Services;
 using artm.MvxPlugins.Logger.Droid.Services;
 using System.Collections.Generic;
 using System.Reflection;
 using artm.MvxPlugins.Dialog.ViewModels;
 using artm.MvxPlugins.Dialog.Droid.Services;
-using Android.App;
-using MvvmCross.Platform.Droid.Platform;
 
 namespace Playground.Droid
 {
@@ -30,22 +27,6 @@ namespace Playground.Droid
         protected override IMvxTrace CreateDebugTrace()
         {
             return new DebugTrace();
-        }
-
-        protected override IEnumerable<Assembly> GetViewAssemblies()
-        {
-            var list = new List<Assembly>();
-            list.AddRange(base.GetViewAssemblies());
-            list.Add(typeof(MultiChoiceListView).Assembly);
-            return list.ToArray();
-        }
-
-        protected override IEnumerable<Assembly> GetViewModelAssemblies()
-        {
-            var list = new List<Assembly>();
-            list.AddRange(base.GetViewModelAssemblies());
-            list.Add(typeof(MultiChoiceListViewModel).Assembly);
-            return list.ToArray();
         }
 
         protected override void InitializeLastChance()

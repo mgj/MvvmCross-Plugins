@@ -102,29 +102,11 @@ namespace artm.MvxPlugins.Dialog.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int MvvmCrossTagId = 2130968576;
+			// aapt resource value: 0x7f030000
+			public const int MvvmCrossTagId = 2130903040;
 			
-			// aapt resource value: 0x7f040001
-			public const int MvxBindingTagUnique = 2130968577;
-			
-			// aapt resource value: 0x7f040003
-			public const int button_cancel = 2130968579;
-			
-			// aapt resource value: 0x7f040004
-			public const int button_ok = 2130968580;
-			
-			// aapt resource value: 0x7f040002
-			public const int container_main = 2130968578;
-			
-			// aapt resource value: 0x7f040005
-			public const int listitem_textview = 2130968581;
-			
-			// aapt resource value: 0x7f040007
-			public const int textview_listitem_multichoice_details_details = 2130968583;
-			
-			// aapt resource value: 0x7f040006
-			public const int textview_listitem_multichoice_details_title = 2130968582;
+			// aapt resource value: 0x7f030001
+			public const int MvxBindingTagUnique = 2130903041;
 			
 			static Id()
 			{
@@ -132,28 +114,6 @@ namespace artm.MvxPlugins.Dialog.Droid
 			}
 			
 			private Id()
-			{
-			}
-		}
-		
-		public partial class Layout
-		{
-			
-			// aapt resource value: 0x7f030000
-			public const int activity_multichoice = 2130903040;
-			
-			// aapt resource value: 0x7f030001
-			public const int listitem_multichoice = 2130903041;
-			
-			// aapt resource value: 0x7f030002
-			public const int listitem_multichoice_details = 2130903042;
-			
-			static Layout()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Layout()
 			{
 			}
 		}

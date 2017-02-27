@@ -40,7 +40,6 @@
     <Compile Include="Models\DialogServiceMultiItemsBundle.cs" />
     <Compile Include="Models\DialogServiceMultiItemsBundle_Extensions.cs" />
     <Compile Include="Models\DialogServiceMultiItems_Extensions.cs" />
-    <Compile Include="ViewModels\DialogServiceMvxViewModelBase.cs" />
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="ViewModels\MultiChoiceDetailsViewModel.cs" />
     <Compile Include="ViewModels\MultiChoiceListViewModel.cs" />
