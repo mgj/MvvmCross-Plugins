@@ -31,7 +31,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Views
             //SetContentView(Resource.Layout.activity_multichoice);
             SetContentView(view);
 
-            var dialogService = Mvx.Resolve<IDialogService>();
+            //var dialogService = Mvx.Resolve<IDialogService>();
 
             var debug = 42;
         }

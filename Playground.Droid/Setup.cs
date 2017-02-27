@@ -48,16 +48,6 @@ namespace Playground.Droid
             return list.ToArray();
         }
 
-        protected override void InitializeFirstChance()
-        {
-            base.InitializeFirstChance();
-
-            var viewLifecycleManager = new DroidViewLifecycleManager();
-            var app = ApplicationContext as Application;
-            app.RegisterActivityLifecycleCallbacks(viewLifecycleManager);
-            Mvx.RegisterSingleton<IMvxAndroidCurrentTopActivity>(viewLifecycleManager);
-        }
-
         protected override void InitializeLastChance()
         {
             base.InitializeLastChance();
