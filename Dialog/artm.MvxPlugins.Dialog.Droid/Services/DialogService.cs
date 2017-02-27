@@ -1,24 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using artm.MvxPlugins.Dialog.Services;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Droid.Platform;
 using System.Threading.Tasks;
 using artm.MvxPlugins.Logger.Services;
 using MvvmCross.Droid.Views;
-using MvvmCross.Core.ViewModels;
 using artm.MvxPlugins.Dialog.ViewModels;
 using artm.MvxPlugins.Dialog.Models;
-using artm.MvxPlugins.Dialog.Droid.Services;
 
 namespace artm.MvxPlugins.Dialog.Droid.Services
 {
@@ -118,16 +111,16 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             var activity = CurrentContext as MvxActivity;
             if(activity == null)
             {
-                System.Diagnostics.Debug.WriteLine(LOGTAG + "Current activity is null - aborting");
+                Console.WriteLine(LOGTAG + "Current activity is null - aborting");
 
                 var current = Mvx.Resolve<IMvxAndroidCurrentTopActivity>();
                 if(current != null)
                 {
-                    System.Diagnostics.Debug.WriteLine(LOGTAG + "Current context is: " + current.GetType().ToString());
+                    Console.WriteLine(LOGTAG + "Current context is: " + current.GetType().ToString());
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine(LOGTAG + "Current context is: NULL");
+                    Console.WriteLine(LOGTAG + "Current context is: NULL");
                 }
 
                 return LastTcs.Task;
@@ -172,7 +165,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("ERROR: " + ex.ToString());
+                Console.WriteLine("ERROR: " + ex.ToString());
                 throw ex;
             }
 
@@ -203,7 +196,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 if(tcs.TrySetResult(checkedItemsIndex) == false)
                 {
-                    System.Diagnostics.Debug.WriteLine("Unable to set CHECKED_ITEMS result in builder");
+                    Console.WriteLine("Unable to set CHECKED_ITEMS result in builder");
 
                 }
             });
@@ -212,7 +205,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 if (tcs.TrySetResult(orgCheckedItemsIndex) == false)
                 {
-                    System.Diagnostics.Debug.WriteLine("Unable to set ORG_CHECKED_ITEMS result in builder");
+                    Console.WriteLine("Unable to set ORG_CHECKED_ITEMS result in builder");
                 }
             });
             builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
@@ -227,7 +220,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 if (tcs.TrySetResult(checkedItemsIndex) == false)
                 {
-                    System.Diagnostics.Debug.WriteLine("Unable to set CHECKED_ITEMS result in update tcs");
+                    Console.WriteLine("Unable to set CHECKED_ITEMS result in update tcs");
                 }
             });
 
@@ -235,7 +228,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             {
                 if (tcs.TrySetResult(orgCheckedItemsIndex) == false)
                 {
-                    System.Diagnostics.Debug.WriteLine("Unable to set ORG_CHECKED_ITEMS result in update tcs");
+                    Console.WriteLine("Unable to set ORG_CHECKED_ITEMS result in update tcs");
                 }
             });
             dialog.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
@@ -259,7 +252,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                 if (_tcs == null) return;
                 if(_tcs.TrySetResult(_checkedItemsIndex) == false)
                 {
-                    System.Diagnostics.Debug.WriteLine("Unable to set result in dismisslistener");
+                    Console.WriteLine("Unable to set result in dismisslistener");
                 }
             }
         }
