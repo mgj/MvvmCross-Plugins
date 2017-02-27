@@ -12,6 +12,7 @@ MvxPlugins
 Dialog
 =======
 1. Add to setup.cs:
+
         protected override IEnumerable<Assembly> GetViewAssemblies()
         {
             var list = new List<Assembly>();
@@ -32,8 +33,10 @@ Dialog
 DialogServiceMvxViewModelBase
 
 -----
-
-DialogService::Task<List<int>> ShowMultipleChoicePopupAndroid(DialogServiceMultiItemsBundle bundle) is available for a popup dialog multichoice that does *NOT* support descriptions
+    
+        DialogService::Task<List<int>> ShowMultipleChoicePopupAndroid(DialogServiceMultiItemsBundle bundle) 
+        
+is available for a popup dialog multichoice that does *NOT* support descriptions
 
 License
 =======
