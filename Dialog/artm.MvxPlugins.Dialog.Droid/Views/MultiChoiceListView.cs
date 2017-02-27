@@ -28,7 +28,8 @@ namespace artm.MvxPlugins.Dialog.Droid.Views
             var text = new TextView(this);
             text.Text = "MultiChoiceListView";
             view.AddView(text);
-            SetContentView(Resource.Layout.activity_multichoice);
+            //SetContentView(Resource.Layout.activity_multichoice);
+            SetContentView(view);
 
             var dialogService = Mvx.Resolve<IDialogService>();
 
