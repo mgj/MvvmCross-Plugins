@@ -104,7 +104,7 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             if (activity == null)
             {
                 var lifetimeMonitor = Mvx.Resolve<IMvxAndroidCurrentTopActivity>() as MvxAndroidLifetimeMonitor;
-                throw new DialogServiceException(LOGTAG + "Current activity is null! : " + Mvx.Resolve<IMvxAndroidCurrentTopActivity>()?.GetType().ToString());
+                throw new DialogServiceException(LOGTAG + "Current activity is null! : " + Mvx.Resolve<IMvxAndroidCurrentTopActivity>()?.GetType().ToString() + " - Monitor: " + lifetimeMonitor?.Activity?.GetType().ToString());
             }
             if(activity.BindingContext == null)
             {
