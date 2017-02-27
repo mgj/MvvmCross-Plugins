@@ -101,19 +101,16 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
             LastBundle = bundle;
 
             var activity = CurrentContext as MvxActivity;
-            Console.WriteLine(LOGTAG + "Current activity is null - aborting");
-
             if (activity == null)
             {
                 throw new DialogServiceException(LOGTAG + "Current activity is null! : " + Mvx.Resolve<IMvxAndroidCurrentTopActivity>()?.GetType().ToString());
             }
             if(activity.BindingContext == null)
             {
-                throw new DialogServiceException(LOGTAG + "Current bindingContext is null!");
+                throw new DialogServiceException(LOGTAG + "Current bindingContext is null! Current top activity: " + Mvx.Resolve<IMvxAndroidCurrentTopActivity>()?.GetType().ToString());
             }
 
-            var binding = activity.BindingContext;
-            var viewmodel = binding.DataContext as DialogServiceMvxViewModelBase;
+            var viewmodel = activity.BindingContext.DataContext as DialogServiceMvxViewModelBase;
             if(viewmodel == null)
             {
                 throw new DialogServiceException(LOGTAG + "ViewModel must inherit from DialogServiceMvxViewModelBase to be able to show item details");
