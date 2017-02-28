@@ -16,7 +16,6 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
     {
         public DialogServiceException(string msg) : base(msg)
         {
-
         }
     }
 }
