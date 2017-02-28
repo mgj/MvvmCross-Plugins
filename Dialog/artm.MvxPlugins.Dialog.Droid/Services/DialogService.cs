@@ -164,7 +164,11 @@ namespace artm.MvxPlugins.Dialog.Droid.Services
                     Console.WriteLine("Unable to set ORG_CHECKED_ITEMS result in builder");
                 }
             });
-            builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
+
+            if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.JellyBeanMr1)
+            {
+                builder.SetOnDismissListener(new MyDismissListener(tcs, orgCheckedItemsIndex));
+            }
         }
 
         private void UpdateTaskCompletionSource(AlertDialog dialog, DialogServiceMultiItemsBundle bundle, TaskCompletionSource<List<int>> tcs)
