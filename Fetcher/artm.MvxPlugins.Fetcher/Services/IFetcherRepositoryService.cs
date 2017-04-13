@@ -9,12 +9,12 @@ namespace artm.MvxPlugins.Fetcher.Services
 {
     public interface IFetcherRepositoryService
     {
-        UrlCacheInfo GetEntryForUrl(Uri url);
+        IUrlCacheInfo GetEntryForUrl(Uri url);
 
-        void UpdateLastAccessed(UrlCacheInfo hero);
+        void UpdateLastAccessed(IUrlCacheInfo hero);
 
-        void UpdateUrl(Uri uri, UrlCacheInfo hero, string response);
+        void UpdateUrl(Uri uri, IUrlCacheInfo hero, string response);
 
-        UrlCacheInfo InsertUrl(Uri uri, string response);
+        IUrlCacheInfo InsertUrl(Uri uri, string response);
     }
 }

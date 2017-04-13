@@ -22,12 +22,12 @@ namespace artm.MvxPlugins.Fetcher.Services
             _repository = repositoryService;
         }
 
-        public async Task<UrlCacheInfo> Fetch(Uri url)
+        public async Task<IUrlCacheInfo> Fetch(Uri url)
         {
             return await Fetch(url, CACHE_FRESHNESS_THRESHOLD);
         }
 
-        public async Task<UrlCacheInfo> Fetch(Uri uri, TimeSpan freshnessTreshold)
+        public async Task<IUrlCacheInfo> Fetch(Uri uri, TimeSpan freshnessTreshold)
         {
             _log.Log("Fetching for uri: " + uri.OriginalString);
 
@@ -73,7 +73,7 @@ namespace artm.MvxPlugins.Fetcher.Services
             }
         }
 
-        private bool ShouldInvalidate(UrlCacheInfo hero, TimeSpan freshnessTreshold)
+        private bool ShouldInvalidate(IUrlCacheInfo hero, TimeSpan freshnessTreshold)
         {
             var delta = hero.LastUpdated - DateTimeOffset.UtcNow;
             return delta > freshnessTreshold;

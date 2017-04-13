@@ -1,6 +1,9 @@
-﻿using artm.MvxPlugins.Fetcher.Services;
+﻿using artm.MvxPlugins.Fetcher.Entities;
+using artm.MvxPlugins.Fetcher.Services;
 using artm.MvxPlugins.Fetcher.Tests.Common;
 using artm.MvxPlugins.Fetcher.Tests.Services.Calculator;
+using artm.MvxPlugins.Logger.Services;
+using Moq;
 using MvvmCross.Platform;
 using NUnit.Framework;
 using System;
@@ -14,15 +17,15 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
         private const string URL = "https://jsonplaceholder.typicode.com/users";
 
         [Test]
-        [Ignore("Realm needs windows support to run tests on windows")]
-        public async Task FetchFromWeb_Sunshine_TriesToFetchFromWeb()
+        [Category(TestCategory.Slow)]
+        [Category(TestCategory.Internet)]
+        public async Task Fetch_Sunshine_TriesToFetchFromWeb()
         {
-            var sut = Mvx.Resolve<IFetcherService>() as FetcherServiceMock;
+            var sut = new FetcherServiceMock(Mock.Of<ILoggerService>(), new FetcherRepositoryServiceMock());
             sut.FetchFromWebResponse = FetcherResponseValidFactory();
 
             var response = await sut.Fetch(new Uri(URL));
 
-            Assert.IsTrue(response.IsValid);
             Assert.NotNull(response.Response);
             Assert.IsTrue(response.Response.Equals(FetcherResponseValidFactory()));
         }

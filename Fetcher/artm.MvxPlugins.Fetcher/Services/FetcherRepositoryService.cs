@@ -20,18 +20,18 @@ namespace artm.MvxPlugins.Fetcher.Services
             _realm = Realm.GetInstance();
         }
 
-        public UrlCacheInfo GetEntryForUrl(Uri url)
+        public IUrlCacheInfo GetEntryForUrl(Uri url)
         {
             var needle = url.OriginalString;
             return _realm.All<UrlCacheInfo>().Where(x => x.Url == needle).FirstOrDefault();
         }
 
-        public void UpdateLastAccessed(UrlCacheInfo hero)
+        public void UpdateLastAccessed(IUrlCacheInfo hero)
         {
             _realm.Write(() => hero.LastAccessed = DateTimeOffset.UtcNow);
         }
 
-        public void UpdateUrl(Uri uri, UrlCacheInfo hero, string response)
+        public void UpdateUrl(Uri uri, IUrlCacheInfo hero, string response)
         {
             if (string.IsNullOrEmpty(response))
             {
@@ -48,12 +48,18 @@ namespace artm.MvxPlugins.Fetcher.Services
             });
         }
 
-        public UrlCacheInfo InsertUrl(Uri uri, string response)
+        public IUrlCacheInfo InsertUrl(Uri uri, string response)
         {
             UrlCacheInfo hero = null;
             if (string.IsNullOrEmpty(response))
             {
                 return hero;
+            }
+
+            var existing = GetEntryForUrl(uri) as UrlCacheInfo;
+            if(existing != null)
+            {
+                _realm.Remove(existing);
             }
 
             var timestamp = DateTime.UtcNow;
