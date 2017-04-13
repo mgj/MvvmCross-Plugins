@@ -1,4 +1,5 @@
 ﻿using Realms;
+using System;
 
 namespace artm.MvxPlugins.Fetcher.Entities
 {
@@ -9,10 +10,10 @@ namespace artm.MvxPlugins.Fetcher.Entities
         [Indexed]
         public string Url { get; set; }
 
-        public long Created { get; set; }
+        public DateTimeOffset Created { get; set; }
 
-        public long LastAccessed { get; set; }
+        public DateTimeOffset LastAccessed { get; set; }
 
-        public long LastUpdated { get; set; }
+        public DateTimeOffset LastUpdated { get; set; }
     }
 }

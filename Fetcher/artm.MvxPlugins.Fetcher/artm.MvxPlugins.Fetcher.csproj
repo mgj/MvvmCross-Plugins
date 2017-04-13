@@ -39,7 +39,9 @@
     <Compile Include="Entities\UrlCacheInfo.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FetcherRepositoryService.cs" />
     <Compile Include="Services\FetcherService.cs" />
+    <Compile Include="Services\IFetcherRepositoryService.cs" />
     <Compile Include="Services\IFetcherService.cs" />
   </ItemGroup>
   <ItemGroup>

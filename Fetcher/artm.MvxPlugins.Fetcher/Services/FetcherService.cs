@@ -2,7 +2,6 @@
 using artm.MvxPlugins.Logger.Services;
 using ModernHttpClient;
 using Polly;
-using Realms;
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -12,13 +11,15 @@ namespace artm.MvxPlugins.Fetcher.Services
 {
     public class FetcherService : IFetcherService
     {
-        public const long CACHE_FRESHNESS_THRESHOLD = TimeSpan.TicksPerDay;
+        public readonly TimeSpan CACHE_FRESHNESS_THRESHOLD = TimeSpan.FromDays(1); // 1 day
 
         private readonly ILoggerService _log;
+        private readonly IFetcherRepositoryService _repository;
 
-        public FetcherService(ILoggerService logService)
+        public FetcherService(ILoggerService logService, IFetcherRepositoryService repositoryService)
         {
             _log = logService;
+            _repository = repositoryService;
         }
 
         public async Task<UrlCacheInfo> Fetch(Uri url)
@@ -26,33 +27,31 @@ namespace artm.MvxPlugins.Fetcher.Services
             return await Fetch(url, CACHE_FRESHNESS_THRESHOLD);
         }
 
-        public async Task<UrlCacheInfo> Fetch(Uri uri, long freshnessTreshold)
+        public async Task<UrlCacheInfo> Fetch(Uri uri, TimeSpan freshnessTreshold)
         {
             _log.Log("Fetching for uri: " + uri.OriginalString);
-            var realm = Realm.GetInstance();
 
-            var needle = uri.OriginalString;
-            var cacheHit = realm.All<UrlCacheInfo>().Where(x => x.Url == needle);
-            if (cacheHit.Count() != 0)
+            var cacheHit = _repository.GetEntryForUrl(uri);
+            if (cacheHit != null)
             {
                 // Hit
                 _log.Log("Cache hit");
-                var hero = cacheHit.First();
-                realm.Write(() => hero.LastAccessed = DateTime.Now.Ticks);
-
-                if (ShouldInvalidate(hero, freshnessTreshold))
+                _repository.UpdateLastAccessed(cacheHit);
+                if (ShouldInvalidate(cacheHit, freshnessTreshold))
                 {
                     // Cache needs refreshing
                     _log.Log("Refreshing cache");
-                    await UpdateUrl(uri, hero);
+                    var response = await FetchFromWeb(uri);
+                    _repository.UpdateUrl(uri, cacheHit, response);
                 }
 
-                return hero;
+                return cacheHit;
             }
             else
             {
                 // Nothing in cache, get it fresh
-                return await InsertUrl(uri);
+                var response = await FetchFromWeb(uri);
+                return _repository.InsertUrl(uri, response);
             }
         }
 
@@ -74,60 +73,10 @@ namespace artm.MvxPlugins.Fetcher.Services
             }
         }
 
-        private bool ShouldInvalidate(UrlCacheInfo hero, long freshnessTreshold)
+        private bool ShouldInvalidate(UrlCacheInfo hero, TimeSpan freshnessTreshold)
         {
-            return TimeSpanBetween(hero.LastUpdated, DateTime.Now.Ticks) > freshnessTreshold;
-        }
-
-        private async Task UpdateUrl(Uri uri, UrlCacheInfo hero)
-        {
-            var realm = Realm.GetInstance();
-            var response = await FetchFromWeb(uri);
-            if (string.IsNullOrEmpty(response))
-            {
-                return;
-            }
-
-            var timestamp = DateTime.Now.Ticks;
-            realm.Write(() =>
-            {
-                hero.Response = response;
-                hero.Url = uri.OriginalString;
-                hero.LastAccessed = timestamp;
-                hero.LastUpdated = timestamp;
-            });
-        }
-
-        private async Task<UrlCacheInfo> InsertUrl(Uri uri)
-        {
-            var realm = Realm.GetInstance();
-            UrlCacheInfo hero = null;
-            var response = await FetchFromWeb(uri);
-            if (string.IsNullOrEmpty(response))
-            {
-                return hero;
-            }
-
-            var timestamp = DateTime.Now.Ticks;
-            realm.Write(() =>
-            {
-                hero = new UrlCacheInfo();
-                hero.Response = response;
-                hero.Url = uri.OriginalString;
-                hero.Created = timestamp;
-                hero.LastAccessed = timestamp;
-                hero.LastUpdated = timestamp;
-                realm.Add(hero);
-            });
-
-            _log.Log("New url cached: " + uri.OriginalString);
-
-            return hero;
-        }
-
-        private long TimeSpanBetween(long lastUpdated, long ticks)
-        {
-            return Math.Abs(lastUpdated - ticks);
+            var delta = hero.LastUpdated - DateTimeOffset.UtcNow;
+            return delta > freshnessTreshold;
         }
 
         private async Task<HttpResponseMessage> DoWebRequest(Uri uri)
