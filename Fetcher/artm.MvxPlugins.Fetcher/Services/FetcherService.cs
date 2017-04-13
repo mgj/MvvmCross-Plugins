@@ -75,7 +75,7 @@ namespace artm.MvxPlugins.Fetcher.Services
 
         private bool ShouldInvalidate(IUrlCacheInfo hero, TimeSpan freshnessTreshold)
         {
-            var delta = hero.LastUpdated - DateTimeOffset.UtcNow;
+            var delta = DateTimeOffset.UtcNow - hero.LastUpdated;
             return delta > freshnessTreshold;
         }
 

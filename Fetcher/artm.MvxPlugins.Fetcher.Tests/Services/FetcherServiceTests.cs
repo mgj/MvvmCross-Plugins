@@ -65,6 +65,20 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
             repository.Verify(x => x.UpdateLastAccessed(It.IsAny<IUrlCacheInfo>()), Times.Once);
         }
 
+        [Test]
+        public async Task Fetch_WithOutdatedEntries_RepositoryUpdateUrlIsCalled()
+        {
+            var repository = new Mock<IFetcherRepositoryService>();
+            var created = DateTimeOffset.UtcNow - TimeSpan.FromDays(100);
+            repository.Setup(x => x.GetEntryForUrl(It.IsAny<Uri>())).Returns(() => new UrlCacheInfoMock() { Url = URL, Created = created, LastAccessed = DateTimeOffset.UtcNow, LastUpdated = created, Response = "myResponse" });
+
+            var sut = new FetcherServiceMock(Mock.Of<ILoggerService>(), repository.Object);
+
+            var response = await sut.Fetch(new Uri(URL));
+
+            repository.Verify(x => x.UpdateUrl(It.IsAny<Uri>(), It.IsAny<IUrlCacheInfo>(), It.IsAny<string>()), Times.Once);
+        }
+
         #region Mock factories
         private static string FetcherResponseValidFactory()
         {
