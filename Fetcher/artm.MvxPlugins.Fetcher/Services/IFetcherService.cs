@@ -6,7 +6,7 @@ namespace artm.MvxPlugins.Fetcher.Services
 {
     public interface IFetcherService
     {
-        Task<UrlCacheInfo> Fetch(Uri url);
-        Task<UrlCacheInfo> Fetch(Uri url, long freshnessTreshold);
+        Task<IUrlCacheInfo> Fetch(Uri url);
+        Task<IUrlCacheInfo> Fetch(Uri url, TimeSpan freshnessTreshold);
     }
 }

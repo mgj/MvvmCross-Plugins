@@ -1,13 +1,12 @@
-﻿using Realms;
+﻿using artm.MvxPlugins.Fetcher.Entities;
 using System;
 
-namespace artm.MvxPlugins.Fetcher.Entities
+namespace artm.MvxPlugins.Fetcher.Tests.Services
 {
-    public class UrlCacheInfo : RealmObject, IUrlCacheInfo
+    internal class UrlCacheInfoMock : IUrlCacheInfo
     {
         public string Response { get; set; }
 
-        [Indexed]
         public string Url { get; set; }
 
         public DateTimeOffset Created { get; set; }
