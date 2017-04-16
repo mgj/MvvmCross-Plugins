@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Analytics.Services
 {
-    public class AnalyticsService : IAnalyticsService
+    public abstract class AnalyticsServiceBase : IAnalyticsService
     {
         
     }
