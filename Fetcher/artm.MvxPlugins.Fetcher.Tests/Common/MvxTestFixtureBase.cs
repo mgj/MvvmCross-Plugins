@@ -28,7 +28,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Common
             Ioc.RegisterSingleton<IMvxStringToTypeParser>(new MvxStringToTypeParser());
 
             // Register our own services
-            Ioc.RegisterSingleton<IFetcherService>(() => new FetcherServiceMock(Mock.Of<ILoggerService>(), Mock.Of<IFetcherRepositoryService>()));
+            Ioc.RegisterSingleton<IFetcherService>(() => new FetcherServiceMock(Mock.Of<IFetcherRepositoryService>()));
 
         }
     }

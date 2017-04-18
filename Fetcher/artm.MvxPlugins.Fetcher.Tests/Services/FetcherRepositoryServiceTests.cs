@@ -20,7 +20,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services
         public void GetEntryForUrl_NoEntryExists_NullIsReturned()
         {
             var url = new Uri("https://www.google.com");
-            var sut = new FetcherRepositoryService(Mock.Of<ILoggerService>());
+            var sut = new FetcherRepositoryService();
 
             var entry = sut.GetEntryForUrl(url);
 
@@ -32,7 +32,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services
         public void GetEntryForUrl_EntryExists_EntryReturned()
         {
             var url = new Uri("https://www.google.com");
-            var sut = new FetcherRepositoryService(Mock.Of<ILoggerService>());
+            var sut = new FetcherRepositoryService();
 
             sut.InsertUrl(url, "myResponse");
             var entry = sut.GetEntryForUrl(url);

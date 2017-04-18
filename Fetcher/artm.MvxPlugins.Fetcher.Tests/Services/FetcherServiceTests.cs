@@ -19,7 +19,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
         [Test]
         public async Task Fetch_Sunshine_TriesToFetchFromWeb()
         {
-            var sut = new FetcherServiceMock(Mock.Of<ILoggerService>(), new FetcherRepositoryServiceMock());
+            var sut = new FetcherServiceMock(new FetcherRepositoryServiceMock());
             sut.FetchFromWebResponse = FetcherResponseValidFactory();
 
             var response = await sut.Fetch(new Uri(URL));
@@ -32,7 +32,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
         public async Task Fetch_NoEntries_RepositoryInsertUrlIsCalled()
         {
             var repository = new Mock<IFetcherRepositoryService>();
-            var sut = new FetcherServiceMock(Mock.Of<ILoggerService>(), repository.Object);
+            var sut = new FetcherServiceMock(repository.Object);
 
             var response = await sut.Fetch(new Uri(URL));
 
@@ -45,7 +45,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
             var repository = new Mock<IFetcherRepositoryService>();
             repository.Setup(x => x.GetEntryForUrl(It.IsAny<Uri>())).Returns(() => new UrlCacheInfoMock() { Url = URL, Created = DateTimeOffset.UtcNow, LastAccessed = DateTimeOffset.UtcNow, LastUpdated = DateTimeOffset.UtcNow, Response = "myResponse" });
 
-            var sut = new FetcherServiceMock(Mock.Of<ILoggerService>(), repository.Object);
+            var sut = new FetcherServiceMock(repository.Object);
 
             var response = await sut.Fetch(new Uri(URL));
 
@@ -58,7 +58,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
             var repository = new Mock<IFetcherRepositoryService>();
             repository.Setup(x => x.GetEntryForUrl(It.IsAny<Uri>())).Returns(() => new UrlCacheInfoMock() { Url = URL, Created = DateTimeOffset.UtcNow, LastAccessed = DateTimeOffset.UtcNow, LastUpdated = DateTimeOffset.UtcNow, Response = "myResponse" });
 
-            var sut = new FetcherServiceMock(Mock.Of<ILoggerService>(), repository.Object);
+            var sut = new FetcherServiceMock(repository.Object);
 
             var response = await sut.Fetch(new Uri(URL));
 
@@ -72,7 +72,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
             var created = DateTimeOffset.UtcNow - TimeSpan.FromDays(100);
             repository.Setup(x => x.GetEntryForUrl(It.IsAny<Uri>())).Returns(() => new UrlCacheInfoMock() { Url = URL, Created = created, LastAccessed = DateTimeOffset.UtcNow, LastUpdated = created, Response = "myResponse" });
 
-            var sut = new FetcherServiceMock(Mock.Of<ILoggerService>(), repository.Object);
+            var sut = new FetcherServiceMock(repository.Object);
 
             var response = await sut.Fetch(new Uri(URL));
 
@@ -86,7 +86,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
             var created = DateTimeOffset.UtcNow - TimeSpan.FromMilliseconds(1);
             repository.Setup(x => x.GetEntryForUrl(It.IsAny<Uri>())).Returns(() => new UrlCacheInfoMock() { Url = URL, Created = created, LastAccessed = DateTimeOffset.UtcNow, LastUpdated = created, Response = "myResponse" });
 
-            var sut = new FetcherServiceMock(Mock.Of<ILoggerService>(), repository.Object);
+            var sut = new FetcherServiceMock(repository.Object);
 
             var response = await sut.Fetch(new Uri(URL));
 

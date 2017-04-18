@@ -8,8 +8,8 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.Calculator
 {
     public class FetcherServiceMock : FetcherServiceBase
     {
-        public FetcherServiceMock(ILoggerService logger, IFetcherRepositoryService repository) 
-            : base(logger, repository)
+        public FetcherServiceMock(IFetcherRepositoryService repository) 
+            : base(repository)
         {
         }
 
