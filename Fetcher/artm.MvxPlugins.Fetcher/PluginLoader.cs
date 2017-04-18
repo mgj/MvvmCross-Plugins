@@ -18,7 +18,7 @@ namespace artm.MvxPlugins.Fetcher
             }
 
             _loaded = true;
-            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
+            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherServiceBase>();
         }
     }
 }
