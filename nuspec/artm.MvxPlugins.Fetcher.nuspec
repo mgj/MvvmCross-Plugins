@@ -9,40 +9,37 @@
     <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone xamarin wpa81 win81 mvx</tags>
     <dependencies>
     <group targetFramework ="net">
-      <dependency id="MvvmCross.Platform" version="4.2.3" />
+      <dependency id="MvvmCross.Platform" version="4.4.0" />
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
         <dependency id="Realm" version="0.77.2"/>
         <dependency id="Polly-Signed" version="4.3.0"/>
     </group>
-    <group targetFramework ="win">
-      <dependency id="MvvmCross.Platform" version="4.2.3" />
-    </group>
-    <group targetFramework ="wpa">
-      <dependency id="MvvmCross.Platform" version="4.2.3" />
-    </group>
     <group targetFramework ="MonoAndroid">
-      <dependency id="MvvmCross.Platform" version="4.2.3" />
-        <dependency id="Realm" version="0.77.2"/>
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+      <dependency id="MvvmCross.Platform" version="4.4.0" />
+        <dependency id="Realm" version="1.2.0"/>
         <dependency id="Square.OkHttp" version="2.7.5.0"/>
 
     </group>
     <group targetFramework ="Xamarin.iOS">
-      <dependency id="MvvmCross.Platform" version="4.2.3" />
-        <dependency id="Realm" version="0.77.2"/>
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+      <dependency id="MvvmCross.Platform" version="4.4.0" />
+        <dependency id="Realm" version="1.2.0"/>
     </group>
     <group targetFramework ="portable-net45+win8+wpa81+wp8">
       <dependency id="Newtonsoft.Json" version="9.0.1" />
-      <dependency id="MvvmCross.Platform" version="4.2.3" />
+      <dependency id="MvvmCross.Platform" version="4.4.0" />
         <dependency id="Polly-Signed" version="4.3.0"/>
-        <dependency id="Realm" version="0.77.2"/>
+        <dependency id="Realm" version="1.2.0"/>
     </group>
     <group targetFramework ="uap">
-      <dependency id="Newtonsoft.Json" version="8.0.2" />
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
       <dependency id="MvvmCross.Platform" version="4.2.3" />
     </group>
     <group targetFramework ="dotnet">
-      <dependency id="Newtonsoft.Json" version="8.0.2" />
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-        <dependency id="Realm" version="0.77.2"/>
+        <dependency id="Realm" version="1.2.0"/>
         <dependency id="Polly-Signed" version="4.3.0"/>
     </group>
     </dependencies>
