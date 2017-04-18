@@ -20,12 +20,9 @@ namespace Playground.Core.ViewModels
         {
             _dialog = dialog;
 
-            Task.Run(async () =>
-            {
-                var data = await fetcher.Fetch(new Uri("https://services.coop.dk/restgrundsortiment/api/Vare/24444"));
+                var data = fetcher.Fetch(new Uri("https://services.coop.dk/restgrundsortiment/api/Vare/24444")).Result;
                 System.Diagnostics.Debug.WriteLine(data.Response);
                 var debug = 42;
-            });
 
             var items = new List<DialogServiceMultiItem>();
             items.Add(new DialogServiceMultiItem("a", "blabla"));
