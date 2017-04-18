@@ -23,6 +23,7 @@ namespace Playground.Core.ViewModels
             Task.Run(async () =>
             {
                 var data = await fetcher.Fetch(new Uri("https://services.coop.dk/restgrundsortiment/api/Vare/24444"));
+                System.Diagnostics.Debug.WriteLine(data.Response);
                 var debug = 42;
             });
 
