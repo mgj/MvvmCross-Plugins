@@ -1,6 +1,6 @@
 ﻿using artm.MvxPlugins.Fetcher.Entities;
+using artm.MvxPlugins.Fetcher.Models;
 using artm.MvxPlugins.Logger.Services;
-using ModernHttpClient;
 using Polly;
 using System;
 using System.Linq;
@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Fetcher.Services
 {
-    public class FetcherService : IFetcherService
+    public abstract class FetcherServiceBase : IFetcherService
     {
         public readonly TimeSpan CACHE_FRESHNESS_THRESHOLD = TimeSpan.FromDays(1); // 1 day
 
         private readonly ILoggerService _log;
         private readonly IFetcherRepositoryService _repository;
 
-        public FetcherService(ILoggerService logService, IFetcherRepositoryService repositoryService)
+        public FetcherServiceBase(ILoggerService logService, IFetcherRepositoryService repositoryService)
         {
             _log = logService;
             _repository = repositoryService;
@@ -58,19 +58,12 @@ namespace artm.MvxPlugins.Fetcher.Services
         protected virtual async Task<string> FetchFromWeb(Uri uri)
         {
             var policy = Policy
-                .HandleResult<HttpResponseMessage>(r => r.IsSuccessStatusCode == false)
+                .HandleResult<FetcherWebResponse>(r => r.IsSuccess == false)
                 .WaitAndRetryAsync(5, retryAttempt =>
                     TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
             var response = await policy.ExecuteAsync(() => DoWebRequest(uri));
-            var etag = response.Headers.ETag;
-            if (response.IsSuccessStatusCode)
-            {
-                return await response.Content.ReadAsStringAsync();
-            }
-            else
-            {
-                return null;
-            }
+
+            return response.Body;
         }
 
         private bool ShouldInvalidate(IUrlCacheInfo hero, TimeSpan freshnessTreshold)
@@ -79,10 +72,11 @@ namespace artm.MvxPlugins.Fetcher.Services
             return delta > freshnessTreshold;
         }
 
-        private async Task<HttpResponseMessage> DoWebRequest(Uri uri)
+        private async Task<FetcherWebResponse> DoWebRequest(Uri uri)
         {
-            var client = new HttpClient(new NativeMessageHandler());
-            return await client.GetAsync(uri);
+            return await Task.FromResult(DoPlatformWebRequest(uri));
         }
+
+        protected abstract FetcherWebResponse DoPlatformWebRequest(Uri uri);
     }
 }
