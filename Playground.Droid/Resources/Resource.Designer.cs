@@ -26,6 +26,8 @@ namespace Playground.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::artm.MvxPlugins.Fetcher.Droid.Resource.String.ApplicationName = global::Playground.Droid.Resource.String.ApplicationName;
+			global::artm.MvxPlugins.Fetcher.Droid.Resource.String.Hello = global::Playground.Droid.Resource.String.Hello;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxBind = global::Playground.Droid.Resource.Attribute.MvxBind;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::Playground.Droid.Resource.Attribute.MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxGroupItemTemplate = global::Playground.Droid.Resource.Attribute.MvxGroupItemTemplate;
@@ -167,11 +169,11 @@ namespace Playground.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int ApplicationName = 2131099649;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
 			
-			// aapt resource value: 0x7f060000
-			public const int Hello = 2131099648;
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
 			
 			static String()
 			{
@@ -186,8 +188,8 @@ namespace Playground.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int Theme_Splash = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int Theme_Splash = 2131099648;
 			
 			static Style()
 			{

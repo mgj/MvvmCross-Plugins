@@ -131,6 +131,10 @@
       <Project>{a7af8502-fc0b-441b-a3c8-4eecd9134e78}</Project>
       <Name>artm.MvxPlugins.Dialog</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fetcher\artm.MvxPlugins.Fetcher.Droid\artm.MvxPlugins.Fetcher.Droid.csproj">
+      <Project>{ED36841C-A23B-4D90-B5A4-DA2296ABFB4C}</Project>
+      <Name>artm.MvxPlugins.Fetcher.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fetcher\artm.MvxPlugins.Fetcher.RealmDAL\artm.MvxPlugins.Fetcher.RealmDAL.csproj">
       <Project>{87AFFB2B-BC6D-4310-9FBD-FB2BEC80AB34}</Project>
       <Name>artm.MvxPlugins.Fetcher.RealmDAL</Name>
