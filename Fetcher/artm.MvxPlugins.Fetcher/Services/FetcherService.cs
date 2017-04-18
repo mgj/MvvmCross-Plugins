@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Fetcher.Services
 {
-    public abstract class FetcherServiceBase : IFetcherService
+    public class FetcherService : IFetcherService
     {
         public readonly TimeSpan CACHE_FRESHNESS_THRESHOLD = TimeSpan.FromDays(1); // 1 day
 
         private readonly IFetcherRepositoryService _repository;
         private readonly IFetcherWebService _webService;
 
-        public FetcherServiceBase(IFetcherRepositoryService repositoryService, IFetcherWebService webService)
+        public FetcherService(IFetcherRepositoryService repositoryService, IFetcherWebService webService)
         {
             _repository = repositoryService;
             _webService = webService;

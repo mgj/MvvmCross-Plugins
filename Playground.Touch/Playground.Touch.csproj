@@ -175,6 +175,10 @@
       <Project>{a7af8502-fc0b-441b-a3c8-4eecd9134e78}</Project>
       <Name>artm.MvxPlugins.Dialog</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fetcher\artm.MvxPlugins.Fetcher.RealmDAL\artm.MvxPlugins.Fetcher.RealmDAL.csproj">
+      <Project>{87affb2b-bc6d-4310-9fbd-fb2bec80ab34}</Project>
+      <Name>artm.MvxPlugins.Fetcher.RealmDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\artm.MvxPlugins.Fetcher.Touch.csproj">
       <Project>{051F20C6-1DC8-4034-8CA0-90CB4E19C76A}</Project>
       <Name>artm.MvxPlugins.Fetcher.Touch</Name>

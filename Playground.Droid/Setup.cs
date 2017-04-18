@@ -35,6 +35,8 @@ namespace Playground.Droid
 
             Mvx.LazyConstructAndRegisterSingleton<ILoggerService>(() => new LoggerService(ApplicationContext));
             Mvx.ConstructAndRegisterSingleton<IDialogService, DialogService>();
+            Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryService, FetcherRepositoryService>();
+
         }
     }
 }

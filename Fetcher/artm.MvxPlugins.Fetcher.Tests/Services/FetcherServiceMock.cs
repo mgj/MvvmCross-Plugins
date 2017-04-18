@@ -5,7 +5,7 @@ using artm.MvxPlugins.Fetcher.Models;
 
 namespace artm.MvxPlugins.Fetcher.Tests.Services.Calculator
 {
-    public class FetcherServiceMock : FetcherServiceBase
+    public class FetcherServiceMock : FetcherService
     {
         public FetcherServiceMock(IFetcherRepositoryService repository, IFetcherWebService webService) 
             : base(repository, webService)
