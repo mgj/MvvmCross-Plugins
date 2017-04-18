@@ -18,25 +18,25 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services
         [Ignore("Realm needs windows support to run tests on windows")]
         public void GetEntryForUrl_NoEntryExists_NullIsReturned()
         {
-            var url = new Uri("https://www.google.com");
-            var sut = new FetcherRepositoryService();
+            //var url = new Uri("https://www.google.com");
+            //var sut = new FetcherRepositoryService();
 
-            var entry = sut.GetEntryForUrl(url);
+            //var entry = sut.GetEntryForUrl(url);
 
-            Assert.IsNull(entry);
+            //Assert.IsNull(entry);
         }
 
         [Test]
         [Ignore("Realm needs windows support to run tests on windows")]
         public void GetEntryForUrl_EntryExists_EntryReturned()
         {
-            var url = new Uri("https://www.google.com");
-            var sut = new FetcherRepositoryService();
+            //var url = new Uri("https://www.google.com");
+            //var sut = new FetcherRepositoryService();
 
-            sut.InsertUrl(url, "myResponse");
-            var entry = sut.GetEntryForUrl(url);
+            //sut.InsertUrl(url, "myResponse");
+            //var entry = sut.GetEntryForUrl(url);
 
-            Assert.IsNotNull(entry);
+            //Assert.IsNotNull(entry);
         }
     }
 }

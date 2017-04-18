@@ -1,4 +1,5 @@
 ﻿using artm.MvxPlugins.Fetcher.Entities;
+using artm.MvxPlugins.Fetcher.Models;
 using artm.MvxPlugins.Fetcher.Services;
 using artm.MvxPlugins.Fetcher.Tests.Common;
 using artm.MvxPlugins.Fetcher.Tests.Services.Calculator;
@@ -37,6 +38,13 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
             return repository;
         }
 
+        private static Mock<IFetcherWebService> FetcherWebServiceFactory()
+        {
+            var web = new Mock<IFetcherWebService>();
+            web.Setup(x => x.DoPlatformWebRequest(It.IsAny<Uri>())).Returns(() => new FetcherWebResponse() { IsSuccess = true, Body = "myBody" });
+            return web;
+        }
+
         [Test]
         public async Task Fetch_Sunshine_TriesToFetchFromWeb()
         {
@@ -52,8 +60,9 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
         [Test]
         public async Task Fetch_NoEntries_RepositoryInsertUrlIsCalled()
         {
-            var repository = FetcherRepositoryServiceMockFactory();
-            var sut = FetcherServiceMockFactory(repository.Object);
+            var repository = new Mock<IFetcherRepositoryService>();
+            var web = FetcherWebServiceFactory();
+            var sut = new FetcherServiceMock(repository.Object, web.Object);
 
             var response = await sut.Fetch(new Uri(URL));
 
