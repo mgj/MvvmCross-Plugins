@@ -1,6 +1,5 @@
 ﻿using artm.MvxPlugins.Fetcher.Services;
 using Square.OkHttp;
-using artm.MvxPlugins.Logger.Services;
 using System;
 using System.Threading.Tasks;
 using System.Net.Http;
@@ -12,7 +11,7 @@ namespace artm.MvxPlugins.Fetcher.Droid.Services
     {
         private OkHttpClient _client;
 
-        public FetcherService(ILoggerService logService, IFetcherRepositoryService repositoryService) : base(logService, repositoryService)
+        public FetcherService(IFetcherRepositoryService repositoryService) : base(repositoryService)
         {
         }
 

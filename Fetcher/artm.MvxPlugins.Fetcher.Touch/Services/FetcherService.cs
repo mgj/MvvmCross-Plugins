@@ -2,7 +2,6 @@
 using System;
 using artm.MvxPlugins.Fetcher.Models;
 using artm.MvxPlugins.Fetcher.Services;
-using artm.MvxPlugins.Logger.Services;
 using Foundation;
 using System.Threading.Tasks;
 
@@ -10,7 +9,7 @@ namespace artm.MvxPlugins.Fetcher.Touch.Services
 {
     public class FetcherService : FetcherServiceBase
     {
-        public FetcherService(ILoggerService logService, IFetcherRepositoryService repositoryService) : base(logService, repositoryService)
+        public FetcherService(IFetcherRepositoryService repositoryService) : base(repositoryService)
         {
         }
 

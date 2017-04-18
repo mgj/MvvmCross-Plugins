@@ -64,10 +64,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Logger\artm.MvxPlugins.Logger\artm.MvxPlugins.Logger.csproj">
-      <Project>{4A49A40B-3FC0-4D42-B04A-9D521C5CF860}</Project>
-      <Name>artm.MvxPlugins.Logger</Name>
-    </ProjectReference>
     <ProjectReference Include="..\artm.MvxPlugins.Fetcher\artm.MvxPlugins.Fetcher.csproj">
       <Project>{055bb318-a491-4ca5-8589-2f86cdf491ae}</Project>
       <Name>artm.MvxPlugins.Fetcher</Name>

@@ -47,10 +47,6 @@
     <Compile Include="Services\IFetcherService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="artm.MvxPlugins.Logger, Version=2.0.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\artm.MvxPlugins.Logger.2.0.12\lib\portable-net45+win+wpa81\artm.MvxPlugins.Logger.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="DotNetCross.Memory.Unsafe, Version=0.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\DotNetCross.Memory.Unsafe.0.2.2\lib\portable-net40+win8+sl4+wp7\DotNetCross.Memory.Unsafe.dll</HintPath>
       <Private>True</Private>

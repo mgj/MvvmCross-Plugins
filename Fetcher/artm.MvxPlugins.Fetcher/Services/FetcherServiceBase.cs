@@ -1,6 +1,5 @@
 ﻿using artm.MvxPlugins.Fetcher.Entities;
 using artm.MvxPlugins.Fetcher.Models;
-using artm.MvxPlugins.Logger.Services;
 using Polly;
 using System;
 using System.Linq;
@@ -13,12 +12,10 @@ namespace artm.MvxPlugins.Fetcher.Services
     {
         public readonly TimeSpan CACHE_FRESHNESS_THRESHOLD = TimeSpan.FromDays(1); // 1 day
 
-        private readonly ILoggerService _log;
         private readonly IFetcherRepositoryService _repository;
 
-        public FetcherServiceBase(ILoggerService logService, IFetcherRepositoryService repositoryService)
+        public FetcherServiceBase(IFetcherRepositoryService repositoryService)
         {
-            _log = logService;
             _repository = repositoryService;
         }
 
@@ -29,18 +26,18 @@ namespace artm.MvxPlugins.Fetcher.Services
 
         public async Task<IUrlCacheInfo> Fetch(Uri uri, TimeSpan freshnessTreshold)
         {
-            _log.Log("Fetching for uri: " + uri.OriginalString);
+            System.Diagnostics.Debug.WriteLine("Fetching for uri: " + uri.OriginalString);
 
             var cacheHit = _repository.GetEntryForUrl(uri);
             if (cacheHit != null)
             {
                 // Hit
-                _log.Log("Cache hit");
+                System.Diagnostics.Debug.WriteLine("Cache hit");
                 _repository.UpdateLastAccessed(cacheHit);
                 if (ShouldInvalidate(cacheHit, freshnessTreshold))
                 {
                     // Cache needs refreshing
-                    _log.Log("Refreshing cache");
+                    System.Diagnostics.Debug.WriteLine("Refreshing cache");
                     var response = await FetchFromWeb(uri);
                     _repository.UpdateUrl(uri, cacheHit, response);
                 }

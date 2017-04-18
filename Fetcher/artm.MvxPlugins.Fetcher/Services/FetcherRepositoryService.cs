@@ -5,18 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using artm.MvxPlugins.Fetcher.Entities;
 using Realms;
-using artm.MvxPlugins.Logger.Services;
 
 namespace artm.MvxPlugins.Fetcher.Services
 {
     public class FetcherRepositoryService : IFetcherRepositoryService
     {
         private readonly Realm _realm;
-        private readonly ILoggerService _log;
 
-        public FetcherRepositoryService(ILoggerService logService)
+        public FetcherRepositoryService()
         {
-            _log = logService;
             _realm = Realm.GetInstance();
         }
 
@@ -73,8 +70,6 @@ namespace artm.MvxPlugins.Fetcher.Services
                 hero.LastUpdated = timestamp;
                 _realm.Add(hero);
             });
-
-            _log.Log("New url cached: " + uri.OriginalString);
 
             return hero;
         }
