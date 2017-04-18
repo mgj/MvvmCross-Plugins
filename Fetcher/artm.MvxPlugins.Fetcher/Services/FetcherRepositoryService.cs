@@ -19,8 +19,20 @@ namespace artm.MvxPlugins.Fetcher.Services
 
         public IUrlCacheInfo GetEntryForUrl(Uri url)
         {
+            UrlCacheInfo data;
+
             var needle = url.OriginalString;
-            return _realm.All<UrlCacheInfo>().Where(x => x.Url == needle).FirstOrDefault();
+            try
+            {
+                data = _realm.All<UrlCacheInfo>().Where(x => x.Url == needle).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+            return data;
         }
 
         public void UpdateLastAccessed(IUrlCacheInfo hero)

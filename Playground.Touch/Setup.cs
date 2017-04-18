@@ -38,8 +38,8 @@ namespace Playground.Touch
             base.InitializeLastChance();
 
             Mvx.ConstructAndRegisterSingleton<IDialogService, DialogService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryService, FetcherRepositoryService>();
+            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
 
         }
     }
