@@ -102,7 +102,7 @@
     <Compile Include="Plugin.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\FetcherService.cs" />
+    <Compile Include="Services\FetcherWebService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -112,6 +112,10 @@
     <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\artm.MvxPlugins.Fetcher.RealmDAL\artm.MvxPlugins.Fetcher.RealmDAL.csproj">
+      <Project>{87affb2b-bc6d-4310-9fbd-fb2bec80ab34}</Project>
+      <Name>artm.MvxPlugins.Fetcher.RealmDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\artm.MvxPlugins.Fetcher\artm.MvxPlugins.Fetcher.csproj">
       <Project>{055bb318-a491-4ca5-8589-2f86cdf491ae}</Project>
       <Name>artm.MvxPlugins.Fetcher</Name>
