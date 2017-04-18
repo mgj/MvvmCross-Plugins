@@ -47,6 +47,10 @@
       <Project>{A7AF8502-FC0B-441B-A3C8-4EECD9134E78}</Project>
       <Name>artm.MvxPlugins.Dialog</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fetcher\artm.MvxPlugins.Fetcher\artm.MvxPlugins.Fetcher.csproj">
+      <Project>{055BB318-A491-4CA5-8589-2F86CDF491AE}</Project>
+      <Name>artm.MvxPlugins.Fetcher</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">

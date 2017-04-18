@@ -11,7 +11,6 @@
     <group targetFramework ="net">
       <dependency id="MvvmCross.Platform" version="4.4.0" />
       <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Realm" version="0.77.2"/>
         <dependency id="Polly-Signed" version="4.3.0"/>
     </group>
     <group targetFramework ="MonoAndroid">
@@ -30,7 +29,6 @@
       <dependency id="Newtonsoft.Json" version="9.0.1" />
       <dependency id="MvvmCross.Platform" version="4.4.0" />
         <dependency id="Polly-Signed" version="4.3.0"/>
-        <dependency id="Realm" version="1.2.0"/>
     </group>
     <group targetFramework ="uap">
       <dependency id="Newtonsoft.Json" version="9.0.1" />
@@ -39,7 +37,6 @@
     <group targetFramework ="dotnet">
       <dependency id="Newtonsoft.Json" version="9.0.1" />
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-        <dependency id="Realm" version="1.2.0"/>
         <dependency id="Polly-Signed" version="4.3.0"/>
     </group>
     </dependencies>
