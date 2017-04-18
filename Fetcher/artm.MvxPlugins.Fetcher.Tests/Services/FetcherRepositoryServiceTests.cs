@@ -1,7 +1,6 @@
 ﻿using artm.MvxPlugins.Fetcher.Services;
 using artm.MvxPlugins.Fetcher.Tests.Common;
 using artm.MvxPlugins.Fetcher.Tests.Services.Calculator;
-using artm.MvxPlugins.Logger.Services;
 using Moq;
 using NUnit.Framework;
 using System;

@@ -13,10 +13,12 @@ namespace artm.MvxPlugins.Fetcher.Services
         public readonly TimeSpan CACHE_FRESHNESS_THRESHOLD = TimeSpan.FromDays(1); // 1 day
 
         private readonly IFetcherRepositoryService _repository;
+        private readonly IFetcherWebService _webService;
 
-        public FetcherServiceBase(IFetcherRepositoryService repositoryService)
+        public FetcherServiceBase(IFetcherRepositoryService repositoryService, IFetcherWebService webService)
         {
             _repository = repositoryService;
+            _webService = webService;
         }
 
         public async Task<IUrlCacheInfo> Fetch(Uri url)
@@ -71,9 +73,7 @@ namespace artm.MvxPlugins.Fetcher.Services
 
         private async Task<FetcherWebResponse> DoWebRequest(Uri uri)
         {
-            return await Task.FromResult(DoPlatformWebRequest(uri));
+            return await Task.FromResult(_webService.DoPlatformWebRequest(uri));
         }
-
-        protected abstract FetcherWebResponse DoPlatformWebRequest(Uri uri);
     }
 }

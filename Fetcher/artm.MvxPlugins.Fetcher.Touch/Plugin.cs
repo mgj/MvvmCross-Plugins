@@ -16,7 +16,7 @@ namespace artm.MvxPlugins.Fetcher.Touch
     {
         public void Load()
         {
-            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
+            Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
         }
     }
 }

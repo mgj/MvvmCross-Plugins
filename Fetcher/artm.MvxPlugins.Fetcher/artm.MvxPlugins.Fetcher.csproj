@@ -45,6 +45,7 @@
     <Compile Include="Services\FetcherServiceBase.cs" />
     <Compile Include="Services\IFetcherRepositoryService.cs" />
     <Compile Include="Services\IFetcherService.cs" />
+    <Compile Include="Services\IFetcherWebService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DotNetCross.Memory.Unsafe, Version=0.2.2.0, Culture=neutral, processorArchitecture=MSIL">

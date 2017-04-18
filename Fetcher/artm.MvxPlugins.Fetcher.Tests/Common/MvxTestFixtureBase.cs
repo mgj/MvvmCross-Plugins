@@ -1,7 +1,6 @@
 ﻿
 using artm.MvxPlugins.Fetcher.Services;
 using artm.MvxPlugins.Fetcher.Tests.Services.Calculator;
-using artm.MvxPlugins.Logger.Services;
 using Moq;
 using MvvmCross.Core.Platform;
 using MvvmCross.Core.Views;
@@ -28,7 +27,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Common
             Ioc.RegisterSingleton<IMvxStringToTypeParser>(new MvxStringToTypeParser());
 
             // Register our own services
-            Ioc.RegisterSingleton<IFetcherService>(() => new FetcherServiceMock(Mock.Of<IFetcherRepositoryService>()));
+            Ioc.RegisterSingleton<IFetcherService>(() => new FetcherServiceMock(Mock.Of<IFetcherRepositoryService>(), Mock.Of<IFetcherWebService>()));
 
         }
     }

@@ -7,21 +7,17 @@ using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Fetcher.Touch.Services
 {
-    public class FetcherService : FetcherServiceBase
+    public class FetcherWebService : IFetcherWebService
     {
-        public FetcherService(IFetcherRepositoryService repositoryService) : base(repositoryService)
-        {
-        }
-
-        protected override FetcherWebResponse DoPlatformWebRequest(Uri uri)
+        public FetcherWebResponse DoPlatformWebRequest(Uri uri)
         {
             var request = new NSMutableUrlRequest(uri);
             var session = NSUrlSession.SharedSession;
             request.HttpMethod = "GET";
-            
+
             var tcs = new TaskCompletionSource<FetcherWebResponse>();
 
-            var task = session.CreateDataTask(request, 
+            var task = session.CreateDataTask(request,
                 (data, response, error) =>
                 {
                     var resp = response as NSHttpUrlResponse;

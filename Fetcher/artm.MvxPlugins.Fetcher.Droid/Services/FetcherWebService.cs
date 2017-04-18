@@ -7,13 +7,9 @@ using artm.MvxPlugins.Fetcher.Models;
 
 namespace artm.MvxPlugins.Fetcher.Droid.Services
 {
-    public class FetcherService : FetcherServiceBase
+    public class FetcherWebService : IFetcherWebService
     {
         private OkHttpClient _client;
-
-        public FetcherService(IFetcherRepositoryService repositoryService) : base(repositoryService)
-        {
-        }
 
         protected OkHttpClient Client
         {
@@ -24,7 +20,7 @@ namespace artm.MvxPlugins.Fetcher.Droid.Services
             }
         }
 
-        protected override FetcherWebResponse DoPlatformWebRequest(Uri uri)
+        public FetcherWebResponse DoPlatformWebRequest(Uri uri)
         {
             var request = new Request.Builder().Url(uri.OriginalString).Build();
             var response = Client.NewCall(request).Execute();
