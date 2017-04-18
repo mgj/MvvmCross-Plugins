@@ -29,13 +29,11 @@ namespace artm.MvxPlugins.Fetcher.Droid.Services
         {
             var request = new Request.Builder().Url(uri.OriginalString).Build();
             var response = Client.NewCall(request).Execute();
-            var result = new FetcherWebResponse()
+            return new FetcherWebResponse()
             {
                 IsSuccess = response.IsSuccessful,
                 Body = response.Body().String()
             };
-
-            return result;
         }
     }
 }
