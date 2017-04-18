@@ -1,5 +1,7 @@
 using artm.MvxPlugins.Dialog.Services;
 using artm.MvxPlugins.Dialog.Touch.Services;
+using artm.MvxPlugins.Fetcher.Services;
+using artm.MvxPlugins.Fetcher.Touch.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.iOS.Views.Presenters;
@@ -36,6 +38,9 @@ namespace Playground.Touch
             base.InitializeLastChance();
 
             Mvx.ConstructAndRegisterSingleton<IDialogService, DialogService>();
+            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
+            Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryService, FetcherRepositoryService>();
+
         }
     }
 }

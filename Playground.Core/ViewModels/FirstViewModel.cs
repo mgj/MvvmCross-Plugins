@@ -1,6 +1,7 @@
 using artm.MvxPlugins.Dialog.Models;
 using artm.MvxPlugins.Dialog.Services;
 using artm.MvxPlugins.Dialog.ViewModels;
+using artm.MvxPlugins.Fetcher.Services;
 using MvvmCross.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,15 @@ namespace Playground.Core.ViewModels
         private readonly DialogServiceMultiItem[] _allItems;
         private List<bool> _checkedItems = new List<bool>();
 
-        public FirstViewModel(IDialogService dialog)
+        public FirstViewModel(IFetcherService fetcher, IDialogService dialog)
         {
             _dialog = dialog;
+
+            Task.Run(async () =>
+            {
+                var data = await fetcher.Fetch(new Uri("https://services.coop.dk/restgrundsortiment/api/Vare/24444"));
+                var debug = 42;
+            });
 
             var items = new List<DialogServiceMultiItem>();
             items.Add(new DialogServiceMultiItem("a", "blabla"));
