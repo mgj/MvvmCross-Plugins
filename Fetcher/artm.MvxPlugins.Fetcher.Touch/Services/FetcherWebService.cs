@@ -11,11 +11,11 @@ namespace artm.MvxPlugins.Fetcher.Touch.Services
     {
         public FetcherWebResponse DoPlatformWebRequest(Uri uri)
         {
+            var tcs = new TaskCompletionSource<FetcherWebResponse>();
+
             var request = new NSMutableUrlRequest(uri);
             var session = NSUrlSession.SharedSession;
             request.HttpMethod = "GET";
-
-            var tcs = new TaskCompletionSource<FetcherWebResponse>();
 
             var task = session.CreateDataTask(request,
                 (data, response, error) =>
