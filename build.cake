@@ -69,7 +69,7 @@ Task("PackageAll")
 		Copyright = "Copyright (c) Mikkel Jensen",
 		RequireLicenseAcceptance = false,
 		Version = versionInfo.NuGetVersion,
-		Symbols = true,
+		Symbols = false,
 		NoPackageAnalysis = true,
 		OutputDirectory = outputDir,
 		Verbosity = NuGetVerbosity.Detailed,
