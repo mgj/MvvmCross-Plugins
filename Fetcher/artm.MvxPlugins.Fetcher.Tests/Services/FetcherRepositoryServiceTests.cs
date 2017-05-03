@@ -18,7 +18,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services
         public void GetEntryForUrl_NoEntryExists_NullIsReturned()
         {
             var url = new Uri("https://www.google.com");
-            var sut = FetcherRepositoryServiceFactory();
+            var sut = FetcherServiceFactory.FetcherRepositoryService();
 
             var entry = sut.GetEntryForUrl(url);
 
@@ -29,7 +29,7 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services
         public void GetEntryForUrl_EntryExists_EntryReturned()
         {
             var url = new Uri("https://www.google.com");
-            var sut = FetcherRepositoryServiceFactory();
+            var sut = FetcherServiceFactory.FetcherRepositoryService();
 
             sut.InsertUrl(url, "myResponse");
             var entry = sut.GetEntryForUrl(url);
@@ -37,18 +37,6 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services
             Assert.IsNotNull(entry);
         }
 
-        private static FetcherRepositoryService FetcherRepositoryServiceFactory()
-        {
-            return new FetcherRepositoryService(FetcherRepositoryStoragePathServiceFactory());
-        }
-
-        private static IFetcherRepositoryStoragePathService FetcherRepositoryStoragePathServiceFactory()
-        {
-            var result = new Mock<IFetcherRepositoryStoragePathService>();
-
-            result.Setup(x => x.GetPath(It.IsAny<string>())).Returns(() => ":memory:");
-
-            return result.Object;
-        }
+        
     }
 }

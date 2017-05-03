@@ -119,6 +119,21 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
             repository.Verify(x => x.UpdateUrl(It.IsAny<Uri>(), It.IsAny<IUrlCacheInfo>(), It.IsAny<string>()), Times.Never);
         }
 
+        [Test]
+        public async Task Preload_EmptyDatabase_PreloadedDataIsReturned()
+        {
+            var repository = FetcherServiceFactory.FetcherRepositoryService();
+            var sut = FetcherServiceMockFactory(repository);
+            const string response = "myPreloadResponse";
+
+            sut.Preload(new Uri(URL), response);
+
+            var hero = await sut.Fetch(new Uri(URL));
+
+            Assert.IsNotNull(hero);
+            Assert.IsTrue(hero.Response.Equals(response));
+        }
+
         #region Mock factories
         private static string FetcherResponseValidFactory()
         {

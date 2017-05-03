@@ -75,5 +75,17 @@ namespace artm.MvxPlugins.Fetcher.Services
         {
             return await Task.FromResult(_webService.DoPlatformWebRequest(uri));
         }
+
+        public void Preload(Uri url, string response)
+        {
+            // Ignore if already exists in db
+            var exists = _repository.GetEntryForUrl(url);
+            if (exists != null)
+            {
+                return;
+            }
+
+            _repository.InsertUrl(url, response);
+        }
     }
 }
