@@ -51,7 +51,7 @@ Task("GitLink")
 	GitLink(sln.GetDirectory(), new GitLinkSettings {
 		RepositoryUrl = "https://github.com/mgj/MvvmCross-plugins",
 		ArgumentCustomization = args => args.Append(
-			"-ignore Sample,sms.sample.core,sms.sample.droid,sms.sample.touch,settings.sample.core,settings.sample.droid,settings.sample.windowsphone,settings.sample.touch,settingssample.windowscommon.core,connectivitysample.core,connectivitysample.touch,settingssample.windowscommon.windows,settingssample.windowscommon.windowsphone,connectivitysample.store.windows,connectivitysample.store.windowsphone,playground.core,playground.droid,playground.touch")
+			"-ignore fetcher.tests,dialog.tests,playground.core,playground.droid,playground.touch")
 	});
 });
 
