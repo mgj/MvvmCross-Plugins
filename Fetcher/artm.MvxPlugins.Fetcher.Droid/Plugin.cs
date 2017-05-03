@@ -9,6 +9,7 @@ namespace artm.MvxPlugins.Fetcher.Droid
     {
         public void Load()
         {
+            Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryStoragePathService, FetcherRepositoryStoragePathService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryService, FetcherRepositoryService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
