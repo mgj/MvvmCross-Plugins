@@ -24,7 +24,7 @@ namespace artm.MvxPlugins.Fetcher.Touch.Services
                     tcs.SetResult(new FetcherWebResponse()
                     {
                         IsSuccess = error == null,
-                        Body = data.ToString()
+                        Body = data?.ToString()
                     });
                 });
 

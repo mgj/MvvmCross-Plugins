@@ -44,14 +44,15 @@ Task("Build")
 });
 
 Task("GitLink")
+	.WithCriteria(() => IsRunningOnWindows())
 	.IsDependentOn("Build")
 	.Does(() => {
 
-	if (IsRunningOnWindows()) //pdbstr.exe and costura are not xplat currently
-		GitLink(sln.GetDirectory(), new GitLinkSettings {
-			ArgumentCustomization = args => args.Append(
-				"-ignore Sample,sms.sample.core,sms.sample.droid,sms.sample.touch,settings.sample.core,settings.sample.droid,settings.sample.windowsphone,settings.sample.touch,settingssample.windowscommon.core,connectivitysample.core,connectivitysample.touch,settingssample.windowscommon.windows,settingssample.windowscommon.windowsphone,connectivitysample.store.windows,connectivitysample.store.windowsphone,playground.core,playground.droid,playground.touch")
-		});
+	GitLink(sln.GetDirectory(), new GitLinkSettings {
+		RepositoryUrl = "https://github.com/mgj/MvvmCross-plugins",
+		ArgumentCustomization = args => args.Append(
+			"-ignore Sample,sms.sample.core,sms.sample.droid,sms.sample.touch,settings.sample.core,settings.sample.droid,settings.sample.windowsphone,settings.sample.touch,settingssample.windowscommon.core,connectivitysample.core,connectivitysample.touch,settingssample.windowscommon.windows,settingssample.windowscommon.windowsphone,connectivitysample.store.windows,connectivitysample.store.windowsphone,playground.core,playground.droid,playground.touch")
+	});
 });
 
 Task("PackageAll")
