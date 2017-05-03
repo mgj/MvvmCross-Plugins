@@ -112,6 +112,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FetcherRepositoryServiceMock.cs" />
     <Compile Include="Services\FetcherRepositoryServiceTests.cs" />
+    <Compile Include="Services\FetcherServiceFactory.cs" />
     <Compile Include="Services\FetcherServiceMock.cs" />
     <Compile Include="Services\FetcherServiceTests.cs" />
     <Compile Include="Services\UrlCacheInfoMock.cs" />

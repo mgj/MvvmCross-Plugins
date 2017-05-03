@@ -8,5 +8,6 @@ namespace artm.MvxPlugins.Fetcher.Services
     {
         Task<IUrlCacheInfo> Fetch(Uri url);
         Task<IUrlCacheInfo> Fetch(Uri url, TimeSpan freshnessTreshold);
+        void Preload(Uri url, string response);
     }
 }
