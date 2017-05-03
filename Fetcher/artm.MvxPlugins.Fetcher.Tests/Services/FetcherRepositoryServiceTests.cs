@@ -15,28 +15,40 @@ namespace artm.MvxPlugins.Fetcher.Tests.Services
     public class FetcherRepositoryServiceTests
     {
         [Test]
-        [Ignore("Realm needs windows support to run tests on windows")]
         public void GetEntryForUrl_NoEntryExists_NullIsReturned()
         {
-            //var url = new Uri("https://www.google.com");
-            //var sut = new FetcherRepositoryService();
+            var url = new Uri("https://www.google.com");
+            var sut = FetcherRepositoryServiceFactory();
 
-            //var entry = sut.GetEntryForUrl(url);
+            var entry = sut.GetEntryForUrl(url);
 
-            //Assert.IsNull(entry);
+            Assert.IsNull(entry);
         }
 
         [Test]
-        [Ignore("Realm needs windows support to run tests on windows")]
         public void GetEntryForUrl_EntryExists_EntryReturned()
         {
-            //var url = new Uri("https://www.google.com");
-            //var sut = new FetcherRepositoryService();
+            var url = new Uri("https://www.google.com");
+            var sut = FetcherRepositoryServiceFactory();
 
-            //sut.InsertUrl(url, "myResponse");
-            //var entry = sut.GetEntryForUrl(url);
+            sut.InsertUrl(url, "myResponse");
+            var entry = sut.GetEntryForUrl(url);
 
-            //Assert.IsNotNull(entry);
+            Assert.IsNotNull(entry);
+        }
+
+        private static FetcherRepositoryService FetcherRepositoryServiceFactory()
+        {
+            return new FetcherRepositoryService(FetcherRepositoryStoragePathServiceFactory());
+        }
+
+        private static IFetcherRepositoryStoragePathService FetcherRepositoryStoragePathServiceFactory()
+        {
+            var result = new Mock<IFetcherRepositoryStoragePathService>();
+
+            result.Setup(x => x.GetPath(It.IsAny<string>())).Returns(() => ":memory:");
+
+            return result.Object;
         }
     }
 }

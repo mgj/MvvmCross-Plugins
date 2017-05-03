@@ -102,10 +102,6 @@
       <HintPath>..\packages\Cirrious.FluentLayout.2.5.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DotNetCross.Memory.Unsafe, Version=0.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetCross.Memory.Unsafe.0.2.2\lib\dotnet\DotNetCross.Memory.Unsafe.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Binding.4.4.0\lib\Xamarin.iOS10\MvvmCross.Binding.dll</HintPath>
       <Private>True</Private>
@@ -138,18 +134,6 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Realm, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Realm.Database.1.2.0\lib\netstandard1.4\Realm.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Realm.DataBinding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Realm.DataBinding.1.0.0\lib\Xamarin.iOS10\Realm.DataBinding.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Realm.Sync, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Realm.1.2.0\lib\netstandard1.4\Realm.Sync.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.2.1.1\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
       <Private>True</Private>
@@ -162,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
-    <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dialog\artm.MvxPlugins.Dialog.Touch\artm.MvxPlugins.Dialog.Touch.csproj">
@@ -174,10 +157,6 @@
     <ProjectReference Include="..\Dialog\artm.MvxPlugins.Dialog\artm.MvxPlugins.Dialog.csproj">
       <Project>{a7af8502-fc0b-441b-a3c8-4eecd9134e78}</Project>
       <Name>artm.MvxPlugins.Dialog</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Fetcher\artm.MvxPlugins.Fetcher.RealmDAL\artm.MvxPlugins.Fetcher.RealmDAL.csproj">
-      <Project>{87affb2b-bc6d-4310-9fbd-fb2bec80ab34}</Project>
-      <Name>artm.MvxPlugins.Fetcher.RealmDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\artm.MvxPlugins.Fetcher.Touch.csproj">
       <Project>{051F20C6-1DC8-4034-8CA0-90CB4E19C76A}</Project>
@@ -205,15 +184,4 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.4\build\dotnet\Fody.targets'))" />
-    <Error Condition="!Exists('..\packages\Realm.Database.1.2.0\build\Realm.Database.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Realm.Database.1.2.0\build\Realm.Database.targets'))" />
-    <Error Condition="!Exists('..\packages\Realm.1.2.0\build\Realm.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Realm.1.2.0\build\Realm.targets'))" />
-  </Target>
-  <Import Project="..\packages\Realm.Database.1.2.0\build\Realm.Database.targets" Condition="Exists('..\packages\Realm.Database.1.2.0\build\Realm.Database.targets')" />
-  <Import Project="..\packages\Realm.1.2.0\build\Realm.targets" Condition="Exists('..\packages\Realm.1.2.0\build\Realm.targets')" />
 </Project>
