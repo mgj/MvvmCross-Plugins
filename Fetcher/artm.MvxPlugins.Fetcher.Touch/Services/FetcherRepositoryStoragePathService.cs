@@ -9,7 +9,7 @@ using artm.MvxPlugins.Fetcher.Services;
 
 namespace artm.MvxPlugins.Fetcher.Touch.Services
 {
-    internal class FetcherRepositoryStoragePathService : IFetcherRepositoryStoragePathService
+    public class FetcherRepositoryStoragePathService : IFetcherRepositoryStoragePathService
     {
         public string GetPath(string filename = "fetcher.db3")
         {
