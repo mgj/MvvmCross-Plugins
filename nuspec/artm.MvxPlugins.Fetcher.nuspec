@@ -11,21 +11,21 @@
     <group targetFramework ="net">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
       <dependency id="Newtonsoft.Json" version="9.0.1" />
-      <dependency id="Polly-Signed" version="4.3.0"/>
+      <dependency id="Polly-Signed" version="5.1.0"/>
       <dependency id="sqlite-net-pcl" version="1.3.1"/>
       <dependency id="artm.fetcher" version="2.2.13"/>
     </group>
     <group targetFramework ="portable-net45+win8+wpa81+wp8">
       <dependency id="Newtonsoft.Json" version="9.0.1" />
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="Polly-Signed" version="4.3.0"/>
+      <dependency id="Polly-Signed" version="5.1.0"/>
       <dependency id="sqlite-net-pcl" version="1.3.1"/>
       <dependency id="artm.fetcher" version="2.2.13"/>
     </group>
     <group targetFramework ="dotnet">
       <dependency id="Newtonsoft.Json" version="9.0.1" />
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="Polly-Signed" version="4.3.0"/>
+      <dependency id="Polly-Signed" version="5.1.0"/>
       <dependency id="artm.fetcher" version="2.2.13"/>
       <dependency id="sqlite-net-pcl" version="1.3.1"/>
     </group>
@@ -54,10 +54,12 @@
     <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\portable-net45+win+wpa81" />
 
     <!-- DROID -->
-    <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Droid\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\MonoAndroid10" />
+    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\portable-net45+win+wpa81" />
+    <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Droid\bin\Release\artm.MvxPlugins.Fetcher.Droid.*" target="lib\MonoAndroid10" />
     <file src="BootstrapContent\FetcherPluginBootstrapDroid.cs.pp" target="content\MonoAndroid10\Bootstrap\FetcherPluginBootstrap.cs.pp" />
 
     <!-- TOUCH -->
+    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\portable-net45+win+wpa81" />
     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\Xamarin.iOS10" />
     <file src="BootstrapContent\FetcherPluginBootstrapTouch.cs.pp" target="content\Xamarin.iOS10\Bootstrap\FetcherPluginBootstrap.cs.pp" />
 
