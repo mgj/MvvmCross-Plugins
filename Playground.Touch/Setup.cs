@@ -39,11 +39,11 @@ namespace Playground.Touch
 
             Mvx.ConstructAndRegisterSingleton<IDialogService, DialogService>();
 
-            IFetcherRepositoryStoragePathService path = new FetcherRepositoryStoragePathService();
-            IFetcherRepositoryService repository = new FetcherRepositoryService(path);
-            IFetcherWebService web = new FetcherWebService();
+            //IFetcherRepositoryStoragePathService path = new FetcherRepositoryStoragePathService();
+            //IFetcherRepositoryService repository = new FetcherRepositoryService(path);
+            //IFetcherWebService web = new FetcherWebService();
 
-            Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(web, repository));
+            //Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(web, repository));
 
         }
     }
