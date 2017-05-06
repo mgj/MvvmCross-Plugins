@@ -9,6 +9,11 @@ MvxPlugins
 | Logger         | [![NuGet](https://img.shields.io/nuget/v/artm.MvxPlugins.Logger.svg)](https://www.nuget.org/packages/artm.MvxPlugins.Logger/)               |
 | Dialog         | [![NuGet](https://img.shields.io/nuget/v/artm.MvxPlugins.Dialog.svg)](https://www.nuget.org/packages/artm.MvxPlugins.Dialog/)               |
 
+Fetcher
+=======
+The fetcher plugin is a small wrapper around [https://github.com/mgj/fetcher](https://github.com/mgj/fetcher)
+
+
 License
 =======
 
