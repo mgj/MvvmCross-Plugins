@@ -54,12 +54,12 @@
     <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\portable-net45+win+wpa81" />
 
     <!-- DROID -->
-    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\portable-net45+win+wpa81" />
+    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\MonoAndroid10" />
     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Droid\bin\Release\artm.MvxPlugins.Fetcher.Droid.*" target="lib\MonoAndroid10" />
     <file src="BootstrapContent\FetcherPluginBootstrapDroid.cs.pp" target="content\MonoAndroid10\Bootstrap\FetcherPluginBootstrap.cs.pp" />
 
     <!-- TOUCH -->
-    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\portable-net45+win+wpa81" />
+    <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\Xamarin.iOS10" />
     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.*" target="lib\Xamarin.iOS10" />
     <file src="BootstrapContent\FetcherPluginBootstrapTouch.cs.pp" target="content\Xamarin.iOS10\Bootstrap\FetcherPluginBootstrap.cs.pp" />
 
