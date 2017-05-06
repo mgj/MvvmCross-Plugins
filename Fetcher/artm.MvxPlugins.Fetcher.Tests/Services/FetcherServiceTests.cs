@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace artm.MvxPlugins.Fetcher.Tests.Services.DreamsFetcher
 {
     [TestFixture]
-    public class DreamsFetcherServiceTests 
+    public class FetcherServiceTests 
     {
         private const string URL = "https://jsonplaceholder.typicode.com/users";
 
