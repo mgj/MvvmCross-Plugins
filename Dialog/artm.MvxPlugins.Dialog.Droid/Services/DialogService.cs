@@ -9,8 +9,6 @@ using MvvmCross.Platform;
 using MvvmCross.Platform.Droid.Platform;
 using System.Threading.Tasks;
 using artm.MvxPlugins.Logger.Services;
-using MvvmCross.Droid.Views;
-using artm.MvxPlugins.Dialog.ViewModels;
 using artm.MvxPlugins.Dialog.Models;
 
 namespace artm.MvxPlugins.Dialog.Droid.Services

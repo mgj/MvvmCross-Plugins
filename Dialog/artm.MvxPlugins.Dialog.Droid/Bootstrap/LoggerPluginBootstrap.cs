@@ -1,4 +1,3 @@
-using MvvmCross.Platform;
 using MvvmCross.Platform.Plugins;
 
 namespace artm.MvxPlugins.Dialog.Droid.Bootstrap

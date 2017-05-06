@@ -1,7 +1,4 @@
 ﻿using MvvmCross.Platform.Plugins;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Playground.Touch.Bootstrap
 {
