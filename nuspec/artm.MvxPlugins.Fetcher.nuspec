@@ -64,15 +64,15 @@
      <!--Xamarin.iOS-->
      <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.dll" target="lib\MonoTouch10\artm.MvxPlugins.Fetcher.dll" />
      <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.pdb" target="lib\MonoTouch10\artm.MvxPlugins.Fetcher.pdb" />
-     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.Touch.dll" target="lib\MonoTouch10\artm.MvxPlugins.Fetcher.dll" />
-     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.Touch.pdb" target="lib\MonoTouch10\artm.MvxPlugins.Fetcher.pdb" />
+     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.Touch.dll" target="lib\MonoTouch10\artm.MvxPlugins.Fetcher.Touch.dll" />
+     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.Touch.pdb" target="lib\MonoTouch10\artm.MvxPlugins.Fetcher.Touch.pdb" />
      <file src="BootstrapContent\FetcherPluginBootstrapTouch.cs.pp" target="content\MonoTouch10\Bootstrap\FetcherPluginBootstrap.cs.pp" />
  
      <!--Xamarin.iOS Unified-->
      <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.dll" target="lib\Xamarin.iOS10\artm.MvxPlugins.Fetcher.dll" />
      <file src="..\Fetcher\artm.MvxPlugins.Fetcher\bin\Release\artm.MvxPlugins.Fetcher.pdb" target="lib\Xamarin.iOS10\artm.MvxPlugins.Fetcher.pdb" />
-     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.Touch.dll" target="lib\Xamarin.iOS10\artm.MvxPlugins.Fetcher.dll" />
-     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.Touch.pdb" target="lib\Xamarin.iOS10\artm.MvxPlugins.Fetcher.pdb" />
+     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.Touch.dll" target="lib\Xamarin.iOS10\artm.MvxPlugins.Fetcher.Touch.dll" />
+     <file src="..\Fetcher\artm.MvxPlugins.Fetcher.Touch\bin\Release\artm.MvxPlugins.Fetcher.Touch.pdb" target="lib\Xamarin.iOS10\artm.MvxPlugins.Fetcher.Touch.pdb" />
      <file src="BootstrapContent\FetcherPluginBootstrapTouch.cs.pp" target="content\Xamarin.iOS10\Bootstrap\FetcherPluginBootstrap.cs.pp" />
    
   </files>
