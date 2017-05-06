@@ -26,6 +26,8 @@ namespace Playground.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::artm.Fetcher.Droid.Resource.String.ApplicationName = global::Playground.Droid.Resource.String.ApplicationName;
+			global::artm.Fetcher.Droid.Resource.String.Hello = global::Playground.Droid.Resource.String.Hello;
 			global::artm.MvxPlugins.Fetcher.Droid.Resource.String.ApplicationName = global::Playground.Droid.Resource.String.ApplicationName;
 			global::artm.MvxPlugins.Fetcher.Droid.Resource.String.Hello = global::Playground.Droid.Resource.String.Hello;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxBind = global::Playground.Droid.Resource.Attribute.MvxBind;

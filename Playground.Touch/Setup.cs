@@ -1,7 +1,7 @@
+using artm.Fetcher.Core.Services;
+using artm.Fetcher.Touch.Services;
 using artm.MvxPlugins.Dialog.Services;
 using artm.MvxPlugins.Dialog.Touch.Services;
-using artm.MvxPlugins.Fetcher.Services;
-using artm.MvxPlugins.Fetcher.Touch.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.iOS.Views.Presenters;
@@ -38,9 +38,12 @@ namespace Playground.Touch
             base.InitializeLastChance();
 
             Mvx.ConstructAndRegisterSingleton<IDialogService, DialogService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryService, FetcherRepositoryService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
+
+            IFetcherRepositoryStoragePathService path = new FetcherRepositoryStoragePathService();
+            IFetcherRepositoryService repository = new FetcherRepositoryService(path);
+            IFetcherWebService web = new FetcherWebService();
+
+            Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(web, repository));
 
         }
     }
