@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="artm.Fetcher.Core, Version=2.2.16.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\artm.fetcher.2.2.16\lib\portable-net45+win+wpa81\artm.Fetcher.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
