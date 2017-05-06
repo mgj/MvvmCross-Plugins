@@ -11,7 +11,7 @@ MvxPlugins
 
 Fetcher
 =======
-The fetcher plugin is a small wrapper around [https://github.com/mgj/fetcher](https://github.com/mgj/fetcher)
+The fetcher plugin is a small wrapper around [https://github.com/mgj/fetcher](https://github.com/mgj/fetcher) that allows you to inject the IFetcherService interface in your MvvmCross application
 
 
 License
