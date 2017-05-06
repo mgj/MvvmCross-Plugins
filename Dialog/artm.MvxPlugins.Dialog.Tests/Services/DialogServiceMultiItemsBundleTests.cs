@@ -27,11 +27,13 @@ namespace artm.MvxPlugins.Dialog.Tests.Services
         {
             var sut = Factory();
 
-            var myItems = new List<DialogServiceMultiItem>();
-            myItems.Add(new DialogServiceMultiItem("test", "blabla blabla"));
-            myItems.Add(new DialogServiceMultiItem("test", "blabla blabla"));
-            myItems.Add(new DialogServiceMultiItem("test", "blabla blabla"));
-            myItems.Add(new DialogServiceMultiItem("test", "blabla blabla"));
+            var myItems = new List<DialogServiceMultiItem>
+            {
+                new DialogServiceMultiItem("test", "blabla blabla"),
+                new DialogServiceMultiItem("test", "blabla blabla"),
+                new DialogServiceMultiItem("test", "blabla blabla"),
+                new DialogServiceMultiItem("test", "blabla blabla")
+            };
             var sut2 = Factory(myItems: myItems.ToArray());
 
             Assert.IsFalse(sut.SameValuesAs(sut2));

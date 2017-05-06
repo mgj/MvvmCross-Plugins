@@ -10,8 +10,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using artm.MvxPlugins.Dialog.ViewModels;
 using artm.MvxPlugins.Dialog.Droid.Services;
-using artm.MvxPlugins.Fetcher.Services;
-using artm.MvxPlugins.Fetcher.Droid.Services;
 
 namespace Playground.Droid
 {
@@ -37,9 +35,6 @@ namespace Playground.Droid
 
             Mvx.LazyConstructAndRegisterSingleton<ILoggerService>(() => new LoggerService(ApplicationContext));
             Mvx.ConstructAndRegisterSingleton<IDialogService, DialogService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryService, FetcherRepositoryService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
 
 
 

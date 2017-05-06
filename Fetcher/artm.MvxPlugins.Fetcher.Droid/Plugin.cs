@@ -1,7 +1,7 @@
 ﻿using MvvmCross.Platform.Plugins;
 using MvvmCross.Platform;
-using artm.MvxPlugins.Fetcher.Services;
-using artm.MvxPlugins.Fetcher.Droid.Services;
+using artm.Fetcher.Droid.Services;
+using artm.Fetcher.Core.Services;
 
 namespace artm.MvxPlugins.Fetcher.Droid
 {
@@ -9,10 +9,12 @@ namespace artm.MvxPlugins.Fetcher.Droid
     {
         public void Load()
         {
-            Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryStoragePathService, FetcherRepositoryStoragePathService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryService, FetcherRepositoryService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
+            IFetcherRepositoryStoragePathService path = new FetcherRepositoryStoragePathService();
+            IFetcherRepositoryService repository = new FetcherRepositoryService(path);
+            IFetcherWebService web = new FetcherWebService();
+            
+            Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(web, repository));
+            Mvx.Resolve<IFetcherService>();
         }
     }
 }

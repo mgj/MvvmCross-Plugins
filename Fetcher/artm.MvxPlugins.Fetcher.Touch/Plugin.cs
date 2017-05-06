@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Foundation;
-using UIKit;
-using MvvmCross.Platform.Plugins;
+﻿using MvvmCross.Platform.Plugins;
 using MvvmCross.Platform;
-using artm.MvxPlugins.Fetcher.Services;
-using artm.MvxPlugins.Fetcher.Touch.Services;
+using artm.Fetcher.Core.Services;
+using artm.Fetcher.Touch.Services;
 
 namespace artm.MvxPlugins.Fetcher.Touch
 {
@@ -16,10 +9,12 @@ namespace artm.MvxPlugins.Fetcher.Touch
     {
         public void Load()
         {
-            Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryStoragePathService, FetcherRepositoryStoragePathService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryService, FetcherRepositoryService>();
-            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
+            IFetcherRepositoryStoragePathService path = new FetcherRepositoryStoragePathService();
+            IFetcherRepositoryService repository = new FetcherRepositoryService(path);
+            IFetcherWebService web = new FetcherWebService();
+
+            Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(web, repository));
+            Mvx.Resolve<IFetcherService>();
         }
     }
 }
