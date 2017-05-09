@@ -1,14 +1,10 @@
 using artm.MvxPlugins.Dialog.Models;
 using Cirrious.FluentLayouts.Touch;
 using Foundation;
-using MvvmCross.Binding.Bindings;
-using MvvmCross.Binding.Bindings.SourceSteps;
 using MvvmCross.Binding.iOS.Views;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UIKit;
 
 namespace artm.MvxPlugins.Dialog.Touch.Services

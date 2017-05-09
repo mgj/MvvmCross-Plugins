@@ -1,11 +1,6 @@
 ﻿using artm.MvxPlugins.Dialog.Models;
-using artm.MvxPlugins.Dialog.Services;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Dialog.Tests.Services
 {

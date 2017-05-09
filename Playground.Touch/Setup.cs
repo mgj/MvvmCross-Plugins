@@ -1,5 +1,3 @@
-using artm.Fetcher.Core.Services;
-using artm.Fetcher.Touch.Services;
 using artm.MvxPlugins.Dialog.Services;
 using artm.MvxPlugins.Dialog.Touch.Services;
 using MvvmCross.Core.ViewModels;

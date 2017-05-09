@@ -1,6 +1,4 @@
-﻿
-using Moq;
-using MvvmCross.Core.Platform;
+﻿using MvvmCross.Core.Platform;
 using MvvmCross.Core.Views;
 using MvvmCross.Platform.Core;
 using MvvmCross.Test.Core;
