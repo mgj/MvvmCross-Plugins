@@ -13,6 +13,9 @@ Fetcher
 =======
 The fetcher plugin is a small wrapper around [https://github.com/mgj/fetcher](https://github.com/mgj/fetcher) that allows you to inject the IFetcherService interface in your MvvmCross application
 
+Thanks
+=======
+Thanks to [Cheesebaron](https://github.com/Cheesebaron) for his [MvvmCross plugins](https://github.com/Cheesebaron/Cheesebaron.MvxPlugins)
 
 License
 =======
