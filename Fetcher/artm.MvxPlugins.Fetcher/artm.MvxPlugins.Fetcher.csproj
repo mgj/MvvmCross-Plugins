@@ -40,8 +40,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="artm.Fetcher.Core, Version=2.4.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\artm.fetcher.2.4.7\lib\portable-net45+win+wpa81\artm.Fetcher.Core.dll</HintPath>
+    <Reference Include="artm.Fetcher.Core, Version=2.4.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\artm.fetcher.2.4.11\lib\portable-net45+win+wpa81\artm.Fetcher.Core.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Platform, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Platform.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
