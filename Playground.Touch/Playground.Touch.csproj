@@ -100,11 +100,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="artm.Fetcher.Core, Version=2.4.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\artm.fetcher.2.4.11\lib\Xamarin.iOS10\artm.Fetcher.Core.dll</HintPath>
+    <Reference Include="artm.Fetcher.Core, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\artm.fetcher.2.5.1\lib\Xamarin.iOS10\artm.Fetcher.Core.dll</HintPath>
     </Reference>
-    <Reference Include="artm.Fetcher.Touch, Version=2.4.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\artm.fetcher.2.4.11\lib\Xamarin.iOS10\artm.Fetcher.Touch.dll</HintPath>
+    <Reference Include="artm.Fetcher.Touch, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\artm.fetcher.2.5.1\lib\Xamarin.iOS10\artm.Fetcher.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.FluentLayouts.Touch, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Cirrious.FluentLayout.2.5.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
