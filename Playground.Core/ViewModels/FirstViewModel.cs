@@ -19,9 +19,6 @@ namespace Playground.Core.ViewModels
         {
             _dialog = dialog;
 
-            var data = fetcher.Fetch(new Uri("https://services.coop.dk/restgrundsortiment/api/Vare/24444")).Result;
-            System.Diagnostics.Debug.WriteLine(data.Response);
-
             var items = new List<DialogServiceMultiItem>();
             items.Add(new DialogServiceMultiItem("a", "blabla"));
             items.Add(new DialogServiceMultiItem("b", "blabla"));
