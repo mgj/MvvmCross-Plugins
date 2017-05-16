@@ -10,27 +10,27 @@
     <dependencies>
     <group targetFramework ="net">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.fetcher" version="2.5.3"/>
+      <dependency id="artm.fetcher" version="2.6.1"/>
     </group>
     <group targetFramework ="MonoAndroid">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.fetcher" version="2.5.3"/>
+      <dependency id="artm.fetcher" version="2.6.1"/>
     </group>
     <group targetFramework ="Xamarin.iOS">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.fetcher" version="2.5.3"/>
+      <dependency id="artm.fetcher" version="2.6.1"/>
     </group>
     <group targetFramework ="portable-net45+win+wpa81+wp80">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.fetcher" version="2.5.3"/>
+      <dependency id="artm.fetcher" version="2.6.1"/>
     </group>
     <group targetFramework ="dotnet">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.fetcher" version="2.5.3"/>
+      <dependency id="artm.fetcher" version="2.6.1"/>
     </group>
     <group targetFramework ="uap">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
-      <dependency id="artm.fetcher" version="2.5.3"/>
+      <dependency id="artm.fetcher" version="2.6.1"/>
       </group>
     </dependencies>
   </metadata>

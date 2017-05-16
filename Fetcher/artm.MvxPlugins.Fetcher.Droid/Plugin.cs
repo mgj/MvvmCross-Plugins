@@ -2,7 +2,8 @@
 using MvvmCross.Platform;
 using artm.Fetcher.Droid.Services;
 using artm.Fetcher.Core.Services;
-using artm.Fetcher.Core.Services.Tosser;
+using SQLite.Net;
+using SQLite.Net.Platform.XamarinAndroid;
 
 namespace artm.MvxPlugins.Fetcher.Droid
 {
@@ -12,13 +13,17 @@ namespace artm.MvxPlugins.Fetcher.Droid
         {
             Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryStoragePathService, FetcherRepositoryStoragePathService>();
-            Mvx.LazyConstructAndRegisterSingleton<IFetcherRepositoryService>(() => new FetcherRepositoryService(Mvx.Resolve<IFetcherRepositoryStoragePathService>()));
+            Mvx.LazyConstructAndRegisterSingleton<IFetcherRepositoryService>(() => new FetcherRepositoryService(() => CreateConnection(Mvx.Resolve<IFetcherRepositoryStoragePathService>())));
             Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(Mvx.Resolve<IFetcherWebService>(), Mvx.Resolve<IFetcherRepositoryService>()));
-            Mvx.LazyConstructAndRegisterSingleton<ITosserService>(() => new TosserService(Mvx.Resolve<IFetcherWebService>()));
 
             Mvx.Resolve<IFetcherRepositoryService>();
             Mvx.Resolve<IFetcherService>();
-            Mvx.Resolve<ITosserService>();
+        }
+
+        private static SQLiteConnectionWithLock CreateConnection(IFetcherRepositoryStoragePathService path)
+        {
+            var str = new SQLiteConnectionString(path.GetPath(), false);
+            return new SQLiteConnectionWithLock(new SQLitePlatformAndroid(), str);
         }
     }
 }
