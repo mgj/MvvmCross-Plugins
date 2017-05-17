@@ -22,7 +22,7 @@ namespace artm.MvxPlugins.Fetcher.Droid
             Mvx.Resolve<IFetcherService>();
 
             // Ensure database tables are created
-            repository.Initialize().Wait();
+            Task.Run(async () => await repository.Initialize());
         }
 
         private static SQLiteConnectionWithLock CreateConnection(IFetcherRepositoryStoragePathService path)

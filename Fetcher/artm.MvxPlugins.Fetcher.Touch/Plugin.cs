@@ -4,6 +4,7 @@ using artm.Fetcher.Core.Services;
 using artm.Fetcher.Touch.Services;
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinIOS;
+using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Fetcher.Touch
 {
@@ -22,7 +23,7 @@ namespace artm.MvxPlugins.Fetcher.Touch
             Mvx.Resolve<IFetcherService>();
 
             // Ensure database tables are created
-            repository.Initialize().Wait();
+            Task.Run(async () => await repository.Initialize());
         }
 
         private static SQLiteConnectionWithLock CreateConnection(IFetcherRepositoryStoragePathService path)
