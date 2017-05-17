@@ -17,8 +17,12 @@ namespace artm.MvxPlugins.Fetcher.Droid
             Mvx.LazyConstructAndRegisterSingleton<IFetcherRepositoryService>(() => new FetcherRepositoryService(Mvx.Resolve<IFetcherLoggerService>(), () => CreateConnection(Mvx.Resolve<IFetcherRepositoryStoragePathService>())));
             Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(Mvx.Resolve<IFetcherWebService>(), Mvx.Resolve<IFetcherRepositoryService>(), Mvx.Resolve<IFetcherLoggerService>()));
 
-            Mvx.Resolve<IFetcherRepositoryService>();
+            // Force construction of singletons
+            var repository = Mvx.Resolve<IFetcherRepositoryService>() as FetcherRepositoryService;
             Mvx.Resolve<IFetcherService>();
+
+            // Ensure database tables are created
+            repository.Initialize().Wait();
         }
 
         private static SQLiteConnectionWithLock CreateConnection(IFetcherRepositoryStoragePathService path)
