@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="artm.Fetcher.Core, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\artm.fetcher.2.7.0-unstable0007\lib\Xamarin.iOS10\artm.Fetcher.Core.dll</HintPath>
+      <HintPath>..\..\packages\artm.fetcher.2.7.0-unstable0009\lib\Xamarin.iOS10\artm.Fetcher.Core.dll</HintPath>
     </Reference>
     <Reference Include="artm.Fetcher.Touch, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\artm.fetcher.2.7.0-unstable0007\lib\Xamarin.iOS10\artm.Fetcher.Touch.dll</HintPath>
+      <HintPath>..\..\packages\artm.fetcher.2.7.0-unstable0009\lib\Xamarin.iOS10\artm.Fetcher.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MvvmCross.Core, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
