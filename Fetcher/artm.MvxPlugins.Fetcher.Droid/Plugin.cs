@@ -4,6 +4,7 @@ using artm.Fetcher.Droid.Services;
 using artm.Fetcher.Core.Services;
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinAndroid;
+using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Fetcher.Droid
 {
