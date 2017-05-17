@@ -4,6 +4,7 @@ using artm.Fetcher.Core.Services;
 using artm.Fetcher.Touch.Services;
 using SQLite.Net;
 using SQLite.Net.Platform.XamarinIOS;
+using System.Threading.Tasks;
 
 namespace artm.MvxPlugins.Fetcher.Touch
 {
@@ -11,13 +12,18 @@ namespace artm.MvxPlugins.Fetcher.Touch
     {
         public void Load()
         {
+            Mvx.ConstructAndRegisterSingleton<IFetcherLoggerService, FetcherLoggerService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryStoragePathService, FetcherRepositoryStoragePathService>();
-            Mvx.LazyConstructAndRegisterSingleton<IFetcherRepositoryService>(() => new FetcherRepositoryService(() => CreateConnection(Mvx.Resolve<IFetcherRepositoryStoragePathService>())));
-            Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(Mvx.Resolve<IFetcherWebService>(), Mvx.Resolve<IFetcherRepositoryService>()));
+            Mvx.LazyConstructAndRegisterSingleton<IFetcherRepositoryService>(() => new FetcherRepositoryService(Mvx.Resolve<IFetcherLoggerService>(), () => CreateConnection(Mvx.Resolve<IFetcherRepositoryStoragePathService>())));
+            Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(Mvx.Resolve<IFetcherWebService>(), Mvx.Resolve<IFetcherRepositoryService>(), Mvx.Resolve<IFetcherLoggerService>()));
 
-            Mvx.Resolve<IFetcherRepositoryService>();
+            // Force construction of singletons
+            var repository = Mvx.Resolve<IFetcherRepositoryService>() as FetcherRepositoryService;
             Mvx.Resolve<IFetcherService>();
+
+            // Ensure database tables are created
+            Task.Run(async () => await repository.Initialize());
         }
 
         private static SQLiteConnectionWithLock CreateConnection(IFetcherRepositoryStoragePathService path)
