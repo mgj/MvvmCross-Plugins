@@ -11,10 +11,11 @@ namespace artm.MvxPlugins.Fetcher.Touch
     {
         public void Load()
         {
+            Mvx.ConstructAndRegisterSingleton<IFetcherLoggerService, FetcherLoggerService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryStoragePathService, FetcherRepositoryStoragePathService>();
             Mvx.LazyConstructAndRegisterSingleton<IFetcherRepositoryService>(() => new FetcherRepositoryService(() => CreateConnection(Mvx.Resolve<IFetcherRepositoryStoragePathService>())));
-            Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(Mvx.Resolve<IFetcherWebService>(), Mvx.Resolve<IFetcherRepositoryService>()));
+            Mvx.LazyConstructAndRegisterSingleton<IFetcherService>(() => new FetcherService(Mvx.Resolve<IFetcherWebService>(), Mvx.Resolve<IFetcherRepositoryService>(), Mvx.Resolve<IFetcherLoggerService>()));
 
             Mvx.Resolve<IFetcherRepositoryService>();
             Mvx.Resolve<IFetcherService>();
