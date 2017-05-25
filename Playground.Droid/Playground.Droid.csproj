@@ -46,11 +46,11 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="artm.Fetcher.Core, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\artm.fetcher.2.6.2\lib\MonoAndroid10\artm.Fetcher.Core.dll</HintPath>
+    <Reference Include="artm.Fetcher.Core, Version=2.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\artm.fetcher.2.7.1\lib\MonoAndroid10\artm.Fetcher.Core.dll</HintPath>
     </Reference>
-    <Reference Include="artm.Fetcher.Droid, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\artm.fetcher.2.6.2\lib\MonoAndroid10\artm.Fetcher.Droid.dll</HintPath>
+    <Reference Include="artm.Fetcher.Droid, Version=2.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\artm.fetcher.2.7.1\lib\MonoAndroid10\artm.Fetcher.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />

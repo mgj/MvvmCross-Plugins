@@ -21,9 +21,6 @@ namespace artm.MvxPlugins.Fetcher.Droid
             // Force construction of singletons
             var repository = Mvx.Resolve<IFetcherRepositoryService>() as FetcherRepositoryService;
             Mvx.Resolve<IFetcherService>();
-
-            // Ensure database tables are created
-            Task.Run(async () => await repository.Initialize());
         }
 
         private static SQLiteConnectionWithLock CreateConnection(IFetcherRepositoryStoragePathService path)
