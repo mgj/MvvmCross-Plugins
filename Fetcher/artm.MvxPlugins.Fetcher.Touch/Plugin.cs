@@ -16,7 +16,7 @@ namespace artm.MvxPlugins.Fetcher.Touch
             Mvx.RegisterType<IFetcherWebService, FetcherWebService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryStoragePathService, FetcherRepositoryStoragePathService>();
             Mvx.LazyConstructAndRegisterSingleton<IFetcherRepositoryService>(() => new FetcherRepositoryService(Mvx.Resolve<IFetcherLoggerService>(), () => CreateConnection(Mvx.Resolve<IFetcherRepositoryStoragePathService>())));
-            Mvx.RegisterType<IFetcherService, FetcherService>();
+            Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
 
             // Force construction of singletons
             var repository = Mvx.Resolve<IFetcherRepositoryService>() as FetcherRepositoryService;
