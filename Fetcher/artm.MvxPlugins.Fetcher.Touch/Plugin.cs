@@ -13,15 +13,13 @@ namespace artm.MvxPlugins.Fetcher.Touch
         public void Load()
         {
             Mvx.ConstructAndRegisterSingleton<IFetcherLoggerService, FetcherLoggerService>();
-            Mvx.RegisterType<IFetcherWebService, FetcherWebService>();
+            Mvx.ConstructAndRegisterSingleton<IFetcherWebService, FetcherWebService>();
             Mvx.ConstructAndRegisterSingleton<IFetcherRepositoryStoragePathService, FetcherRepositoryStoragePathService>();
             Mvx.LazyConstructAndRegisterSingleton<IFetcherRepositoryService>(() => new FetcherRepositoryService(Mvx.Resolve<IFetcherLoggerService>(), () => CreateConnection(Mvx.Resolve<IFetcherRepositoryStoragePathService>())));
             Mvx.ConstructAndRegisterSingleton<IFetcherService, FetcherService>();
-
-            // Force construction of singletons
-            var repository = Mvx.Resolve<IFetcherRepositoryService>() as FetcherRepositoryService;
-
+            
             // Ensure database tables are created
+            var repository = Mvx.Resolve<IFetcherRepositoryService>() as FetcherRepositoryService;
             Task.Run(async () => await repository.Initialize());
         }
 
