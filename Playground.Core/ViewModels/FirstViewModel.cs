@@ -10,6 +10,7 @@ namespace Playground.Core.ViewModels
 {
     public class FirstViewModel : MvxViewModel
     {
+        private readonly IFetcherService _fetcher;
         private readonly IDialogService _dialog;
 
         private readonly DialogServiceMultiItem[] _allItems;
@@ -17,6 +18,7 @@ namespace Playground.Core.ViewModels
 
         public FirstViewModel(IFetcherService fetcher, IDialogService dialog)
         {
+            _fetcher = fetcher;
             _dialog = dialog;
 
             var items = new List<DialogServiceMultiItem>();
@@ -80,6 +82,8 @@ namespace Playground.Core.ViewModels
         }
 
         private MvxAsyncCommand _showListWithTitleCommand;
+        
+
         public MvxAsyncCommand ShowListWithTitleCommand
         {
             get
@@ -91,6 +95,8 @@ namespace Playground.Core.ViewModels
 
         private async Task DoShowListCommandAsync(string title)
         {
+            var stuff = await _fetcher.FetchAsync(new Uri("https://www.google.com"));
+
             var bundle = new DialogServiceMultiItemsBundle(title, _allItems, _checkedItems.ToArray());
             var result = await _dialog.ShowMultipleChoice(bundle);
             for (int i = 0; i < _checkedItems.Count; i++)
