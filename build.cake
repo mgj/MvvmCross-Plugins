@@ -1,5 +1,6 @@
 #tool "nuget:?package=GitVersion.CommandLine"
-#tool "nuget:?package=gitlink"
+#tool "nuget:?package=gitlink&version=2.4.0.0"
+#tool "nuget:?package=vswhere"
 
 var sln = new FilePath("artm.MvxPlugins.sln");
 var binDir = new DirectoryPath("bin");
