@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="artm.Fetcher.Core, Version=2.7.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\artm.fetcher.2.7.6\lib\portable-net45+win+wpa81\artm.Fetcher.Core.dll</HintPath>
+    <Reference Include="artm.Fetcher.Core, Version=2.8.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\artm.fetcher.2.8.1\lib\portable-net45+win+wpa81\artm.Fetcher.Core.dll</HintPath>
     </Reference>
     <Reference Include="artm.MvxPlugins.Logger, Version=2.8.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\artm.MvxPlugins.Logger.2.8.1\lib\portable-net45+win+wpa81\artm.MvxPlugins.Logger.dll</HintPath>
